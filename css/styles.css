@@ -271,4 +271,8 @@ hr {
 #cert-modal.open {
   opacity: 1;
   pointer-events: auto;
+}
+
+#imgModalImg[src=""], #cert-modal-img[src=""] {
+  display: none;
 } 
