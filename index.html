@@ -91,7 +91,7 @@
                         <img src="assets/img/portfolio/0.png" alt="Цифровой паспорт компетенций стр.1" class="cert-thumb cert-modal-trigger" style="width:48%;border-radius:8px;box-shadow:0 2px 8px #0001;cursor:pointer;" data-img="assets/img/portfolio/0.png">
                         <img src="assets/img/portfolio/1.png" alt="Цифровой паспорт компетенций стр.2" class="cert-thumb cert-modal-trigger" style="width:48%;border-radius:8px;box-shadow:0 2px 8px #0001;cursor:pointer;" data-img="assets/img/portfolio/1.png">
                     </div>
-                    <div style="margin-top:0.5em;font-size:0.98em;">Цифровой паспорт компетенций<br><span style="color:#64748b;font-size:0.92em;">Входит в топ-15% выпускников по оценке SkillsPassport</span></div>
+                    <div style="margin-top:0.5em;font-size:0.98em;">Цифровой паспорт компетенций<br><span style="color:#64748b;font-size:0.92em;">86% из 100%</span></div>
                 </div>
             </div>
         </section>
@@ -101,7 +101,6 @@
                 <li><svg class="icon" viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v12h16V6H4zm8 5.5L4.5 6.5l1-1L12 10.5l6.5-5 1 1L12 11.5z"/></svg>kibalnik2003@yandex.ru</li>
                 <li><svg class="icon" viewBox="0 0 24 24"><path d="M9.04 16.62l-.39 3.47c.56 0 .8-.24 1.09-.53l2.62-2.5 5.44 3.98c1 .55 1.72.26 1.97-.92l3.58-16.7c.33-1.53-.56-2.13-1.53-1.77L2.2 9.3c-1.48.58-1.46 1.4-.25 1.77l4.6 1.44 10.7-6.74c.5-.33.96-.15.58.21z"/></svg>Telegram: <a href="https://t.me/kosmosega" target="_blank">@kosmosega</a></li>
                 <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0112 6.84c.85.004 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.58.69.48A10.01 10.01 0 0022 12.26C22 6.58 17.52 2 12 2z"/></svg><a href="https://github.com/S3gaM3" target="_blank">GitHub</a></li>
-                <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#2563eb" stroke-width="2" fill="none"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" stroke="#2563eb" stroke-width="2" fill="none"/></svg><a href="https://segak.ru/" target="_blank">segak.ru</a></li>
             </ul>
         </section>
         <section class="section" style="text-align:center;margin-top:2.5em;">
@@ -117,7 +116,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content bg-transparent border-0">
                 <button type="button" class="btn-close btn-close-white position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index:2;"></button>
-                <img id="imgModalImg" src="" alt="Просмотр изображения" class="img-fluid rounded shadow" style="display:block; margin:auto; max-height:80vh; background:#fff;">
+                <img id="imgModalImg" src="" class="img-fluid rounded shadow" style="display:block; margin:auto; max-height:80vh; background:#fff;">
             </div>
         </div>
     </div>
@@ -138,9 +137,22 @@
             el.addEventListener('click', function(e) {
                 var imgSrc = this.getAttribute('data-img') || this.src;
                 modalImg.src = imgSrc;
+                // Показывать img только если src не пустой
+                if (imgSrc) {
+                    modalImg.style.display = 'block';
+                } else {
+                    modalImg.style.display = 'none';
+                }
                 modal.show();
             });
         });
+        // Скрывать img при ошибке загрузки
+        modalImg.onload = function() {
+            modalImg.style.display = modalImg.src ? 'block' : 'none';
+        };
+        modalImg.onerror = function() {
+            modalImg.style.display = 'none';
+        };
         // Кастомное модальное окно для сертификатов
         const certModal = document.getElementById('cert-modal');
         const certModalImg = document.getElementById('cert-modal-img');
@@ -169,6 +181,12 @@
         });
     });
     document.getElementById('footer-year').textContent = new Date().getFullYear();
+    // Скрывать imgModalImg при закрытии модалки
+    document.getElementById('imgModal').addEventListener('hidden.bs.modal', function() {
+        var modalImg = document.getElementById('imgModalImg');
+        modalImg.src = '';
+        modalImg.style.display = 'none';
+    });
     </script>
 </body>
 </html>
