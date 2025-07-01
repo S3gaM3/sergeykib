@@ -220,6 +220,10 @@ body {
   .section-title {
     font-size: 1.1rem;
   }
+  .header {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
 }
 
 /* === Ссылки с анимацией подчеркивания === */
