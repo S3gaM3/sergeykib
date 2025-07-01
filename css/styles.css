@@ -116,8 +116,8 @@ body {
 
 /* === Фото === */
 .header-photo {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 24px #0002;
@@ -208,8 +208,8 @@ body {
 /* === Адаптивность для мобильных === */
 @media (max-width: 600px) {
   .header-photo {
-    width: 90px;
-    height: 90px;
+    width: 130px;
+    height: 130px;
   }
   .main-content {
     padding: 1.2rem 0 0.7rem 0;
