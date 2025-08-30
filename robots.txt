@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Разрешаем индексацию всех страниц
+Allow: /index.html
+Allow: /resume.html
+
+# Указываем расположение sitemap
+Sitemap: https://sergeykib.github.io/sitemap.xml
+
+# Запрещаем индексацию служебных файлов
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /css/
+Disallow: /js/
+Disallow: /assets/

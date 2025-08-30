@@ -3,11 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сергей Кибальник — Веб и мультимедийная разработка</title>
-    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- SEO Meta Tags -->
+    <title>Сергей Кибальник — Веб-разработчик React, Node.js | Портфолио разработчика</title>
+    <meta name="description" content="Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов и резюме.">
+    <meta name="keywords" content="веб-разработчик, React разработчик, JavaScript разработчик, Node.js, веб-дизайн, UX/UI, портфолио, Москва, фриланс">
+    <meta name="author" content="Сергей Кибальник">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sergeykib.github.io/">
+    <meta property="og:title" content="Сергей Кибальник — Веб-разработчик React, Node.js">
+    <meta property="og:description" content="Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения.">
+    <meta property="og:image" content="https://sergeykib.github.io/assets/img/portfolio/1.jpg">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sergeykib.github.io/">
+    <meta property="twitter:title" content="Сергей Кибальник — Веб-разработчик React, Node.js">
+    <meta property="twitter:description" content="Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI.">
+    <meta property="twitter:image" content="https://sergeykib.github.io/assets/img/portfolio/1.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sergeykib.github.io/">
+    
+    <!-- Favicon -->
     <link rel="icon" href="assets/favicon.ico">
-    <!-- Google Fonts -->
+    <link rel="apple-touch-icon" href="assets/favicon.ico">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Montserrat:wght@700&family=Roboto:wght@400;500&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for Job Seeker -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Сергей Кибальник",
+        "jobTitle": "Веб-разработчик",
+        "description": "Веб-разработчик с глубоким знанием JavaScript-экосистемы. Специализируюсь на создании адаптивных интерфейсов (React) и серверных решений (Node.js).",
+        "url": "https://sergeykib.github.io/",
+        "image": "https://sergeykib.github.io/assets/img/portfolio/1.jpg",
+        "sameAs": [
+            "https://github.com/S3gaM3",
+            "https://t.me/kosmosega",
+            "https://segak.ru/"
+        ],
+        "knowsAbout": [
+            "JavaScript",
+            "React",
+            "Node.js",
+            "HTML5",
+            "CSS3",
+            "Python",
+            "MySQL",
+            "UX/UI Design"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Москва",
+            "addressCountry": "RU"
+        },
+        "email": "kibalnikserg@yandex.ru",
+        "telephone": "+7 (985) 268-97-87",
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Технологический колледж № 21"
+        }
+    }
+    </script>
+    
+    <!-- Analytics Codes -->
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103955852', 'ym');
+
+        ym(103955852, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/103955852" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
     <div class="header">
@@ -116,9 +206,9 @@
             <!-- Конец блока инструментов -->
         </section>
         <section class="section">
-            <h2 class="section-title">Опыт и проекты</h2>
-            <div class="job-card" style="text-align:center;font-size:1.1em;color:#64748b;padding:2em 0;">
-                Проекты в процессе добавления
+            <h2 class="section-title">Мои проекты и работы</h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Проекты будут загружены через JavaScript -->
             </div>
         </section>
         <section class="section">
@@ -190,6 +280,7 @@
       &copy; <span id="footer-year"></span> Сергей Кибальник. Все права защищены.
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/projects.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Открытие Bootstrap-модального окна только для .img-modal-trigger (если потребуется)
@@ -241,6 +332,54 @@
         document.addEventListener('keydown', e => {
             if (certModal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) closeCertModal();
         });
+        
+        // Функции для отображения проектов
+        function createProjectCard(project) {
+            const card = document.createElement('article');
+            card.className = 'project-card';
+            
+            const technologies = project.technologies ? 
+                `<div class="technologies">
+                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>` : '';
+            
+            card.innerHTML = `
+                <div class="project-image">
+                    <img src="${project.image}" alt="${project.title}" loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-description">${project.desc}</p>
+                    ${technologies}
+                    <div class="project-links">
+                        <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link live-link" title="Live Demo">
+                            🌐
+                        </a>
+                        <a href="${project.repoUrl}" target="_blank" rel="noopener noreferrer" class="project-link repo-link" title="GitHub Repository">
+                            &lt;/&gt;
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function displayProjects() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            
+            if (projects && projects.length > 0) {
+                projects.forEach(project => {
+                    const projectCard = createProjectCard(project);
+                    projectsGrid.appendChild(projectCard);
+                });
+            } else {
+                projectsGrid.innerHTML = '<div class="job-card" style="text-align:center;font-size:1.1em;color:#64748b;padding:2em 0;">Проекты не найдены</div>';
+            }
+        }
+
+        // Загружаем проекты
+        displayProjects();
     });
     document.getElementById('footer-year').textContent = new Date().getFullYear();
     // Скрывать imgModalImg при закрытии модалки
@@ -248,6 +387,58 @@
         var modalImg = document.getElementById('imgModalImg');
         modalImg.src = '';
         modalImg.style.display = 'none';
+    });
+    
+    // Отслеживание целей Яндекс.Метрики
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Цель: Переход на резюме
+        const resumeLink = document.querySelector('a[href="resume.html"]');
+        if (resumeLink) {
+            resumeLink.addEventListener('click', function() {
+                ym(103955852, 'reachGoal', 'resume_view');
+            });
+        }
+        
+        // Цель: Клик по email
+        const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+        emailLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                ym(103955852, 'reachGoal', 'contact_email');
+            });
+        });
+        
+        // Цель: Клик по Telegram
+        const telegramLinks = document.querySelectorAll('a[href*="t.me"]');
+        telegramLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                ym(103955852, 'reachGoal', 'contact_telegram');
+            });
+        });
+        
+        // Цель: Просмотр сертификатов
+        const certTriggers = document.querySelectorAll('.cert-modal-trigger');
+        certTriggers.forEach(function(trigger) {
+            trigger.addEventListener('click', function() {
+                ym(103955852, 'reachGoal', 'certificate_view');
+            });
+        });
+        
+        // Цель: Переход на портфолио
+        const portfolioLinks = document.querySelectorAll('a[href*="segak.ru"]');
+        portfolioLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                ym(103955852, 'reachGoal', 'portfolio_view');
+            });
+        });
+        
+        // Цель: Переход на GitHub
+        const githubLinks = document.querySelectorAll('a[href*="github.com"]');
+        githubLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                ym(103955852, 'reachGoal', 'project_github');
+            });
+        });
     });
     </script>
 </body>
