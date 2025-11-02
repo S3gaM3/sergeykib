@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import Link from 'next/link'
 import '../globals.css'
 import './resume.css'
 
@@ -64,6 +65,11 @@ export default function ResumePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="resume-container">
+        <div style={{marginBottom: '20px'}}>
+          <Link href="/" style={{color: '#2563eb', textDecoration: 'none', fontSize: '0.95em'}}>
+            ← На главную
+          </Link>
+        </div>
         <div className="resume-header">
           <img
             src="/assets/img/portfolio/1.jpg"

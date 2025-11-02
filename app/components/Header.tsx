@@ -18,7 +18,20 @@ export default function Header() {
         Веб-разработчик, специализируюсь на React, Node.js, UX/UI. Помогаю бизнесу расти в интернете.
       </div>
       <div style={{display:'flex', gap:'1em', justifyContent:'center', marginBottom:'1.1em', flexWrap:'wrap'}}>
-        <a href="#contacts" className="btn" style={{background:'#2563eb', color:'#fff', minWidth:'120px'}}>Связаться</a>
+        <a 
+          href="#contacts" 
+          className="btn" 
+          style={{background:'#2563eb', color:'#fff', minWidth:'120px'}}
+          onClick={(e) => {
+            e.preventDefault()
+            const contacts = document.getElementById('contacts')
+            if (contacts) {
+              contacts.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+          }}
+        >
+          Связаться
+        </a>
         <Link href="/resume/" className="btn" style={{background:'#fff', color:'#2563eb', border:'1.5px solid #2563eb', minWidth:'120px'}}>Резюме</Link>
       </div>
       <div className="header-socials" style={{display:'flex', gap:'1.1em', justifyContent:'center', marginBottom:'0.7em'}}>

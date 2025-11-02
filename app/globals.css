@@ -243,6 +243,11 @@ body {
   }
 }
 
+/* === Плавная прокрутка === */
+html {
+  scroll-behavior: smooth;
+}
+
 /* === Ссылки с анимацией подчеркивания === */
 a {
   color: var(--accent-blue);
