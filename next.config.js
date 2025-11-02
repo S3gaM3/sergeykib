@@ -15,6 +15,14 @@ const nextConfig = {
     ],
   },
   trailingSlash: true,
+  webpack: (config, { isServer }) => {
+    // Игнорируем папки с Angular проектами
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: ['**/portfolio/**', '**/web/**', '**/node_modules/**'],
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig
