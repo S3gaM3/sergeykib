@@ -4,7 +4,7 @@ import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import SkillsShowcase from './components/SkillsShowcase'
 import ToolsList from './components/ToolsList'
-import ProjectsGrid from './components/ProjectsGrid'
+import ProjectsCarousel from './components/ProjectsCarousel'
 import Certificates from './components/Certificates'
 import CTASection from './components/CTASection'
 import Script from 'next/script'
@@ -122,7 +122,7 @@ export default function Home() {
           }}>
             Мои проекты и работы
           </h2>
-          <ProjectsGrid />
+          <ProjectsCarousel />
         </section>
 
         <section className="section">
@@ -154,7 +154,7 @@ export default function Home() {
                   09.02.07 Информационные системы и программирование
                 </div>
                 <div style={{color: '#94a3b8', fontSize: '0.95em', marginTop: '0.3rem'}}>
-                  Ожидаемое окончание: 2025
+                  Выпускник: 2025
                 </div>
               </div>
             </div>
