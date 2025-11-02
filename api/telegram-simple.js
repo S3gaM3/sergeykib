@@ -11,13 +11,22 @@ export default async function handler(req, res) {
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   )
 
+  // Обрабатываем OPTIONS запрос для CORS preflight
   if (req.method === 'OPTIONS') {
-    res.status(200).end()
-    return
+    return res.status(200).end()
   }
 
+  // Логируем метод для отладки
+  console.log('Request method:', req.method)
+  console.log('Request body:', req.body)
+
+  // Принимаем только POST
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
+    return res.status(405).json({ 
+      error: 'Method not allowed',
+      receivedMethod: req.method,
+      allowedMethods: ['POST', 'OPTIONS']
+    })
   }
 
   try {
