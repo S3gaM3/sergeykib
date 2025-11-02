@@ -28,10 +28,9 @@ export default function ContactFormSimple() {
     setErrorMessage('')
 
     try {
-      // Используем Vercel serverless endpoint или прямой вызов как fallback
-      // Замените URL на ваш Vercel endpoint после развертывания
+      // Используем Vercel serverless endpoint
       const API_URL = process.env.NEXT_PUBLIC_TELEGRAM_API_URL || 
-        'https://sergeykib-telegram.vercel.app/api/telegram-simple'
+        'https://sergeykib-telegram-api.vercel.app/api/telegram-simple'
       
       const response = await fetch(API_URL, {
         method: 'POST',
