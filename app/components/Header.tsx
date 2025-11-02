@@ -14,7 +14,15 @@ export default function Header() {
       />
       <div className="header-name">Сергей Кибальник</div>
       <div className="header-role">Создаю современные сайты и мультимедийные решения</div>
-      <div style={{fontSize:'1.08em', color:'#475569', margin:'0.5em 0 1.1em 0', maxWidth:'420px', marginLeft:'auto', marginRight:'auto'}}>
+      <div style={{
+        fontSize: '1.1em', 
+        color: '#475569', 
+        margin: '0.8em 0 1.3em 0', 
+        maxWidth: '500px', 
+        marginLeft: 'auto', 
+        marginRight: 'auto',
+        lineHeight: '1.6'
+      }}>
         Веб-разработчик, специализируюсь на React, Node.js, UX/UI. Помогаю бизнесу расти в интернете.
       </div>
       <div style={{display:'flex', gap:'1em', justifyContent:'center', marginBottom:'1.1em', flexWrap:'wrap'}}>

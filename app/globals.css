@@ -138,17 +138,17 @@ body {
 /* === Карточки опыта/проектов === */
 .job-card {
   background: #fff;
-  border-left: 3px solid var(--accent-blue);
-  padding-left: 15px;
+  border-left: 4px solid var(--accent-blue);
   margin-bottom: 25px;
-  box-shadow: 0 2px 12px #0001;
-  border-radius: 10px;
-  padding: 1.2em 1.2em 1.2em 1.5em;
-  transition: box-shadow 0.18s, filter 0.18s, background 0.18s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 1.8em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .job-card:hover {
-  background: #f3f4f6;
-  filter: brightness(0.97);
+  background: #f8fafc;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+  transform: translateY(-2px);
 }
 
 /* === Навыки === */
@@ -179,7 +179,8 @@ body {
 
 /* === Секции и заголовки === */
 .section {
-  margin: 2.2em 0 2em 0;
+  margin: 3.5rem 0;
+  scroll-margin-top: 80px;
 }
 .section-title {
   font-family: 'Liter', Arial, sans-serif;
