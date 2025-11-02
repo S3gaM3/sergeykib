@@ -1,6 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+// Используем простую версию формы для работы на GitHub Pages
+import ContactForm from './ContactFormSimple'
+// Для локальной разработки с API routes используйте:
+// import ContactForm from './ContactForm'
 
 export default function CTASection() {
   return (
@@ -102,7 +106,8 @@ export default function CTASection() {
           gap: '2rem',
           flexWrap: 'wrap',
           fontSize: '0.95em',
-          opacity: 0.9
+          opacity: 0.9,
+          marginBottom: '2rem'
         }}>
           <div>
             <strong>Email:</strong>{' '}
@@ -114,6 +119,8 @@ export default function CTASection() {
             <strong>Телефон:</strong> +7 (985) 268-97-87
           </div>
         </div>
+
+        <ContactForm />
       </div>
     </section>
   )
