@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link from 'next/link'
+import ResumeHeader from './components/ResumeHeader'
+import ResumeSection from './components/ResumeSection'
 import '../globals.css'
 import './resume.css'
 
@@ -64,72 +66,340 @@ export default function ResumePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="resume-container">
-        <div style={{marginBottom: '20px'}}>
-          <Link href="/" style={{color: '#2563eb', textDecoration: 'none', fontSize: '0.95em'}}>
-            ← На главную
-          </Link>
+      <div className="resume-wrapper">
+        <div className="resume-navigation" style={{
+          background: '#fff',
+          padding: '1rem 0',
+          borderBottom: '1px solid #e2e8f0',
+          marginBottom: '2rem',
+          position: 'sticky',
+          top: 0,
+          zIndex: 100,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+        }}>
+          <div className="container" style={{maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem'}}>
+            <Link 
+              href="/" 
+              style={{
+                color: '#2563eb', 
+                textDecoration: 'none', 
+                fontSize: '0.95em',
+                fontWeight: '500',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5em',
+                transition: 'color 0.2s'
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              На главную
+            </Link>
+          </div>
         </div>
-        <div className="resume-header">
-          <img
-            src="/assets/img/portfolio/1.jpg"
-            alt="Аватар"
-            className="resume-avatar"
+
+        <div className="container" style={{maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem 3rem'}}>
+          <ResumeHeader />
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '2.5rem'
+          }}>
+            <ResumeSection
+              icon="💼"
+              title="Желаемая должность"
+              content={
+                <>
+                  <div style={{
+                    fontSize: '1.5rem',
+                    fontWeight: '700',
+                    color: '#059669',
+                    marginBottom: '0.5rem'
+                  }}>
+                    от 70 000 ₽ на руки
+                  </div>
+                  <div style={{color: '#64748b', marginBottom: '0.3rem'}}>
+                    Разработчик веб и мультимедийных приложений
+                  </div>
+                  <div style={{color: '#64748b', fontSize: '0.95em'}}>
+                    Полная занятость, полный день, удалённая работа
+                  </div>
+                </>
+              }
+            />
+
+            <ResumeSection
+              icon="🌐"
+              title="Локация"
+              content={
+                <>
+                  <div style={{
+                    fontSize: '1.2rem',
+                    fontWeight: '600',
+                    color: '#1e293b',
+                    marginBottom: '0.5rem'
+                  }}>
+                    Москва, Россия
+                  </div>
+                  <div style={{color: '#64748b', fontSize: '0.95em'}}>
+                    Готов к переезду и удалённой работе
+                  </div>
+                </>
+              }
+            />
+          </div>
+
+          <ResumeSection
+            icon="🎓"
+            title="Образование"
+            content={
+              <div style={{
+                background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+                padding: '1.5rem',
+                borderRadius: '12px',
+                border: '1px solid #bae6fd'
+              }}>
+                <div style={{
+                  fontSize: '1.3rem',
+                  fontWeight: '700',
+                  color: '#1e293b',
+                  marginBottom: '0.5rem'
+                }}>
+                  Технологический колледж № 21
+                </div>
+                <div style={{
+                  color: '#475569',
+                  marginBottom: '0.5rem',
+                  fontSize: '1.05em'
+                }}>
+                  09.02.07 Информационные системы и программирование
+                </div>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  color: '#64748b',
+                  fontSize: '0.95em'
+                }}>
+                  <span>Мегадизайн</span>
+                  <span>•</span>
+                  <span>Ожидаемое окончание: 2025</span>
+                </div>
+              </div>
+            }
           />
-          <div className="resume-main-info">
-            <div className="resume-name">Кибальник Сергей Андреевич</div>
-            <div className="resume-position">Разработчик веб и мультимедийных приложений</div>
-            <div className="resume-contacts">
-              <span>📞 +7 (985) 268-97-87</span>
-              <a href="mailto:kibalnikserg@yandex.ru">✉️ kibalnikserg@yandex.ru</a>
+
+          <ResumeSection
+            icon="🏆"
+            title="Курсы и сертификаты"
+            content={
+              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                {[
+                  {
+                    title: 'Цифровой паспорт компетенций',
+                    year: '2025',
+                    level: '86% из 100%',
+                    highlight: true
+                  },
+                  {
+                    title: 'JavaScript от Яндекса: с нуля до веб-разработчика',
+                    year: '2024',
+                    level: '144 акад. часа'
+                  }
+                ].map((cert, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      background: cert.highlight ? 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)' : '#fff',
+                      border: `1px solid ${cert.highlight ? '#fbbf24' : '#e2e8f0'}`,
+                      padding: '1.2rem',
+                      borderRadius: '12px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: '1rem'
+                    }}
+                  >
+                    <div>
+                      <div style={{
+                        fontWeight: '600',
+                        color: '#1e293b',
+                        marginBottom: '0.3rem',
+                        fontSize: '1.05em'
+                      }}>
+                        {cert.title}
+                      </div>
+                      <div style={{
+                        display: 'flex',
+                        gap: '1rem',
+                        fontSize: '0.9em',
+                        color: '#64748b'
+                      }}>
+                        <span>{cert.year}</span>
+                        {cert.level && <span>• {cert.level}</span>}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            }
+          />
+
+          <ResumeSection
+            icon="💻"
+            title="Навыки"
+            content={
+              <div>
+                <div style={{marginBottom: '1.5rem'}}>
+                  <div style={{
+                    fontSize: '0.95em',
+                    fontWeight: '600',
+                    color: '#475569',
+                    marginBottom: '0.8rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    Основные технологии
+                  </div>
+                  <div className="resume-skills-list">
+                    {['JavaScript', 'React', 'Node.js', 'HTML5', 'CSS3', 'TypeScript', 'Python', 'MySQL'].map((skill, idx) => (
+                      <span key={idx} className="resume-skill">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div style={{
+                    fontSize: '0.95em',
+                    fontWeight: '600',
+                    color: '#475569',
+                    marginBottom: '0.8rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    Дополнительные навыки
+                  </div>
+                  <div className="resume-skills-list">
+                    {['GitHub', 'Веб-программирование', 'Веб-дизайн', 'UX/UI', 'REST API', 'PWA'].map((skill, idx) => (
+                      <span key={idx} className="resume-skill resume-skill-secondary">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            }
+          />
+
+          <ResumeSection
+            icon="🌍"
+            title="Языки"
+            content={
+              <div className="resume-lang-list">
+                <div style={{
+                  background: '#fff',
+                  border: '1px solid #e2e8f0',
+                  padding: '1rem 1.5rem',
+                  borderRadius: '12px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '1rem'
+                }}>
+                  <span style={{fontSize: '1.5rem'}}>🇬🇧</span>
+                  <div>
+                    <div style={{fontWeight: '600', color: '#1e293b', marginBottom: '0.2rem'}}>
+                      Английский
+                    </div>
+                    <div style={{fontSize: '0.9em', color: '#64748b'}}>
+                      Средний уровень (Intermediate)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          />
+
+          <div style={{
+            background: 'linear-gradient(135deg, #2563eb 0%, #6366f1 100%)',
+            color: '#fff',
+            padding: '2.5rem',
+            borderRadius: '16px',
+            textAlign: 'center',
+            marginTop: '3rem'
+          }}>
+            <div style={{
+              fontSize: '1.5rem',
+              fontWeight: '700',
+              marginBottom: '1rem'
+            }}>
+              Готов к сотрудничеству
             </div>
-            <div className="resume-location">Москва, Россия</div>
+            <div style={{
+              fontSize: '1.1rem',
+              marginBottom: '2rem',
+              opacity: 0.95,
+              lineHeight: '1.6'
+            }}>
+              Открыт к участию в проектной деятельности и интересным предложениям
+            </div>
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }}>
+              <a
+                href="https://t.me/kosmosega"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{
+                  background: '#fff',
+                  color: '#2563eb',
+                  padding: '0.8em 2em',
+                  fontSize: '1em',
+                  fontWeight: '600',
+                  borderRadius: '12px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                }}
+              >
+                💬 Telegram
+              </a>
+              <a
+                href="mailto:kibalnikserg@yandex.ru"
+                className="btn"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  color: '#fff',
+                  border: '2px solid #fff',
+                  padding: '0.8em 2em',
+                  fontSize: '1em',
+                  fontWeight: '600',
+                  borderRadius: '12px'
+                }}
+              >
+                ✉️ Email
+              </a>
+              <a
+                href="https://segak.ru/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  color: '#fff',
+                  border: '2px solid #fff',
+                  padding: '0.8em 2em',
+                  fontSize: '1em',
+                  fontWeight: '600',
+                  borderRadius: '12px'
+                }}
+              >
+                🌐 Портфолио
+              </a>
+            </div>
           </div>
-        </div>
-        <div className="resume-section">
-          <div className="resume-section-title">Желаемая должность и зарплата</div>
-          <div className="resume-salary">от 70 000 ₽ на руки</div>
-          <div>Полная занятость, полный день, удалённая работа</div>
-          <div>Желаемая специализация: Разработчик веб и мултимедийных приложений</div>
-        </div>
-        <div className="resume-section">
-          <div className="resume-section-title">Образование</div>
-          <ul className="resume-edu-list">
-            <li className="resume-edu-item">
-              <b>Технологический колледж № 21</b>, 2025<br/>
-              Мегадизайн, 09.02.07 Информационные системы и программирование
-            </li>
-          </ul>
-        </div>
-        <div className="resume-section">
-          <div className="resume-section-title">Курсы и сертификаты</div>
-          <ul className="resume-cert-list">
-            <li className="resume-cert-item">2025 — Цифровой паспорт компетенций</li>
-            <li className="resume-cert-item">2024 — JavaScript от Яндекса: с нуля до веб-разработчика</li>
-          </ul>
-        </div>
-        <div className="resume-section">
-          <div className="resume-section-title">Навыки</div>
-          <div className="resume-skills-list">
-            <span className="resume-skill">JavaScript</span>
-            <span className="resume-skill">Node.js</span>
-            <span className="resume-skill">HTML</span>
-            <span className="resume-skill">PHP</span>
-            <span className="resume-skill">React</span>
-            <span className="resume-skill">MySQL</span>
-            <span className="resume-skill">GitHub</span>
-            <span className="resume-skill">Веб-программирование</span>
-            <span className="resume-skill">Веб-дизайн</span>
-          </div>
-        </div>
-        <div className="resume-section">
-          <div className="resume-section-title">Языки</div>
-          <div className="resume-lang-list">
-            <span className="resume-lang">Английский</span>
-          </div>
-        </div>
-        <div className="resume-section">
-          <a className="resume-portfolio-link" href="https://segak.ru/" target="_blank" rel="noopener noreferrer">Портфолио и проекты</a>
         </div>
       </div>
     </>
