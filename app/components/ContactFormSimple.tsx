@@ -28,48 +28,23 @@ export default function ContactFormSimple() {
     setErrorMessage('')
 
     try {
-      // Используем переменные окружения или значения по умолчанию
-      const BOT_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || '8138334337:AAHux3K_OPgr4jpkyb3Tm5mMOjy2z3cyW_w'
-      const CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || '873320985'
-
-      // Экранируем HTML
-      const escapeHtml = (str: string) => {
-        return str
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;')
-      }
-
-      // Формируем сообщение
-      const telegramMessage = 
-        `📩 <b>Новое сообщение с сайта</b>\n\n` +
-        `👤 <b>Имя:</b> ${escapeHtml(formData.name)}\n` +
-        `📞 <b>Контакт:</b> ${escapeHtml(formData.contact)}\n\n` +
-        `💬 <b>Сообщение:</b>\n${escapeHtml(formData.message)}`
-
-      // Используем CORS proxy для обхода ограничений браузера
-      const proxyUrl = 'https://api.allorigins.win/raw?url='
-      const telegramApiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`
-      const fullUrl = proxyUrl + encodeURIComponent(telegramApiUrl)
-
-      const response = await fetch(fullUrl, {
+      // Используем Vercel serverless endpoint или прямой вызов как fallback
+      // Замените URL на ваш Vercel endpoint после развертывания
+      const API_URL = process.env.NEXT_PUBLIC_TELEGRAM_API_URL || 
+        'https://sergeykib-telegram.vercel.app/api/telegram-simple'
+      
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: telegramMessage,
-          parse_mode: 'HTML'
-        }),
+        body: JSON.stringify(formData),
       })
 
       const data = await response.json()
 
-      if (!response.ok || !data.ok) {
-        throw new Error(data.description || 'Ошибка при отправке сообщения')
+      if (!response.ok) {
+        throw new Error(data.error || 'Ошибка при отправке сообщения')
       }
 
       setStatus('success')

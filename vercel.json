@@ -1,13 +1,13 @@
 {
   "functions": {
-    "api/telegram.ts": {
+    "api/telegram-simple.js": {
       "runtime": "nodejs20.x"
     }
   },
   "rewrites": [
     {
-      "source": "/api/telegram",
-      "destination": "/api/telegram.ts"
+      "source": "/api/telegram-simple",
+      "destination": "/api/telegram-simple.js"
     }
   ]
 }
