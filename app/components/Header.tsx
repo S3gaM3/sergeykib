@@ -33,6 +33,7 @@ export default function Header() {
           Связаться
         </a>
         <Link href="/resume/" className="btn" style={{background:'#fff', color:'#2563eb', border:'1.5px solid #2563eb', minWidth:'120px'}}>Резюме</Link>
+        <Link href="/templates/" className="btn" style={{background:'#fff', color:'#2563eb', border:'1.5px solid #2563eb', minWidth:'120px'}}>Шаблоны</Link>
       </div>
       <div className="header-socials" style={{display:'flex', gap:'1.1em', justifyContent:'center', marginBottom:'0.7em'}}>
         <a href="https://t.me/kosmosega" target="_blank" rel="noopener noreferrer" title="Telegram" style={{color:'#2563eb'}}>
