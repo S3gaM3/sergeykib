@@ -145,7 +145,7 @@ export default function ResumePage() {
                     Москва, Россия
                   </div>
                   <div style={{color: '#64748b', fontSize: '0.95em'}}>
-                    Готов к переезду и удалённой работе
+                    Не готов к переезду и удалённой работе
                   </div>
                 </>
               }
@@ -186,7 +186,7 @@ export default function ResumePage() {
                 }}>
                   <span>Мегадизайн</span>
                   <span>•</span>
-                  <span>Ожидаемое окончание: 2025</span>
+                  <span>Выпускник: 2025</span>
                 </div>
               </div>
             }
