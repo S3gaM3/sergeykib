@@ -28,6 +28,8 @@
     "portfolio",
     "web",
     ".next",
-    "out"
+    "out",
+    "netlify",
+    "api"
   ]
 }
