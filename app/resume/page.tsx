@@ -146,6 +146,8 @@ export default function ResumePage() {
                   </div>
                   <div style={{color: '#64748b', fontSize: '0.95em'}}>
                     Не готов к переезду
+                  </div>
+                  <div style={{color: '#64748b', fontSize: '0.95em'}}>
                     Готов к удалённой работе
                   </div>
                 </>
