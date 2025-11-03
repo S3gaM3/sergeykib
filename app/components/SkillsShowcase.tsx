@@ -71,6 +71,8 @@ export default function SkillsShowcase() {
                         alt={skill.name}
                         loading="lazy"
                         decoding="async"
+                        width={20}
+                        height={20}
                         style={{width: '20px', height: '20px'}}
                       />
                       <span style={{fontWeight: '600', color: '#1e293b'}}>

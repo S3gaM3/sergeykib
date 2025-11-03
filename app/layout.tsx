@@ -105,7 +105,9 @@ export default function RootLayout({
       </head>
       <body>
         <SmoothScroll />
-        {children}
+        <main role="main">
+          {children}
+        </main>
         <script
           dangerouslySetInnerHTML={{
             __html: `

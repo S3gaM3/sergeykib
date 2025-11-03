@@ -45,6 +45,8 @@ export default function Certificates() {
             alt="Сертификат Яндекс JavaScript"
             loading="lazy"
             decoding="async"
+            width={180}
+            height={120}
             className="cert-thumb"
             style={{width: '100%', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
             onClick={() => openModal('/assets/img/portfolio/3.png')}
@@ -60,6 +62,8 @@ export default function Certificates() {
             alt="Сертификат Sololearn HTML"
             loading="lazy"
             decoding="async"
+            width={180}
+            height={120}
             className="cert-thumb"
             style={{width: '100%', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
             onClick={() => openModal('/assets/img/portfolio/4.png')}
@@ -75,6 +79,8 @@ export default function Certificates() {
             alt="Сертификат Sololearn CSS"
             loading="lazy"
             decoding="async"
+            width={180}
+            height={120}
             className="cert-thumb"
             style={{width: '100%', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
             onClick={() => openModal('/assets/img/portfolio/5.png')}
@@ -91,6 +97,8 @@ export default function Certificates() {
               alt="Цифровой паспорт компетенций стр.1"
               loading="lazy"
               decoding="async"
+              width={86}
+              height={86}
               className="cert-thumb"
               style={{width: '48%', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
               onClick={() => openModal('/assets/img/portfolio/0.png')}
@@ -100,6 +108,8 @@ export default function Certificates() {
               alt="Цифровой паспорт компетенций стр.2"
               loading="lazy"
               decoding="async"
+              width={86}
+              height={86}
               className="cert-thumb"
               style={{width: '48%', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
               onClick={() => openModal('/assets/img/portfolio/1.png')}
