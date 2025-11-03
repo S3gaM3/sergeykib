@@ -6,16 +6,42 @@ import '../globals.css'
 
 export const metadata: Metadata = {
   title: 'Шаблоны сайтов под ключ — React, Node.js, UX/UI | Сергей Кибальник',
-  description: 'Готовые шаблоны сайтов на React и Node.js. Интернет-магазины, landing pages, корпоративные сайты, портфолио. Разработка под ключ с современным стеком технологий.',
-  keywords: 'шаблоны сайтов, разработка сайтов React, Node.js разработка, landing page, интернет-магазин, корпоративный сайт, портфолио, веб-разработка',
-  authors: [{ name: 'Сергей Кибальник' }],
+  description: 'Готовые шаблоны сайтов на React и Node.js. Интернет-магазины, landing pages, корпоративные сайты, портфолио. Разработка под ключ с современным стеком технологий: TypeScript, Next.js, веб-дизайн.',
+  keywords: [
+    'шаблоны сайтов',
+    'разработка сайтов React',
+    'Node.js разработка',
+    'landing page шаблон',
+    'интернет-магазин шаблон',
+    'корпоративный сайт',
+    'портфолио шаблон',
+    'веб-разработка',
+    'Next.js шаблоны',
+    'TypeScript разработка',
+    'современные сайты',
+    'разработка сайтов под ключ'
+  ],
+  authors: [{ name: 'Сергей Кибальник', url: 'https://sergeykib.github.io' }],
   openGraph: {
     type: 'website',
     url: 'https://sergeykib.github.io/templates/',
-    title: 'Шаблоны сайтов под ключ — React, Node.js',
-    description: 'Готовые шаблоны сайтов на современном стеке: React, Node.js, TypeScript. Разработка под ключ.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
+    title: 'Шаблоны сайтов под ключ — React, Node.js, TypeScript',
+    description: 'Готовые шаблоны сайтов на современном стеке: React, Node.js, TypeScript, Next.js. Разработка под ключ.',
+    images: [
+      {
+        url: 'https://sergeykib.github.io/assets/img/portfolio/1.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Шаблоны сайтов от Сергея Кибальника',
+      },
+    ],
     locale: 'ru_RU',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Шаблоны сайтов под ключ — React, Node.js',
+    description: 'Готовые шаблоны сайтов на React, Node.js, TypeScript. Разработка под ключ.',
+    images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
   },
   alternates: {
     canonical: 'https://sergeykib.github.io/templates/',

@@ -3,33 +3,87 @@ import SmoothScroll from './components/SmoothScroll'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Сергей Кибальник — Веб-разработчик React, Node.js | Портфолио разработчика',
-  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов и резюме.',
-  keywords: 'веб-разработчик, React разработчик, JavaScript разработчик, Node.js, веб-дизайн, UX/UI, портфолио, Москва, фриланс',
-  authors: [{ name: 'Сергей Кибальник' }],
+  metadataBase: new URL('https://sergeykib.github.io'),
+  title: {
+    default: 'Сергей Кибальник — Веб-разработчик React, Node.js | Портфолио разработчика',
+    template: '%s | Сергей Кибальник',
+  },
+  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов и резюме. Разработка под ключ, фриланс, Москва.',
+  keywords: [
+    'веб-разработчик',
+    'React разработчик',
+    'JavaScript разработчик',
+    'Node.js разработчик',
+    'веб-дизайн',
+    'UX/UI дизайн',
+    'портфолио разработчика',
+    'Москва разработчик',
+    'фриланс веб-разработка',
+    'React разработка',
+    'Node.js разработка',
+    'TypeScript разработчик',
+    'Frontend разработчик',
+    'Backend разработчик',
+    'Fullstack разработчик',
+    'веб-приложения',
+    'создание сайтов',
+    'разработка сайтов под ключ'
+  ],
+  authors: [{ name: 'Сергей Кибальник', url: 'https://sergeykib.github.io' }],
+  creator: 'Сергей Кибальник',
+  publisher: 'Сергей Кибальник',
+  category: 'Портфолио разработчика',
   openGraph: {
     type: 'website',
-    url: 'https://sergeykib.github.io/',
-    title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
     locale: 'ru_RU',
+    url: 'https://sergeykib.github.io/',
+    siteName: 'Сергей Кибальник — Портфолио',
+    title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
+    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения под ключ.',
+    images: [
+      {
+        url: 'https://sergeykib.github.io/assets/img/portfolio/1.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Сергей Кибальник — Веб-разработчик',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI.',
+    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения.',
     images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
+    creator: '@kosmosega',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://sergeykib.github.io/',
+    languages: {
+      'ru-RU': 'https://sergeykib.github.io/',
+    },
   },
   icons: {
-    icon: '/assets/favicon.ico',
+    icon: [
+      { url: '/assets/favicon.ico', sizes: 'any' },
+      { url: '/assets/favicon.ico', type: 'image/x-icon' },
+    ],
     apple: '/assets/favicon.ico',
   },
   manifest: '/manifest.json',
+  verification: {
+    google: 'google-site-verification-code', // Замените на ваш код при настройке Google Search Console
+  },
 }
 
 export default function RootLayout({

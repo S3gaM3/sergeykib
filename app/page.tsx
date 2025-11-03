@@ -36,38 +36,101 @@ export const metadata: Metadata = {
 export default function Home() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Сергей Кибальник",
-    "jobTitle": "Веб-разработчик",
-    "description": "Веб-разработчик с глубоким знанием JavaScript-экосистемы. Специализируюсь на создании адаптивных интерфейсов (React) и серверных решений (Node.js).",
-    "url": "https://sergeykib.github.io/",
-    "image": "https://sergeykib.github.io/assets/img/portfolio/1.jpg",
-    "sameAs": [
-      "https://github.com/S3gaM3",
-      "https://t.me/kosmosega",
-      "https://segak.ru/"
-    ],
-    "knowsAbout": [
-      "JavaScript",
-      "React",
-      "Node.js",
-      "HTML5",
-      "CSS3",
-      "Python",
-      "MySQL",
-      "UX/UI Design"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Москва",
-      "addressCountry": "RU"
-    },
-    "email": "kibalnikserg@yandex.ru",
-    "telephone": "+7 (985) 268-97-87",
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "Технологический колледж № 21"
-    }
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sergeykib.github.io/#person",
+        "name": "Сергей Кибальник",
+        "jobTitle": "Веб-разработчик",
+        "description": "Веб-разработчик с глубоким знанием JavaScript-экосистемы. Специализируюсь на создании адаптивных интерфейсов (React) и серверных решений (Node.js).",
+        "url": "https://sergeykib.github.io/",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://sergeykib.github.io/assets/img/portfolio/1.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "sameAs": [
+          "https://github.com/S3gaM3",
+          "https://t.me/kosmosega",
+          "https://segak.ru/"
+        ],
+        "knowsAbout": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "HTML5",
+          "CSS3",
+          "Python",
+          "MySQL",
+          "UX/UI Design",
+          "Web Development",
+          "Frontend Development",
+          "Backend Development"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Москва",
+          "addressRegion": "Москва",
+          "addressCountry": "RU"
+        },
+        "email": "kibalnikserg@yandex.ru",
+        "telephone": "+7 (985) 268-97-87",
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Технологический колледж № 21",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Москва",
+            "addressCountry": "RU"
+          }
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Фриланс",
+          "jobTitle": "Веб-разработчик"
+        },
+        "offers": {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "serviceType": "Веб-разработка",
+            "description": "Разработка веб-сайтов и приложений на React, Node.js, TypeScript"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Россия"
+          }
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sergeykib.github.io/#website",
+        "url": "https://sergeykib.github.io/",
+        "name": "Сергей Кибальник — Портфолио",
+        "description": "Портфолио веб-разработчика Сергея Кибальника",
+        "publisher": {
+          "@id": "https://sergeykib.github.io/#person"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://sergeykib.github.io/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://sergeykib.github.io/"
+          }
+        ]
+      }
+    ]
   }
 
   return (

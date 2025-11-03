@@ -8,16 +8,41 @@ import './resume.css'
 
 export const metadata: Metadata = {
   title: 'Резюме Сергея Кибальника — Веб-разработчик React, JavaScript, Node.js',
-  description: 'Резюме веб-разработчика Сергея Кибальника. Опыт работы с React, JavaScript, Node.js, HTML/CSS. Образование, навыки, контакты для трудоустройства.',
-  keywords: 'резюме веб-разработчика, Сергей Кибальник, React, JavaScript, Node.js, веб-программирование, Москва',
-  authors: [{ name: 'Сергей Кибальник' }],
+  description: 'Резюме веб-разработчика Сергея Кибальника. Опыт работы с React, JavaScript, Node.js, TypeScript, HTML/CSS. Образование в Технологическом колледже №21, навыки программирования, портфолио проектов. Контакты для трудоустройства в Москве.',
+  keywords: [
+    'резюме веб-разработчика',
+    'Сергей Кибальник резюме',
+    'React разработчик резюме',
+    'JavaScript разработчик',
+    'Node.js разработчик',
+    'веб-программирование',
+    'Москва разработчик',
+    'TypeScript разработчик',
+    'Frontend разработчик резюме',
+    'Backend разработчик',
+    'Fullstack разработчик'
+  ],
+  authors: [{ name: 'Сергей Кибальник', url: 'https://sergeykib.github.io' }],
   openGraph: {
-    type: 'website',
+    type: 'profile',
     url: 'https://sergeykib.github.io/resume/',
-    title: 'Резюме Сергея Кибальника — Веб-разработчик',
-    description: 'Резюме веб-разработчика Сергея Кибальника. Опыт работы с React, JavaScript, Node.js.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
+    title: 'Резюме Сергея Кибальника — Веб-разработчик React, JavaScript, Node.js',
+    description: 'Резюме веб-разработчика Сергея Кибальника. Опыт работы с React, JavaScript, Node.js, TypeScript. Образование, навыки, портфолио проектов.',
+    images: [
+      {
+        url: 'https://sergeykib.github.io/assets/img/portfolio/1.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Резюме Сергея Кибальника',
+      },
+    ],
     locale: 'ru_RU',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Резюме Сергея Кибальника — Веб-разработчик',
+    description: 'Резюме веб-разработчика Сергея Кибальника. React, JavaScript, Node.js, TypeScript.',
+    images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
   },
   alternates: {
     canonical: 'https://sergeykib.github.io/resume/',
@@ -27,36 +52,77 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Resume",
-    "name": "Резюме Сергея Кибальника",
-    "description": "Резюме веб-разработчика с опытом работы с React, JavaScript, Node.js",
-    "author": {
-      "@type": "Person",
-      "name": "Сергей Кибальник",
-      "jobTitle": "Веб-разработчик",
-      "email": "kibalnikserg@yandex.ru",
-      "telephone": "+7 (985) 268-97-87",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Москва",
-        "addressCountry": "RU"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sergeykib.github.io/resume/#person",
+        "name": "Сергей Кибальник",
+        "jobTitle": "Веб-разработчик",
+        "description": "Веб-разработчик с опытом работы с React, JavaScript, Node.js, TypeScript. Специализируюсь на создании современных веб-приложений и сайтов.",
+        "email": "kibalnikserg@yandex.ru",
+        "telephone": "+7 (985) 268-97-87",
+        "url": "https://sergeykib.github.io/resume/",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://sergeykib.github.io/assets/img/portfolio/1.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Москва",
+          "addressRegion": "Москва",
+          "addressCountry": "RU"
+        },
+        "sameAs": [
+          "https://github.com/S3gaM3",
+          "https://t.me/kosmosega",
+          "https://segak.ru/"
+        ],
+        "knowsAbout": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "HTML5",
+          "CSS3",
+          "Python",
+          "MySQL",
+          "Git",
+          "GitHub",
+          "Web Development",
+          "Frontend Development",
+          "Backend Development"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Технологический колледж № 21",
+          "description": "09.02.07 Информационные системы и программирование",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Москва",
+            "addressCountry": "RU"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://sergeykib.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Резюме",
+            "item": "https://sergeykib.github.io/resume/"
+          }
+        ]
       }
-    },
-    "skills": [
-      "JavaScript",
-      "React",
-      "Node.js",
-      "HTML5",
-      "CSS3",
-      "Python",
-      "MySQL",
-      "GitHub"
-    ],
-    "education": {
-      "@type": "EducationalOrganization",
-      "name": "Технологический колледж № 21",
-      "description": "Мегадизайн, 09.02.07 Информационные системы и программирование"
-    }
+    ]
   }
 
   return (
