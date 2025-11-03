@@ -4,8 +4,9 @@ import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import SkillsShowcase from './components/SkillsShowcase'
 import ToolsList from './components/ToolsList'
-import ProjectsCarousel from './components/ProjectsCarousel'
-import Certificates from './components/Certificates'
+import dynamic from 'next/dynamic'
+const ProjectsCarousel = dynamic(() => import('./components/ProjectsCarousel'), { ssr: true, loading: () => null })
+const Certificates = dynamic(() => import('./components/Certificates'), { ssr: true, loading: () => null })
 import CTASection from './components/CTASection'
 import Script from 'next/script'
 
