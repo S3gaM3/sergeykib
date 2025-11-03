@@ -17,6 +17,7 @@ function ProjectCard({ project }: { project: Project }) {
           src={project.image}
           alt={project.title}
           loading="lazy"
+          decoding="async"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </div>

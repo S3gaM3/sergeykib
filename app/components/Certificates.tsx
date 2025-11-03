@@ -43,6 +43,8 @@ export default function Certificates() {
           <img
             src="/assets/img/portfolio/3.png"
             alt="Сертификат Яндекс JavaScript"
+            loading="lazy"
+            decoding="async"
             className="cert-thumb"
             style={{width: '100%', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
             onClick={() => openModal('/assets/img/portfolio/3.png')}
@@ -56,6 +58,8 @@ export default function Certificates() {
           <img
             src="/assets/img/portfolio/4.png"
             alt="Сертификат Sololearn HTML"
+            loading="lazy"
+            decoding="async"
             className="cert-thumb"
             style={{width: '100%', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
             onClick={() => openModal('/assets/img/portfolio/4.png')}
@@ -69,6 +73,8 @@ export default function Certificates() {
           <img
             src="/assets/img/portfolio/5.png"
             alt="Сертификат Sololearn CSS"
+            loading="lazy"
+            decoding="async"
             className="cert-thumb"
             style={{width: '100%', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
             onClick={() => openModal('/assets/img/portfolio/5.png')}
@@ -83,6 +89,8 @@ export default function Certificates() {
             <img
               src="/assets/img/portfolio/0.png"
               alt="Цифровой паспорт компетенций стр.1"
+              loading="lazy"
+              decoding="async"
               className="cert-thumb"
               style={{width: '48%', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
               onClick={() => openModal('/assets/img/portfolio/0.png')}
@@ -90,6 +98,8 @@ export default function Certificates() {
             <img
               src="/assets/img/portfolio/1.png"
               alt="Цифровой паспорт компетенций стр.2"
+              loading="lazy"
+              decoding="async"
               className="cert-thumb"
               style={{width: '48%', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
               onClick={() => openModal('/assets/img/portfolio/1.png')}

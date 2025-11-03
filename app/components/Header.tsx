@@ -11,6 +11,8 @@ export default function Header() {
         alt="Фото Сергея Кибальника"
         width={200}
         height={200}
+        fetchpriority="high"
+        decoding="async"
       />
       <div className="header-name">Сергей Кибальник</div>
       <div className="header-role">Создаю современные сайты и мультимедийные решения</div>

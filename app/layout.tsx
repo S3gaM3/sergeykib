@@ -94,11 +94,34 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <head>
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/assets/img/portfolio/1.jpg" imagesrcset="/assets/img/portfolio/1.jpg 1x" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Montserrat:wght@700&family=Roboto:wght@400;500&family=Fira+Code:wght@500&display=swap" rel="stylesheet" />
+      </head>
+      <body>
+        <SmoothScroll />
+        {children}
         <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').catch(function(e){console.warn('SW reg failed', e)});
+                });
+              }
+            `
+          }}
+        />
+        {/* Yandex Metrika after interactive to avoid blocking rendering */}
+        <script
+          id="ym-loader"
           type="text/javascript"
+          defer
           dangerouslySetInnerHTML={{
             __html: `
               (function(m,e,t,r,i,k,a){
@@ -116,10 +139,6 @@ export default function RootLayout({
             <img src="https://mc.yandex.ru/watch/103955852" style={{position:'absolute', left:'-9999px'}} alt="" />
           </div>
         </noscript>
-      </head>
-      <body>
-        <SmoothScroll />
-        {children}
       </body>
     </html>
   )

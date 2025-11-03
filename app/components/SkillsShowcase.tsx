@@ -69,6 +69,8 @@ export default function SkillsShowcase() {
                       <img 
                         src={skill.icon} 
                         alt={skill.name}
+                        loading="lazy"
+                        decoding="async"
                         style={{width: '20px', height: '20px'}}
                       />
                       <span style={{fontWeight: '600', color: '#1e293b'}}>
