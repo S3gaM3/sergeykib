@@ -98,7 +98,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="preload" as="image" href="/assets/img/portfolio/1.jpg" imagesrcset="/assets/img/portfolio/1.jpg 1x" />
+        <link rel="preload" as="image" href="/assets/img/portfolio/1.jpg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Montserrat:wght@700&family=Roboto:wght@400;500&family=Fira+Code:wght@500&display=swap" rel="stylesheet" />
