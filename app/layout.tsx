@@ -117,20 +117,39 @@ export default function RootLayout({
             `
           }}
         />
-        {/* Yandex Metrika after interactive to avoid blocking rendering */}
+        {/* Yandex Metrika: загружаем по событию first interaction или в idle */}
         <script
           id="ym-loader"
           type="text/javascript"
           defer
           dangerouslySetInnerHTML={{
             __html: `
-              (function(m,e,t,r,i,k,a){
-                  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                  m[i].l=1*new Date();
-                  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-                  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-              })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103955852', 'ym');
-              ym(103955852, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+              (function(){
+                var loadYM = function(){
+                  if (window.__ymLoaded) return; window.__ymLoaded = true;
+                  (function(m,e,t,r,i,k,a){
+                    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                    m[i].l=1*new Date();
+                    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+                  })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103955852', 'ym');
+                  ym(103955852, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+                };
+                var scheduled = false;
+                var schedule = function(){ if (scheduled) return; scheduled = true; setTimeout(loadYM, 3000); };
+                if ('requestIdleCallback' in window) {
+                  requestIdleCallback(loadYM, { timeout: 5000 });
+                } else {
+                  window.addEventListener('load', schedule, { once: true });
+                }
+                ['click','keydown','touchstart','scroll'].forEach(function(evt){
+                  window.addEventListener(evt, schedule, { once: true, passive: true });
+                });
+                if (navigator.connection && navigator.connection.saveData) {
+                  // Не грузим метрику при экономии трафика
+                  window.__ymLoaded = true;
+                }
+              })();
             `,
           }}
         />

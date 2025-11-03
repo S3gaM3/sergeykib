@@ -310,8 +310,8 @@ export default function ProjectsCarousel() {
             onClick={() => goToSlide(index)}
             aria-label={`Перейти к проекту ${index + 1}`}
             style={{
-              width: displayIndex === index ? '32px' : '10px',
-              height: '10px',
+              width: displayIndex === index ? '36px' : '14px',
+              height: '14px',
               borderRadius: '5px',
               background: displayIndex === index ? '#2563eb' : '#cbd5e1',
               border: 'none',
