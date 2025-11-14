@@ -40,6 +40,15 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Copy CNAME and create .nojekyll
+        run: |
+          if [ -f CNAME ]; then
+            cp CNAME out/CNAME
+            echo "✅ CNAME файл скопирован в out/"
+          fi
+          touch out/.nojekyll
+          echo "✅ .nojekyll файл создан"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

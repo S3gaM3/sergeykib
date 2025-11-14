@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 // Используем простую версию формы для работы на GitHub Pages
 import ContactForm from './ContactFormSimple'
 // Для локальной разработки с API routes используйте:
