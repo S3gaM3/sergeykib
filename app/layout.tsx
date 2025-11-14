@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import SmoothScroll from './components/SmoothScroll'
+import ChatWidget from './components/ChatWidget'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sergeykib.github.io'),
+  metadataBase: new URL('https://segak.ru'),
   title: {
     default: 'Сергей Кибальник — Веб-разработчик React, Node.js | Портфолио разработчика',
     template: '%s | Сергей Кибальник',
@@ -106,6 +107,7 @@ export default function RootLayout({
         <main role="main">
           {children}
         </main>
+        <ChatWidget />
         <script
           dangerouslySetInnerHTML={{
             __html: `

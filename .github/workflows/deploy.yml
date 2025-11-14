@@ -1,4 +1,4 @@
-name: Deploy Next.js to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -31,20 +31,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Run linter
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Build project
         run: npm run build
         env:
-          # Используем Secrets для переменных окружения
-          NEXT_PUBLIC_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          NEXT_PUBLIC_TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NODE_ENV: production
 
-      - name: Add .nojekyll
-        run: touch out/.nojekyll
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: './out'
 
   deploy:
     environment:

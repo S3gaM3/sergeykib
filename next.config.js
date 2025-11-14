@@ -15,35 +15,29 @@ const nextConfig = {
     ],
   },
   trailingSlash: true,
-  webpack: (config, { isServer }) => {
-    // Игнорируем папки с Angular проектами и serverless функциями
-    config.watchOptions = {
-      ...config.watchOptions,
-      ignored: ['**/portfolio/**', '**/web/**', '**/node_modules/**', '**/netlify/**', '**/api/**'],
-    }
-    
-    // Исключаем serverless функции из сборки
-    config.resolve.alias = {
-      ...config.resolve.alias,
-    }
-    
-    // Игнорируем файлы для Netlify/Vercel при сборке
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-      }
-    }
-    
-    return config
-  },
-  
-  // Исключаем файлы из проверки TypeScript
   typescript: {
     ignoreBuildErrors: false,
   },
-  
-  // Исключаем определенные файлы из сборки
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
+  // Копируем CNAME файл в out директорию для GitHub Pages
+  async afterExport() {
+    const fs = require('fs')
+    const path = require('path')
+    const cnamePath = path.join(__dirname, 'CNAME')
+    const outCnamePath = path.join(__dirname, 'out', 'CNAME')
+    
+    if (fs.existsSync(cnamePath)) {
+      fs.copyFileSync(cnamePath, outCnamePath)
+      console.log('✅ CNAME файл скопирован в out/')
+    }
+    
+    // Создаем .nojekyll файл для GitHub Pages
+    const nojekyllPath = path.join(__dirname, 'out', '.nojekyll')
+    fs.writeFileSync(nojekyllPath, '')
+    console.log('✅ .nojekyll файл создан')
+  },
 }
 
 module.exports = nextConfig
