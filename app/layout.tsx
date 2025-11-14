@@ -113,7 +113,23 @@ export default function RootLayout({
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').catch(function(e){console.warn('SW reg failed', e)});
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered:', registration.scope);
+                    })
+                    .catch(function(e) {
+                      console.warn('SW registration failed:', e);
+                    });
+                  
+                  // Отключаем старые Service Workers при необходимости
+                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for (let registration of registrations) {
+                      if (registration.active && registration.active.scriptURL.includes('sw.js')) {
+                        // Проверяем версию через update
+                        registration.update();
+                      }
+                    }
+                  });
                 });
               }
             `
