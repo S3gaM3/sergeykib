@@ -6,7 +6,7 @@ export default function Hero() {
   const stats = [
     { number: '10+', label: 'Проектов' },
     { number: '86%', label: 'Компетенций' },
-    { number: '>1', label: 'Года опыта' }
+    { number: '<1', label: 'Года опыта' }
   ]
 
   return (

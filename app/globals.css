@@ -136,7 +136,8 @@ body {
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 4px 24px #0002;
-  margin-bottom: 1.2rem;
+  margin: 0 auto 1.2rem auto;
+  display: block;
 }
 
 /* === Карточки опыта/проектов === */
