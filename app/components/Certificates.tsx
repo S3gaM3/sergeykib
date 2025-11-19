@@ -43,6 +43,7 @@ export default function Certificates() {
     <>
       <div className="cert-gallery certificates" style={{display: 'flex', flexWrap: 'wrap', gap: '1.5em'}}>
         <div style={{maxWidth: '180px', textAlign: 'center'}}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/img/portfolio/3.webp"
             alt="Сертификат Яндекс JavaScript"
@@ -60,6 +61,7 @@ export default function Certificates() {
           </div>
         </div>
         <div style={{maxWidth: '180px', textAlign: 'center'}}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/img/portfolio/4.webp"
             alt="Сертификат Sololearn HTML"
@@ -77,6 +79,7 @@ export default function Certificates() {
           </div>
         </div>
         <div style={{maxWidth: '180px', textAlign: 'center'}}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/img/portfolio/5.webp"
             alt="Сертификат Sololearn CSS"
@@ -95,6 +98,7 @@ export default function Certificates() {
         </div>
         <div style={{maxWidth: '180px', textAlign: 'center'}}>
           <div style={{display: 'flex', gap: '0.5em', justifyContent: 'center'}}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/img/portfolio/0.webp"
               alt="Цифровой паспорт компетенций стр.1"
@@ -106,6 +110,7 @@ export default function Certificates() {
               style={{width: '48%', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', cursor: 'pointer'}}
               onClick={() => openModal('/assets/img/portfolio/0.webp')}
             />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/img/portfolio/1.webp"
               alt="Цифровой паспорт компетенций стр.2"
@@ -140,6 +145,7 @@ export default function Certificates() {
       >
         <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
           {modalImage && (
+            /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={modalImage}
               alt="Просмотр сертификата"

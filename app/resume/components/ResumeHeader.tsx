@@ -17,7 +17,8 @@ export default function ResumeHeader() {
         flexWrap: 'wrap'
       }}>
         <div style={{position: 'relative'}}>
-          <img
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
             src="/assets/img/portfolio/1.jpg"
             alt="Сергей Кибальник"
             className="resume-avatar"

@@ -27,6 +27,7 @@ function TemplateCard({ template }: { template: Template }) {
     }}
     >
       <div style={{position: 'relative', height: '240px', overflow: 'hidden'}}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={template.image}
           alt={template.title}

@@ -66,6 +66,7 @@ export default function SkillsShowcase() {
                     marginBottom: '0.5rem'
                   }}>
                     <div style={{display: 'flex', alignItems: 'center', gap: '0.5em'}}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img 
                         src={skill.icon} 
                         alt={skill.name}
