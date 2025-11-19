@@ -1,14 +1,14 @@
 'use client'
 
-import ImageViewer from './ImageViewer'
-
 export default function Certificates() {
   return (
     <div className="cert-gallery certificates" style={{display: 'flex', flexWrap: 'wrap', gap: '2em', justifyContent: 'center'}}>
       <div style={{maxWidth: '320px', textAlign: 'center'}}>
-        <ImageViewer
-          src="/assets/img/portfolio/3.webp"
-          alt="Сертификат Яндекс JavaScript"
+        <a
+          href="/assets/img/portfolio/3.webp"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{display: 'block', cursor: 'pointer'}}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -23,7 +23,7 @@ export default function Certificates() {
             onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
             onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           />
-        </ImageViewer>
+        </a>
         <div style={{marginTop: '1em', fontSize: '1em'}}>
           JavaScript от Яндекса<br/>
           <span style={{color: '#64748b', fontSize: '0.9em'}}>2024, 144 акад. часа</span>
@@ -31,9 +31,11 @@ export default function Certificates() {
       </div>
       <div style={{maxWidth: '320px', textAlign: 'center'}}>
         <div style={{display: 'flex', gap: '1em', justifyContent: 'center'}}>
-          <ImageViewer
-            src="/assets/img/portfolio/0.webp"
-            alt="Цифровой паспорт компетенций стр.1"
+          <a
+            href="/assets/img/portfolio/0.webp"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{display: 'block', cursor: 'pointer', width: '48%'}}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -48,10 +50,12 @@ export default function Certificates() {
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
-          </ImageViewer>
-          <ImageViewer
-            src="/assets/img/portfolio/1.webp"
-            alt="Цифровой паспорт компетенций стр.2"
+          </a>
+          <a
+            href="/assets/img/portfolio/1.webp"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{display: 'block', cursor: 'pointer', width: '48%'}}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -66,7 +70,7 @@ export default function Certificates() {
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
-          </ImageViewer>
+          </a>
         </div>
         <div style={{marginTop: '1em', fontSize: '1em'}}>
           Цифровой паспорт компетенций<br/>
