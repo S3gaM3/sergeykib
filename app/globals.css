@@ -927,24 +927,26 @@ hr {
   border-radius: 8px;
 }
 
-/* Модальное окно сертификатов */
-.cert-modal {
+/* Lightbox для сертификатов */
+.cert-lightbox {
   position: fixed !important;
   z-index: 999999 !important;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(30, 41, 59, 0.95);
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
-  animation: fadeIn 0.3s ease;
+  animation: lightboxFadeIn 0.3s ease;
+  cursor: pointer;
 }
 
-@keyframes fadeIn {
+@keyframes lightboxFadeIn {
   from {
     opacity: 0;
   }
@@ -953,34 +955,31 @@ hr {
   }
 }
 
-.cert-modal-content {
+.cert-lightbox-content {
   position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 95vw;
+  max-height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  z-index: 1000000;
+  cursor: default;
 }
 
-.cert-modal-img {
+.cert-lightbox-img {
   max-width: 100%;
-  max-height: 90vh;
+  max-height: 95vh;
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   background: #fff;
-  padding: 8px;
-  animation: scaleIn 0.3s ease;
+  animation: lightboxScaleIn 0.3s ease;
 }
 
-@keyframes scaleIn {
+@keyframes lightboxScaleIn {
   from {
-    transform: scale(0.9);
+    transform: scale(0.95);
     opacity: 0;
   }
   to {
@@ -989,53 +988,121 @@ hr {
   }
 }
 
-.cert-modal-close {
+.cert-lightbox-close {
   position: absolute !important;
   top: 20px;
   right: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  color: #1e293b;
+  width: 48px;
+  height: 48px;
+  color: #fff;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   z-index: 1000001 !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
   transition: all 0.2s ease;
-  font-weight: 300;
+  backdrop-filter: blur(10px);
 }
 
-.cert-modal-close:hover {
-  background: #fff;
+.cert-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: scale(1.1);
 }
 
-.cert-modal-close:active {
+.cert-lightbox-close:active {
   transform: scale(0.95);
 }
 
+.cert-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.cert-lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.cert-lightbox-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.cert-lightbox-prev {
+  left: 20px;
+}
+
+.cert-lightbox-next {
+  right: 20px;
+}
+
+.cert-lightbox-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  z-index: 1000001;
+}
+
 @media (max-width: 768px) {
-  .cert-modal {
+  .cert-lightbox {
     padding: 10px;
   }
   
-  .cert-modal-img {
-    max-height: 85vh;
-    border-radius: 8px;
+  .cert-lightbox-img {
+    max-height: 90vh;
+    border-radius: 6px;
   }
   
-  .cert-modal-close {
+  .cert-lightbox-close {
     top: 10px;
     right: 10px;
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .cert-lightbox-nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .cert-lightbox-prev {
+    left: 10px;
+  }
+
+  .cert-lightbox-next {
+    right: 10px;
+  }
+
+  .cert-lightbox-counter {
+    bottom: 10px;
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
 
