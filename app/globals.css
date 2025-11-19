@@ -951,7 +951,7 @@ hr {
     opacity: 0;
   }
   to {
-    opacity: 1;
+  opacity: 1;
   }
 }
 
@@ -1080,8 +1080,8 @@ hr {
   }
   
   .cert-lightbox-close {
-    top: 10px;
-    right: 10px;
+  top: 10px;
+  right: 10px;
     width: 40px;
     height: 40px;
   }
@@ -1110,18 +1110,22 @@ hr {
 .image-viewer-overlay {
   position: fixed !important;
   z-index: 999999 !important;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
   background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   animation: viewerFadeIn 0.3s ease;
   touch-action: none;
   user-select: none;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 @keyframes viewerFadeIn {
@@ -1134,7 +1138,10 @@ hr {
 }
 
 .image-viewer-content {
-  position: relative;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform-origin: center center;
   transition: transform 0.1s ease-out;
   will-change: transform;
   max-width: 95vw;
@@ -1142,6 +1149,8 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 !important;
+  pointer-events: auto;
 }
 
 .image-viewer-img {
@@ -1242,8 +1251,8 @@ hr {
   }
 
   .image-viewer-controls button {
-    width: 36px;
-    height: 36px;
+  width: 36px;
+  height: 36px;
   }
 
   .image-viewer-controls svg {

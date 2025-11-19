@@ -49,10 +49,12 @@ export default function ImageViewer({ src, alt, children }: ImageViewerProps) {
     const delta = e.deltaY > 0 ? -SCALE_STEP : SCALE_STEP
     const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale + delta))
     
-    if (imageRef.current && containerRef.current) {
+    if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect()
-      const mouseX = e.clientX - rect.left - rect.width / 2
-      const mouseY = e.clientY - rect.top - rect.height / 2
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
+      const mouseX = e.clientX - rect.left - centerX
+      const mouseY = e.clientY - rect.top - centerY
       
       const scaleChange = newScale / scale
       setPosition({
@@ -66,19 +68,28 @@ export default function ImageViewer({ src, alt, children }: ImageViewerProps) {
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (scale > MIN_SCALE) {
+      e.preventDefault()
       setIsDragging(true)
-      setDragStart({
-        x: e.clientX - position.x,
-        y: e.clientY - position.y
-      })
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
+        setDragStart({
+          x: e.clientX - rect.left - centerX - position.x,
+          y: e.clientY - rect.top - centerY - position.y
+        })
+      }
     }
   }, [scale, position])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (isDragging && scale > MIN_SCALE) {
+    if (isDragging && scale > MIN_SCALE && containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
       setPosition({
-        x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y
+        x: e.clientX - rect.left - centerX - dragStart.x,
+        y: e.clientY - rect.top - centerY - dragStart.y
       })
     }
   }, [isDragging, dragStart, scale])
@@ -100,11 +111,14 @@ export default function ImageViewer({ src, alt, children }: ImageViewerProps) {
         x: (touch1.clientX + touch2.clientX) / 2,
         y: (touch1.clientY + touch2.clientY) / 2
       })
-    } else if (e.touches.length === 1 && scale > MIN_SCALE) {
+    } else if (e.touches.length === 1 && scale > MIN_SCALE && containerRef.current) {
       setIsDragging(true)
+      const rect = containerRef.current.getBoundingClientRect()
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
       setDragStart({
-        x: e.touches[0].clientX - position.x,
-        y: e.touches[0].clientY - position.y
+        x: e.touches[0].clientX - rect.left - centerX - position.x,
+        y: e.touches[0].clientY - rect.top - centerY - position.y
       })
     }
   }, [scale, position])
@@ -124,21 +138,26 @@ export default function ImageViewer({ src, alt, children }: ImageViewerProps) {
       
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect()
-        const centerX = touchCenter.x - rect.left - rect.width / 2
-        const centerY = touchCenter.y - rect.top - rect.height / 2
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
+        const touchX = touchCenter.x - rect.left - centerX
+        const touchY = touchCenter.y - rect.top - centerY
         
         setPosition({
-          x: centerX - (centerX - position.x) * (newScale / scale),
-          y: centerY - (centerY - position.y) * (newScale / scale)
+          x: touchX - (touchX - position.x) * (newScale / scale),
+          y: touchY - (touchY - position.y) * (newScale / scale)
         })
       }
       
       setScale(newScale)
       setTouchDistance(newDistance)
-    } else if (e.touches.length === 1 && isDragging && scale > MIN_SCALE) {
+    } else if (e.touches.length === 1 && isDragging && scale > MIN_SCALE && containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
       setPosition({
-        x: e.touches[0].clientX - dragStart.x,
-        y: e.touches[0].clientY - dragStart.y
+        x: e.touches[0].clientX - rect.left - centerX - dragStart.x,
+        y: e.touches[0].clientY - rect.top - centerY - dragStart.y
       })
     }
   }, [touchDistance, touchCenter, scale, position, isDragging, dragStart])
@@ -304,7 +323,7 @@ export default function ImageViewer({ src, alt, children }: ImageViewerProps) {
           <div
             className="image-viewer-content"
             style={{
-              transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+              transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) scale(${scale})`,
               cursor: scale > MIN_SCALE ? (isDragging ? 'grabbing' : 'grab') : 'default'
             }}
             onMouseDown={handleMouseDown}
