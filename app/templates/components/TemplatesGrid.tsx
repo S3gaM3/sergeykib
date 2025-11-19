@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { templates, categories } from '@/app/data/templates'
 import type { Template } from '@/app/data/templates'
 
@@ -107,7 +108,7 @@ function TemplateCard({ template }: { template: Template }) {
         </div>
 
         <div style={{display: 'flex', gap: '0.8rem', marginTop: 'auto'}}>
-          <a
+          <Link
             href="/#contacts"
             className="btn"
             style={{
@@ -117,11 +118,13 @@ function TemplateCard({ template }: { template: Template }) {
               padding: '0.7em 1.2em',
               textAlign: 'center',
               fontSize: '0.95em',
-              fontWeight: '600'
+              fontWeight: '600',
+              textDecoration: 'none',
+              display: 'block'
             }}
           >
             Заказать
-          </a>
+          </Link>
           {template.demoUrl && (
             <a
               href={template.demoUrl}
