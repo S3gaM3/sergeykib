@@ -5,9 +5,6 @@
 /* === Шрифты === */
 /* Helvetica Neue - ультра-минимализм */
 /* Используем системный шрифт Helvetica Neue с fallback */
-  font-display: swap;
-}
-
 
 /* === Базовая цветовая схема === */
 :root {
