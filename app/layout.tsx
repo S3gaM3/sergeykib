@@ -97,12 +97,6 @@ export default function RootLayout({
     <html lang="ru">
       <head>
         {/* DNS prefetch и preconnect для внешних ресурсов */}
-        {/* eslint-disable @next/next/google-font-preconnect */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* eslint-enable @next/next/google-font-preconnect */}
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
@@ -111,19 +105,6 @@ export default function RootLayout({
         {/* Preload критических ресурсов */}
         <link rel="preload" as="image" href="/assets/img/portfolio/1.webp" />
         
-        {/* Preload шрифтов для улучшения производительности */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-          as="style"
-        />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-          as="style"
-        />
       </head>
       <body>
         <SmoothScroll />
