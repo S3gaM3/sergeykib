@@ -1,43 +1,46 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 export default function Certificates() {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalImage, setModalImage] = useState('')
+
+  const closeModal = useCallback((e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation()
+    }
+    setModalOpen(false)
+    setTimeout(() => {
+      setModalImage('')
+    }, 300)
+  }, [])
 
   const openModal = (imgSrc: string) => {
     setModalImage(imgSrc)
     setModalOpen(true)
   }
 
-  const closeModal = (e?: React.MouseEvent) => {
-    if (e) {
-      e.stopPropagation()
-    }
-    setModalOpen(false)
-    setTimeout(() => setModalImage(''), 300)
-  }
-
   useEffect(() => {
+    if (!modalOpen) {
+      document.body.style.overflow = 'unset'
+      return
+    }
+
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' || e.key === 'Esc') {
         closeModal()
       }
     }
 
-    if (modalOpen) {
-      document.addEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
+    document.addEventListener('keydown', handleEscape)
+    document.body.style.overflow = 'hidden'
 
     return () => {
       document.removeEventListener('keydown', handleEscape)
       document.body.style.overflow = 'unset'
     }
-  }, [modalOpen])
+  }, [modalOpen, closeModal])
 
   return (
     <>
@@ -131,38 +134,40 @@ export default function Certificates() {
       </div>
 
       {/* Модальное окно */}
-      <div
-        className={`cert-modal ${modalOpen ? 'open' : ''}`}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            closeModal()
-          }
-        }}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="cert-modal-title"
-        aria-hidden={!modalOpen}
-      >
-        <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
-          {modalImage && (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={modalImage}
-              alt="Просмотр сертификата"
-              className="cert-modal-img"
-              style={{maxWidth: '100%', maxHeight: '90vh', borderRadius: '12px', boxShadow: '0 4px 32px rgba(0,0,0,0.8)', background: '#fff'}}
-            />
-          )}
-          <button
-            className="cert-modal-close"
-            onClick={(e) => closeModal(e)}
-            aria-label="Закрыть"
-            type="button"
-          >
-            &times;
-          </button>
+      {modalOpen && (
+        <div
+          className="cert-modal open"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              closeModal()
+            }
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cert-modal-title"
+        >
+          <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
+            {modalImage && (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={modalImage}
+                  alt="Просмотр сертификата"
+                  className="cert-modal-img"
+                />
+                <button
+                  className="cert-modal-close"
+                  onClick={(e) => closeModal(e)}
+                  aria-label="Закрыть"
+                  type="button"
+                >
+                  &times;
+                </button>
+              </>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   )
 }
