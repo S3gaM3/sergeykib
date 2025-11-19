@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sergeykib.github.io/sitemap.xml
+
+# Разрешаем индексацию основных страниц
+Allow: /
+Allow: /resume/
+Allow: /templates/
+
+# Запрещаем индексацию служебных файлов и папок
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.next/
+Disallow: /out/
+Disallow: /node_modules/
+Disallow: /api/
+Disallow: /scripts/
+
+# Разрешаем индексацию изображений
+Allow: /assets/img/
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+
+# Crawl-delay (опционально, для снижения нагрузки)
+Crawl-delay: 1

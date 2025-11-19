@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Разрешаем индексацию всех страниц
+Allow: /index.html
+Allow: /resume.html
+
+# Указываем расположение sitemap
+Sitemap: https://sergeykib.github.io/sitemap.xml
+
+# Запрещаем индексацию служебных файлов и папок
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /css/
+Disallow: /js/
+Disallow: /assets/img/portfolio/
+Disallow: /assets/img/icon_cursor.jpg
+
+# Разрешаем индексацию основных изображений
+Allow: /assets/img/portfolio/0.webp
+Allow: /assets/img/portfolio/1.webp
+Allow: /assets/img/portfolio/3.webp
+Allow: /assets/img/portfolio/4.webp
+Allow: /assets/img/portfolio/5.webp
