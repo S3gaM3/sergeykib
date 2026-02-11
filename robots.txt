@@ -6,7 +6,7 @@ Allow: /index.html
 Allow: /resume.html
 
 # Указываем расположение sitemap
-Sitemap: https://sergeykib.github.io/sitemap.xml
+Sitemap: https://segak.ru/sitemap.xml
 
 # Запрещаем индексацию служебных файлов и папок
 Disallow: /.git/
