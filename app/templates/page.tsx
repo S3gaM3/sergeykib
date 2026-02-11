@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     'современные сайты',
     'разработка сайтов под ключ'
   ],
-  authors: [{ name: 'Сергей Кибальник', url: 'https://sergeykib.github.io' }],
+  authors: [{ name: 'Сергей Кибальник', url: 'https://segak.ru/' }],
   openGraph: {
     type: 'website',
-    url: 'https://sergeykib.github.io/templates/',
+    url: 'https://segak.ru/templates/',
     title: 'Шаблоны сайтов под ключ — React, Node.js, TypeScript',
     description: 'Готовые шаблоны сайтов на современном стеке: React, Node.js, TypeScript, Next.js. Разработка под ключ.',
     images: [
       {
-        url: 'https://sergeykib.github.io/assets/img/portfolio/1.jpg',
+        url: 'https://segak.ru/assets/img/portfolio/1.jpg',
         width: 1200,
         height: 630,
         alt: 'Шаблоны сайтов от Сергея Кибальника',
@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Шаблоны сайтов под ключ — React, Node.js',
     description: 'Готовые шаблоны сайтов на React, Node.js, TypeScript. Разработка под ключ.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
+    images: ['https://segak.ru/assets/img/portfolio/1.jpg'],
   },
   alternates: {
-    canonical: 'https://sergeykib.github.io/templates/',
+    canonical: 'https://segak.ru/templates/',
   },
 }
 

@@ -31,20 +31,20 @@ export const metadata: Metadata = {
     'создание сайтов',
     'разработка сайтов под ключ'
   ],
-  authors: [{ name: 'Сергей Кибальник', url: 'https://sergeykib.github.io' }],
+  authors: [{ name: 'Сергей Кибальник', url: 'https://segak.ru/' }],
   creator: 'Сергей Кибальник',
   publisher: 'Сергей Кибальник',
   category: 'Портфолио разработчика',
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: 'https://sergeykib.github.io/',
+    url: 'https://segak.ru/',
     siteName: 'Сергей Кибальник — Портфолио',
     title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
     description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения под ключ.',
     images: [
       {
-        url: 'https://sergeykib.github.io/assets/img/portfolio/1.webp',
+        url: 'https://segak.ru/assets/img/portfolio/1.webp',
         width: 1200,
         height: 630,
         alt: 'Сергей Кибальник — Веб-разработчик',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
     description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.webp'],
+    images: ['https://segak.ru/assets/img/portfolio/1.webp'],
     creator: '@kosmosega',
   },
   robots: {
@@ -70,9 +70,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://sergeykib.github.io/',
+    canonical: 'https://segak.ru/',
     languages: {
-      'ru-RU': 'https://sergeykib.github.io/',
+      'ru-RU': 'https://segak.ru/',
     },
   },
   icons: {

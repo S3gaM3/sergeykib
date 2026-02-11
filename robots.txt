@@ -1,24 +1,28 @@
 User-agent: *
 Allow: /
 
-# Разрешаем индексацию всех страниц
-Allow: /index.html
-Allow: /resume.html
-
-# Указываем расположение sitemap
+# Sitemap
 Sitemap: https://segak.ru/sitemap.xml
+
+# Разрешаем индексацию основных страниц
+Allow: /
+Allow: /resume/
+Allow: /templates/
 
 # Запрещаем индексацию служебных файлов и папок
 Disallow: /.git/
 Disallow: /.github/
-Disallow: /css/
-Disallow: /js/
-Disallow: /assets/img/portfolio/
-Disallow: /assets/img/icon_cursor.jpg
+Disallow: /.next/
+Disallow: /out/
+Disallow: /node_modules/
+Disallow: /api/
+Disallow: /scripts/
 
-# Разрешаем индексацию основных изображений
-Allow: /assets/img/portfolio/0.webp
-Allow: /assets/img/portfolio/1.webp
-Allow: /assets/img/portfolio/3.webp
-Allow: /assets/img/portfolio/4.webp
-Allow: /assets/img/portfolio/5.webp
+# Разрешаем индексацию изображений
+Allow: /assets/img/
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+
+# Crawl-delay (опционально, для снижения нагрузки)
+Crawl-delay: 1

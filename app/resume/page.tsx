@@ -22,15 +22,15 @@ export const metadata: Metadata = {
     'Backend разработчик',
     'Fullstack разработчик'
   ],
-  authors: [{ name: 'Сергей Кибальник', url: 'https://sergeykib.github.io' }],
+  authors: [{ name: 'Сергей Кибальник', url: 'https://segak.ru/' }],
   openGraph: {
     type: 'profile',
-    url: 'https://sergeykib.github.io/resume/',
+    url: 'https://segak.ru/resume/',
     title: 'Резюме Сергея Кибальника — Веб-разработчик React, JavaScript, Node.js',
     description: 'Резюме веб-разработчика Сергея Кибальника. Опыт работы с React, JavaScript, Node.js, TypeScript. Образование, навыки, портфолио проектов.',
     images: [
       {
-        url: 'https://sergeykib.github.io/assets/img/portfolio/1.jpg',
+        url: 'https://segak.ru/assets/img/portfolio/1.jpg',
         width: 1200,
         height: 630,
         alt: 'Резюме Сергея Кибальника',
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Резюме Сергея Кибальника — Веб-разработчик',
     description: 'Резюме веб-разработчика Сергея Кибальника. React, JavaScript, Node.js, TypeScript.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.jpg'],
+    images: ['https://segak.ru/assets/img/portfolio/1.jpg'],
   },
   alternates: {
-    canonical: 'https://sergeykib.github.io/resume/',
+    canonical: 'https://segak.ru/resume/',
   },
 }
 
@@ -55,16 +55,16 @@ export default function ResumePage() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://sergeykib.github.io/resume/#person",
+        "@id": "https://segak.ru/resume/#person",
         "name": "Сергей Кибальник",
         "jobTitle": "Веб-разработчик",
         "description": "Веб-разработчик с опытом работы с React, JavaScript, Node.js, TypeScript. Специализируюсь на создании современных веб-приложений и сайтов.",
         "email": "kibalnikserg@yandex.ru",
         "telephone": "+7 (985) 268-97-87",
-        "url": "https://sergeykib.github.io/resume/",
+        "url": "https://segak.ru/resume/",
         "image": {
           "@type": "ImageObject",
-          "url": "https://sergeykib.github.io/assets/img/portfolio/1.jpg",
+          "url": "https://segak.ru/assets/img/portfolio/1.jpg",
           "width": 1200,
           "height": 630
         },
@@ -112,13 +112,13 @@ export default function ResumePage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Главная",
-            "item": "https://sergeykib.github.io/"
+            "item": "https://segak.ru/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Резюме",
-            "item": "https://sergeykib.github.io/resume/"
+            "item": "https://segak.ru/resume/"
           }
         ]
       }

@@ -20,20 +20,20 @@ export const metadata: Metadata = {
   authors: [{ name: 'Сергей Кибальник' }],
   openGraph: {
     type: 'website',
-    url: 'https://sergeykib.github.io/',
+    url: 'https://segak.ru/',
     title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
     description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.webp'],
+    images: ['https://segak.ru/assets/img/portfolio/1.webp'],
     locale: 'ru_RU',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
     description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI.',
-    images: ['https://sergeykib.github.io/assets/img/portfolio/1.webp'],
+    images: ['https://segak.ru/assets/img/portfolio/1.webp'],
   },
   alternates: {
-    canonical: 'https://sergeykib.github.io/',
+    canonical: 'https://segak.ru/',
   },
 }
 
@@ -43,11 +43,11 @@ export default function Home() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://sergeykib.github.io/#person",
+        "@id": "https://segak.ru/#person",
         "name": "Сергей Кибальник",
         "jobTitle": "Веб-разработчик",
         "description": "Веб-разработчик с глубоким знанием JavaScript-экосистемы. Специализируюсь на создании адаптивных интерфейсов (React) и серверных решений (Node.js).",
-        "url": "https://sergeykib.github.io/",
+        "url": "https://segak.ru/",
         "sameAs": [
           "https://github.com/S3gaM3",
           "https://t.me/kosmosega",
@@ -104,16 +104,16 @@ export default function Home() {
       },
       {
         "@type": "WebSite",
-        "@id": "https://sergeykib.github.io/#website",
-        "url": "https://sergeykib.github.io/",
+        "@id": "https://segak.ru/#website",
+        "url": "https://segak.ru/",
         "name": "Сергей Кибальник — Портфолио",
         "description": "Портфолио веб-разработчика Сергея Кибальника",
         "publisher": {
-          "@id": "https://sergeykib.github.io/#person"
+          "@id": "https://segak.ru/#person"
         },
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://sergeykib.github.io/?s={search_term_string}",
+          "target": "https://segak.ru/?s={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       },
@@ -124,7 +124,7 @@ export default function Home() {
             "@type": "ListItem",
             "position": 1,
             "name": "Главная",
-            "item": "https://sergeykib.github.io/"
+            "item": "https://segak.ru/"
           }
         ]
       }
