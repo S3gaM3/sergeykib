@@ -82,6 +82,16 @@ export default function Footer() {
           <p className="footer-made">
             Сделано с <span className="footer-heart">❤️</span> и React
           </p>
+          <a
+            href="https://jigsaw.w3.org/css-validator/check/referer"
+            className="footer-validator"
+          >
+            <img
+              style={{ border: 0, width: 88, height: 31 }}
+              src="https://jigsaw.w3.org/css-validator/images/vcss"
+              alt="Правильный CSS!"
+            />
+          </a>
         </div>
       </div>
     </footer>
