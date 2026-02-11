@@ -108,7 +108,7 @@ export default function RootLayout({
       </head>
       <body>
         <SmoothScroll />
-        <main role="main">
+        <main>
           {children}
         </main>
         <div style={{
@@ -150,8 +150,6 @@ export default function RootLayout({
         {/* Yandex Metrika: загружаем по событию first interaction или в idle */}
         <script
           id="ym-loader"
-          type="text/javascript"
-          defer
           dangerouslySetInnerHTML={{
             __html: `
               (function(){

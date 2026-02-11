@@ -45,7 +45,7 @@ export default function Hero() {
           margin: '0 auto',
           textAlign: 'center'
         }}>
-          <h1 style={{
+          <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',
             fontWeight: '800',
             color: '#404040',
@@ -54,7 +54,7 @@ export default function Hero() {
             letterSpacing: '-0.02em'
           }}>
             Создаю современные сайты и веб-приложения
-          </h1>
+          </h2>
           <p className="hero-description" style={{
             fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
             color: '#6B7280',

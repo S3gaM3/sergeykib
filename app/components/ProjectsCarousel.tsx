@@ -19,6 +19,7 @@ function ProjectCard({ project }: { project: Project }) {
             width: '100%',
             height: '100%'
           }}
+          role="img"
           aria-label={project.title}
         />
       </div>

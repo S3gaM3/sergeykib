@@ -58,9 +58,8 @@ export default function Navigation() {
   ]
 
   return (
-    <nav 
+    <nav
       className={`fixed-nav ${isScrolled ? 'scrolled' : ''}`}
-      role="navigation"
       aria-label="Основная навигация"
     >
       <div className="nav-container">
