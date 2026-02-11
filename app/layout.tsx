@@ -107,6 +107,27 @@ export default function RootLayout({
         
       </head>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var url = new URL(window.location.href);
+                  var pathname = url.pathname.replace(/\\/+/g, '/');
+                  if (pathname === '/index' || pathname === '/index/') {
+                    pathname = '/';
+                  }
+                  var search = url.search === '?' ? '' : url.search;
+                  if (pathname !== url.pathname || search !== url.search) {
+                    url.pathname = pathname;
+                    url.search = search;
+                    window.location.replace(url.toString());
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <SmoothScroll />
         <main>
           {children}

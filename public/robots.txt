@@ -6,7 +6,6 @@ Sitemap: https://segak.ru/sitemap.xml
 
 # Разрешаем индексацию основных страниц
 Allow: /
-Allow: /resume/
 Allow: /templates/
 
 # Запрещаем индексацию служебных файлов и папок
