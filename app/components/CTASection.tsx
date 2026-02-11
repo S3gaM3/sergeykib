@@ -117,6 +117,9 @@ export default function CTASection() {
           <div>
             <strong>Телефон:</strong> +7 (985) 268-97-87
           </div>
+          <div>
+            <strong>Регион:</strong> Москва и Московская область
+          </div>
         </div>
 
         <ContactForm />

@@ -28,9 +28,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Helvetica Neue', 'Helvetica', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
+        sans: ['Helvetica Neue', 'Helvetica', 'Segoe UI', 'Arial', 'sans-serif'],
       },
     },
+  },
+  corePlugins: {
+    preflight: false,
   },
   plugins: [],
 }

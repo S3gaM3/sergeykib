@@ -96,10 +96,16 @@ export default function Home() {
             "serviceType": "Веб-разработка",
             "description": "Разработка веб-сайтов и приложений на React, Node.js, TypeScript"
           },
-          "areaServed": {
-            "@type": "Country",
-            "name": "Россия"
-          }
+          "areaServed": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Москва"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Московская область"
+            }
+          ]
         }
       },
       {
