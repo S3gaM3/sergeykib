@@ -1,7 +1,7 @@
 'use client'
 
 const stats = [
-  { value: '9', label: 'Реализованных работ' },
+  { value: '10+', label: 'Реализованных работ' },
   { value: '100%', label: 'В срок' },
   { value: 'React', label: 'Основной стек' }
 ]
