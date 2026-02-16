@@ -247,7 +247,11 @@
 
 .tools-list-item:hover {
   transform: translateY(-4px);
-  background: #f8fafc;
+  background: var(--accent-purple);
+}
+
+.tools-list-item:hover .tools-list-item-name {
+  color: #fff !important;
 }
 
 [data-theme="dark"] .tools-list-item:hover {
