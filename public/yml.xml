@@ -5,38 +5,34 @@
     <company>Сергей Кибальник</company>
     <url>https://segak.ru/</url>
     <currencies>
-      <currency id="RUB" rate="1"/>
+      <currency id="RUR" rate="1"/>
     </currencies>
     <categories>
-      <category id="1">Веб-разработка</category>
-      <category id="2">Лендинги</category>
-      <category id="3">Корпоративные сайты</category>
-      <category id="4">Веб-приложения</category>
+      <category id="1">Компьютеры и IT</category>
     </categories>
+    <sets>
+      <set id="s1">
+        <url>https://segak.ru/</url>
+      </set>
+    </sets>
     <offers>
-      <offer id="landing" available="true">
+      <offer id="kibalnik-sergey" available="true">
         <url>https://segak.ru/#contacts</url>
-        <price>10000</price>
-        <currencyId>RUB</currencyId>
-        <categoryId>2</categoryId>
-        <name>Лендинг</name>
-        <description>Разработка одностраничного сайта (лендинга) на React, Next.js. Современный дизайн, адаптивность, SEO. Срок: 3–7 дней.</description>
-      </offer>
-      <offer id="corporate" available="true">
-        <url>https://segak.ru/#contacts</url>
-        <price>40000</price>
-        <currencyId>RUB</currencyId>
-        <categoryId>3</categoryId>
-        <name>Корпоративный сайт</name>
-        <description>Корпоративный сайт на React, Node.js. Несколько страниц, формы, админ-панель. Срок: 1–3 недели.</description>
-      </offer>
-      <offer id="webapp" available="true">
-        <url>https://segak.ru/#contacts</url>
-        <price>80000</price>
-        <currencyId>RUB</currencyId>
-        <categoryId>4</categoryId>
-        <name>Веб-приложение</name>
-        <description>Веб-приложение на React, Node.js, TypeScript. Сложная логика, API, базы данных. Срок: от месяца.</description>
+        <price from="true">10000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <set-ids>s1</set-ids>
+        <picture>https://segak.ru/assets/img/portfolio/1.webp</picture>
+        <name>Сергей Кибальник</name>
+        <description>Веб-разработчик. Создание сайтов и веб-приложений на React, Node.js, TypeScript. Лендинги от 10 000 ₽, корпоративные сайты от 40 000 ₽, веб-приложения от 80 000 ₽.</description>
+        <param name="Рейтинг">0</param>
+        <param name="Число отзывов">0</param>
+        <param name="Регион">Москва</param>
+        <param name="Выполняется удаленно">true</param>
+        <param name="Выполняется по адресу заказчика">false</param>
+        <param name="Выполняется по адресу исполнителя">false</param>
+        <param name="Ссылка на чат">https://t.me/kosmosega</param>
+        <sales_notes>Точная стоимость после обсуждения задачи. Сроки: лендинг 3–7 дней, корпоративный сайт 1–3 недели.</sales_notes>
       </offer>
     </offers>
   </shop>
