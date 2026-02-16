@@ -90,6 +90,24 @@ export default function Hero() {
             >
               Начать проект
             </Link>
+            <a
+              href="/assets/resume.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+              style={{
+                background: '#fff',
+                color: '#7C3AED',
+                border: '2px solid #7C3AED',
+                padding: '1em 2.5em',
+                fontSize: '1.1em',
+                fontWeight: '600',
+                borderRadius: '12px'
+              }}
+            >
+              📄 Скачать резюме
+            </a>
           </div>
 
           <div style={{

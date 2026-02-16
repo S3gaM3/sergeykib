@@ -17,8 +17,8 @@ export default function ScrollAnimations() {
       })
     }, observerOptions)
 
-    // Наблюдаем за всеми элементами с классом fade-in-up
-    const elements = document.querySelectorAll('.fade-in-up')
+    // Наблюдаем за всеми элементами с анимациями появления
+    const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in')
     elements.forEach((el) => observer.observe(el))
 
     return () => {

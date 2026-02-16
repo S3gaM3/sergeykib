@@ -12,7 +12,7 @@ export default function Navigation() {
       setIsScrolled(window.scrollY > 100)
       
       // Определяем активную секцию
-      const sections = ['about', 'skills', 'projects', 'education', 'certificates', 'contacts']
+      const sections = ['about', 'skills', 'projects', 'education', 'certificates', 'testimonials', 'faq', 'contacts']
       const scrollPosition = window.scrollY + 150
       
       for (const section of sections) {
@@ -54,6 +54,8 @@ export default function Navigation() {
     { id: 'projects', label: 'Проекты' },
     { id: 'education', label: 'Образование' },
     { id: 'certificates', label: 'Сертификаты' },
+    { id: 'testimonials', label: 'Отзывы' },
+    { id: 'faq', label: 'FAQ' },
     { id: 'contacts', label: 'Контакты' }
   ]
 

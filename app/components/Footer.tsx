@@ -62,14 +62,6 @@ export default function Footer() {
                 >
                   GitHub
                 </a>
-                <a 
-                  href="https://segak.ru/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                >
-                  Личный сайт
-                </a>
               </div>
             </div>
           </div>

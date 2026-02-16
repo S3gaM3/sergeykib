@@ -66,6 +66,24 @@ export default function CTASection() {
           marginBottom: '2rem'
         }}>
           <a
+            href="/assets/resume.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+            style={{
+              background: 'rgba(255, 255, 255, 0.2)',
+              color: '#fff',
+              border: '2px solid #fff',
+              padding: '1em 2em',
+              fontSize: '1.1em',
+              fontWeight: '600',
+              borderRadius: '12px'
+            }}
+          >
+            📄 Скачать резюме
+          </a>
+          <a
             href="https://t.me/kosmosega"
             target="_blank"
             rel="noopener noreferrer"

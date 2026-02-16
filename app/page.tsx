@@ -4,11 +4,14 @@ import Navigation from './components/Navigation'
 import ScrollAnimations from './components/ScrollAnimations'
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
+import StatsBar from './components/StatsBar'
 import SkillsShowcase from './components/SkillsShowcase'
 import ToolsList from './components/ToolsList'
 import dynamic from 'next/dynamic'
 const ProjectsCarousel = dynamic(() => import('./components/ProjectsCarousel'), { ssr: true, loading: () => null })
 const Certificates = dynamic(() => import('./components/Certificates'), { ssr: true, loading: () => null })
+import Testimonials from './components/Testimonials'
+import FAQ from './components/FAQ'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
 import Script from 'next/script'
@@ -150,6 +153,8 @@ export default function Home() {
       <div className="container" style={{paddingTop: '2rem'}}>
         <Hero />
         
+        <StatsBar />
+
         <section id="about" className="section fade-in-up" aria-labelledby="about-heading">
           <h2 id="about-heading" className="section-title" style={{
             fontSize: '2rem',
@@ -242,6 +247,10 @@ export default function Home() {
           <Certificates />
         </section>
 
+        <Testimonials />
+
+        <FAQ />
+
         <CTASection />
       </div>
 
@@ -288,6 +297,14 @@ export default function Home() {
             githubLinks.forEach(function(link) {
               link.addEventListener('click', function() {
                 ym(103955852, 'reachGoal', 'project_github');
+              });
+            });
+            
+            // Цель: Скачивание резюме
+            const resumeLinks = document.querySelectorAll('a[href*="resume.pdf"]');
+            resumeLinks.forEach(function(link) {
+              link.addEventListener('click', function() {
+                ym(103955852, 'reachGoal', 'resume_download');
               });
             });
           }
