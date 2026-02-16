@@ -1495,6 +1495,19 @@ hr {
   transform: scale(1.05);
 }
 
+/* Карусель: всегда видно 3 карточки на десктопе */
+.project-card-carousel {
+  flex: 0 0 calc((100% - 3rem) / 3) !important;
+  min-width: 260px !important;
+}
+
+@media (max-width: 1024px) {
+  .project-card-carousel {
+    flex: 0 0 calc((100% - 1.5rem) / 2) !important;
+    min-width: 240px !important;
+  }
+}
+
 /* Адаптивность для проектов */
 @media (max-width: 768px) {
   .projects-grid {
@@ -1509,7 +1522,11 @@ hr {
   
   .project-card {
     max-width: 100%;
-    min-width: 85%;
+  }
+  
+  .project-card-carousel {
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
   }
   
   .carousel-button {

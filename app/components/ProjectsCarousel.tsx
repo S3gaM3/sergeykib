@@ -6,12 +6,7 @@ import type { Project } from '@/app/data/projects'
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="project-card" style={{
-      flex: '0 0 100%',
-      maxWidth: '380px',
-      marginRight: '1.5rem',
-      scrollSnapAlign: 'start'
-    }}>
+    <article className="project-card project-card-carousel" style={{ scrollSnapAlign: 'start' }}>
       <div className="project-image">
         <div
           style={{
@@ -67,9 +62,15 @@ export default function ProjectsCarousel() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const isScrollingRef = useRef(false)
 
-  // Дублируем проекты для бесконечной прокрутки (3 копии)
+  const CARD_GAP = 24 // 1.5rem
   const duplicatedProjects = [...projects, ...projects, ...projects]
   const totalSlides = projects.length
+
+  const getCardStep = () => {
+    if (!carouselRef.current) return 300
+    const firstCard = carouselRef.current.querySelector('.project-card-carousel') as HTMLElement
+    return firstCard ? firstCard.offsetWidth + CARD_GAP : carouselRef.current.offsetWidth / 3 + CARD_GAP
+  }
 
   useEffect(() => {
     if (!isPaused && !isScrollingRef.current && carouselRef.current) {
@@ -78,17 +79,16 @@ export default function ProjectsCarousel() {
           const next = prev + 1
           
           if (next >= totalSlides) {
-            // Когда дошли до конца, переходим на вторую копию (индекс = totalSlides)
             setTimeout(() => {
               if (carouselRef.current) {
-                // Плавно переключаемся без анимации на начало второго набора
+                const step = getCardStep()
                 carouselRef.current.style.scrollBehavior = 'auto'
-                carouselRef.current.scrollLeft = totalSlides * carouselRef.current.offsetWidth
+                carouselRef.current.scrollLeft = totalSlides * step
                 carouselRef.current.style.scrollBehavior = 'smooth'
                 setCurrentIndex(0)
               }
             }, 50)
-            return totalSlides // Временно устанавливаем индекс на вторую копию
+            return totalSlides
           }
           
           return next
@@ -106,8 +106,8 @@ export default function ProjectsCarousel() {
   useEffect(() => {
     if (carouselRef.current && !isScrollingRef.current) {
       isScrollingRef.current = true
-      const cardWidth = carouselRef.current.offsetWidth
-      const scrollPosition = currentIndex * cardWidth
+      const step = getCardStep()
+      const scrollPosition = currentIndex * step
       
       carouselRef.current.scrollTo({
         left: scrollPosition,
@@ -128,15 +128,13 @@ export default function ProjectsCarousel() {
   }
 
   const goToPrevious = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-    }
+    if (intervalRef.current) clearInterval(intervalRef.current)
     setCurrentIndex((prev) => {
       if (prev === 0) {
-        // Переходим на конец второй копии для плавного перехода
         if (carouselRef.current) {
+          const step = getCardStep()
           carouselRef.current.style.scrollBehavior = 'auto'
-          carouselRef.current.scrollLeft = (totalSlides * 2 - 1) * carouselRef.current.offsetWidth
+          carouselRef.current.scrollLeft = (totalSlides * 2 - 1) * step
           carouselRef.current.style.scrollBehavior = 'smooth'
         }
         return totalSlides * 2 - 1
@@ -146,16 +144,14 @@ export default function ProjectsCarousel() {
   }
 
   const goToNext = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-    }
+    if (intervalRef.current) clearInterval(intervalRef.current)
     setCurrentIndex((prev) => {
       const next = prev + 1
       if (next >= totalSlides * 2) {
-        // Переходим на начало второй копии
         if (carouselRef.current) {
+          const step = getCardStep()
           carouselRef.current.style.scrollBehavior = 'auto'
-          carouselRef.current.scrollLeft = totalSlides * carouselRef.current.offsetWidth
+          carouselRef.current.scrollLeft = totalSlides * step
           carouselRef.current.style.scrollBehavior = 'smooth'
         }
         return totalSlides
@@ -167,11 +163,10 @@ export default function ProjectsCarousel() {
   // Обработка scroll для определения текущего слайда
   const handleScroll = () => {
     if (carouselRef.current && !isScrollingRef.current) {
-      const cardWidth = carouselRef.current.offsetWidth
+      const step = getCardStep()
       const scrollLeft = carouselRef.current.scrollLeft
-      const index = Math.round(scrollLeft / cardWidth)
+      const index = Math.round(scrollLeft / step)
       
-      // Нормализуем индекс к первому набору проектов
       const normalizedIndex = index % totalSlides
       if (normalizedIndex !== currentIndex % totalSlides) {
         setCurrentIndex(normalizedIndex)
