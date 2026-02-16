@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -84,6 +85,7 @@ export default function Navigation() {
           ))}
         </ul>
         <div className="nav-actions">
+          <ThemeToggle />
         </div>
       </div>
     </nav>

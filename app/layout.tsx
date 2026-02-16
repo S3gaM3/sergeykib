@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import SmoothScroll from './components/SmoothScroll'
 import ChatWidget from './components/ChatWidget'
-import ThemeToggle from './components/ThemeToggle'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
     default: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
     template: '%s | Сергей Кибальник',
   },
-  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов. Разработка под ключ, фриланс, Москва. Связь: Telegram.',
+  description: 'Разработка сайтов на React и Node.js от 10 000 ₽. Лендинги, корпоративные сайты, веб-приложения — в срок, под ключ. 10+ проектов. Веб-разработчик Сергей Кибальник, Москва и удалённо.',
   keywords: [
     'веб-разработчик',
     'JavaScript',
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     url: 'https://segak.ru/',
     siteName: 'Сергей Кибальник — Портфолио',
     title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения под ключ. Связь: Telegram.',
+    description: 'Разработка сайтов на React и Node.js от 10 000 ₽. Лендинги, корпоративные сайты — в срок, под ключ. Веб-разработчик Сергей Кибальник, Москва.',
     images: [
       {
         url: 'https://segak.ru/assets/img/portfolio/1.webp',
@@ -57,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения. Связь: Telegram.',
+    description: 'Разработка сайтов на React и Node.js от 10 000 ₽. Лендинги, корпоративные сайты — в срок. Веб-разработчик Сергей Кибальник, Москва.',
     images: ['https://segak.ru/assets/img/portfolio/1.webp'],
     creator: '@kosmosega',
   },
@@ -136,14 +135,6 @@ export default function RootLayout({
         <main>
           {children}
         </main>
-        <div style={{
-          position: 'fixed',
-          bottom: '100px',
-          right: '24px',
-          zIndex: 999
-        }}>
-          <ThemeToggle />
-        </div>
         <ChatWidget />
         <script
           dangerouslySetInnerHTML={{

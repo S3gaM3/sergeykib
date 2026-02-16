@@ -18,21 +18,21 @@ import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
-  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов. Связь: Telegram.',
+  description: 'Разработка сайтов на React и Node.js от 10 000 ₽. Лендинги, корпоративные сайты, веб-приложения — в срок, под ключ. 10+ проектов. Веб-разработчик Сергей Кибальник, Москва и удалённо.',
   keywords: 'веб-разработчик, JavaScript, HTML5, CSS3, React разработчик, Node.js, веб-дизайн, UX/UI, портфолио, Москва, фриланс, Telegram',
   authors: [{ name: 'Сергей Кибальник' }],
   openGraph: {
     type: 'website',
     url: 'https://segak.ru/',
     title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения.',
+    description: 'Разработка сайтов на React и Node.js от 10 000 ₽. Лендинги, корпоративные сайты — в срок, под ключ. Веб-разработчик Сергей Кибальник, Москва.',
     images: ['https://segak.ru/assets/img/portfolio/1.webp'],
     locale: 'ru_RU',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI.',
+    description: 'Разработка сайтов на React и Node.js от 10 000 ₽. Веб-разработчик Сергей Кибальник, Москва.',
     images: ['https://segak.ru/assets/img/portfolio/1.webp'],
   },
   alternates: {
@@ -49,7 +49,7 @@ export default function Home() {
         "@id": "https://segak.ru/#person",
         "name": "Сергей Кибальник",
         "jobTitle": "Веб-разработчик",
-        "description": "Веб-разработчик с глубоким знанием JavaScript-экосистемы. Специализируюсь на создании адаптивных интерфейсов (React) и серверных решений (Node.js).",
+        "description": "Разработка сайтов на React и Node.js от 10 000 ₽. Лендинги, корпоративные сайты, веб-приложения — в срок, под ключ. Москва и удалённо.",
         "url": "https://segak.ru/",
         "sameAs": [
           "https://github.com/S3gaM3",
