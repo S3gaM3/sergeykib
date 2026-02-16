@@ -7,12 +7,15 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://segak.ru'),
   title: {
-    default: 'Сергей Кибальник — Веб-разработчик React, Node.js | Портфолио разработчика',
+    default: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
     template: '%s | Сергей Кибальник',
   },
-  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов. Разработка под ключ, фриланс, Москва.',
+  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов. Разработка под ключ, фриланс, Москва. Связь: Telegram.',
   keywords: [
     'веб-разработчик',
+    'JavaScript',
+    'HTML5',
+    'CSS3',
     'React разработчик',
     'JavaScript разработчик',
     'Node.js разработчик',
@@ -40,8 +43,8 @@ export const metadata: Metadata = {
     locale: 'ru_RU',
     url: 'https://segak.ru/',
     siteName: 'Сергей Кибальник — Портфолио',
-    title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения под ключ.',
+    title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
+    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения под ключ. Связь: Telegram.',
     images: [
       {
         url: 'https://segak.ru/assets/img/portfolio/1.webp',
@@ -53,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения.',
+    title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
+    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения. Связь: Telegram.',
     images: ['https://segak.ru/assets/img/portfolio/1.webp'],
     creator: '@kosmosega',
   },
@@ -205,7 +208,7 @@ export default function RootLayout({
         <noscript>
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://mc.yandex.ru/watch/103955852" style={{position:'absolute', left:'-9999px'}} alt="" />
+            <img src="https://mc.yandex.ru/watch/103955852" style={{position:'absolute', left:'-9999px'}} alt="Счётчик посещений Яндекс.Метрики" />
           </div>
         </noscript>
       </body>

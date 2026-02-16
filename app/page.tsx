@@ -14,22 +14,22 @@ import Footer from './components/Footer'
 import Script from 'next/script'
 
 export const metadata: Metadata = {
-  title: 'Сергей Кибальник — Веб-разработчик React, Node.js | Портфолио разработчика',
-  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов.',
-  keywords: 'веб-разработчик, React разработчик, JavaScript разработчик, Node.js, веб-дизайн, UX/UI, портфолио, Москва, фриланс',
+  title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
+  description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения. Портфолио проектов. Связь: Telegram.',
+  keywords: 'веб-разработчик, JavaScript, HTML5, CSS3, React разработчик, Node.js, веб-дизайн, UX/UI, портфолио, Москва, фриланс, Telegram',
   authors: [{ name: 'Сергей Кибальник' }],
   openGraph: {
     type: 'website',
     url: 'https://segak.ru/',
-    title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI. Создаю современные сайты и веб-приложения.',
+    title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
+    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Создаю современные сайты и веб-приложения.',
     images: ['https://segak.ru/assets/img/portfolio/1.webp'],
     locale: 'ru_RU',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Сергей Кибальник — Веб-разработчик React, Node.js',
-    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, UX/UI.',
+    title: 'Сергей Кибальник — React, Node.js, JavaScript, HTML5, CSS3',
+    description: 'Веб-разработчик Сергей Кибальник. Специализация: React, JavaScript, Node.js, HTML5, CSS3, UX/UI.',
     images: ['https://segak.ru/assets/img/portfolio/1.webp'],
   },
   alternates: {
@@ -169,14 +169,14 @@ export default function Home() {
             marginBottom: '1rem',
             fontWeight: '700'
           }}>
-            Навыки
+            Навыки: JavaScript, HTML5, CSS3, React, Node.js
           </h2>
           <SkillsShowcase />
           
           {/* Инструменты */}
           <div style={{marginTop: '2.5rem'}}>
             <h3 className="section-title" style={{fontSize: '1.3rem', marginBottom: '1.5em', textAlign: 'center'}}>
-              Инструменты разработки
+              Инструменты: JavaScript, HTML5, CSS3
             </h3>
             <ToolsList />
           </div>

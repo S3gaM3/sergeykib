@@ -15,7 +15,7 @@ export default function Header() {
             Создаю современные сайты и мультимедийные решения
           </p>
           <p className="header-description">
-            Специализируюсь на React, Node.js, UX/UI. Помогаю бизнесу расти в интернете.
+            Специализируюсь на React, JavaScript, Node.js, HTML5, CSS3, UX/UI. Помогаю бизнесу расти в интернете.
           </p>
           
           <div className="header-actions">
