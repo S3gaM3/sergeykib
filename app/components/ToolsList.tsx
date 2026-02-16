@@ -21,21 +21,14 @@ export default function ToolsList() {
       {tools.map((tool, index) => (
         <div 
           key={index} 
+          className="tools-list-item"
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             padding: '1rem',
             borderRadius: '12px',
-            transition: 'transform 0.2s, background 0.2s'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-4px)'
-            e.currentTarget.style.background = '#f8fafc'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.background = 'transparent'
+            transition: 'transform 0.2s, background 0.2s, color 0.2s'
           }}
         >
           <div title={tool.name} style={{
@@ -62,7 +55,7 @@ export default function ToolsList() {
               }}
             />
           </div>
-          <span style={{
+          <span className="tools-list-item-name" style={{
             fontSize: '0.95em', 
             fontWeight: '500', 
             color: '#6B7280'

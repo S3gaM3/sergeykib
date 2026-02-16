@@ -245,6 +245,19 @@
   filter: none !important;
 }
 
+.tools-list-item:hover {
+  transform: translateY(-4px);
+  background: #f8fafc;
+}
+
+[data-theme="dark"] .tools-list-item:hover {
+  background: #f8fafc;
+}
+
+[data-theme="dark"] .tools-list-item:hover .tools-list-item-name {
+  color: #000 !important;
+}
+
 [data-theme="dark"] .tools-list img {
   filter: none !important;
   opacity: 1 !important;
