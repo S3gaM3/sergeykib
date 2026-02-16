@@ -12,6 +12,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.jsdelivr.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'jigsaw.w3.org',
+      },
     ],
   },
   trailingSlash: true,

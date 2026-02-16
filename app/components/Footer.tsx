@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
@@ -78,10 +79,12 @@ export default function Footer() {
             href="https://jigsaw.w3.org/css-validator/check/referer"
             className="footer-validator"
           >
-            <img
+            <Image
               style={{ border: 0, width: 88, height: 31 }}
               src="https://jigsaw.w3.org/css-validator/images/vcss"
               alt="Правильный CSS!"
+              width={88}
+              height={31}
             />
           </a>
         </div>

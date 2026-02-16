@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 interface Message {
   id: string
@@ -1103,7 +1104,7 @@ function ChatWidgetInner() {
           className="chat-widget-trigger fixed bottom-6 right-6 z-50 bg-white dark:bg-[#2A2A2A] rounded-full p-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center w-14 h-14 border-2 border-[var(--accent-purple)] hover:border-[var(--accent-purple-light)]"
           aria-label="Открыть помощника"
         >
-          <img
+          <Image
             src="/assets/favicon.svg"
             alt=""
             className="w-9 h-9"
@@ -1120,7 +1121,7 @@ function ChatWidgetInner() {
           <div className="bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-purple-light)] text-white p-4 rounded-t-2xl flex items-center justify-between gap-2">
             <div className="flex items-center gap-3 min-w-0 flex-1">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden shrink-0">
-                <img src="/assets/favicon.svg" alt="" className="w-7 h-7" width={28} height={28} />
+                <Image src="/assets/favicon.svg" alt="" className="w-7 h-7" width={28} height={28} />
               </div>
               <div className="min-w-0">
                 <h3 className="font-semibold text-lg truncate">Помощник Сергея</h3>
@@ -1234,7 +1235,7 @@ function ChatWidgetInner() {
                 className="flex-1 px-4 py-2 border border-gray-300 dark:border-[#404040] dark:bg-[#1A1A1A] dark:text-[#F5F5F5] rounded-full focus:outline-none focus:ring-2 focus:ring-accent-purple focus:border-transparent"
               />
               <button
-                onClick={handleSendMessage}
+                onClick={() => handleSendMessage()}
                 disabled={!inputValue.trim()}
                 className="bg-accent-purple hover:bg-accent-purple-light disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-full p-2 transition-colors"
                 aria-label="Отправить сообщение"
