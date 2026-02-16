@@ -8,6 +8,7 @@ Sitemap: https://segak.ru/sitemap.xml
 Allow: /
 
 # Запрещаем индексацию служебных файлов и папок
+Disallow: /assets/resume.pdf
 Disallow: /.git/
 Disallow: /.github/
 Disallow: /.next/
