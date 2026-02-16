@@ -11,7 +11,10 @@
     "deploy": "npm run build",
     "export:gh": "node scripts/export-to-gh.js",
     "analyze": "ANALYZE=true next build",
-    "convert:webp": "node scripts/convert-to-webp.js"
+    "convert:webp": "node scripts/convert-to-webp.js",
+    "generate:favicon": "node scripts/generate-favicon.mjs",
+    "generate:favicon:logo2": "node scripts/generate-favicon.mjs logo2",
+    "generate:favicon:main": "node scripts/generate-favicon.mjs favicon"
   },
   "dependencies": {
     "next": "^15.1.0",
@@ -26,6 +29,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.1.0",
+    "png-to-ico": "^3.0.1",
     "postcss": "^8.4.49",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17",
