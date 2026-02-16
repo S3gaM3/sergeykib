@@ -3,12 +3,6 @@
 import Link from 'next/link'
 
 export default function Hero() {
-  const stats = [
-    { number: '10+', label: 'Проектов' },
-    { number: '86%', label: 'Компетенций' },
-    { number: '<1', label: 'Года опыта' }
-  ]
-
   return (
     <section className="hero-section about-section" style={{
       background: 'linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%)',
@@ -73,7 +67,7 @@ export default function Hero() {
             gap: '1rem',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginBottom: '3rem'
+            marginBottom: '0'
           }}>
             <Link
               href="/#contacts"
@@ -98,7 +92,7 @@ export default function Hero() {
               className="btn"
               style={{
                 background: '#fff',
-                color: '#7C3AED',
+                color: '#000',
                 border: '2px solid #7C3AED',
                 padding: '1em 2.5em',
                 fontSize: '1.1em',
@@ -108,35 +102,6 @@ export default function Hero() {
             >
               📄 Скачать резюме
             </a>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '3rem',
-            flexWrap: 'wrap',
-            paddingTop: '2rem',
-            borderTop: '1px solid rgba(229, 231, 235, 0.8)'
-          }}>
-            {stats.map((stat, index) => (
-              <div key={index} style={{textAlign: 'center'}}>
-                <div className="hero-stat-number" style={{
-                  fontSize: '2.5rem',
-                  fontWeight: '800',
-                  color: '#7C3AED',
-                  marginBottom: '0.3rem'
-                }}>
-                  {stat.number}
-                </div>
-                <div className="hero-stat-label" style={{
-                  fontSize: '0.95em',
-                  color: '#6B7280',
-                  fontWeight: '500'
-                }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

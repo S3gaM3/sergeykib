@@ -246,6 +246,11 @@ const getDefaultResponse = (): string => {
 }
 
 export default function ChatWidget() {
+  if (process.env.NEXT_PUBLIC_SHOW_CHAT_WIDGET === 'false') return null
+  return <ChatWidgetInner />
+}
+
+function ChatWidgetInner() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -579,7 +584,7 @@ export default function ChatWidget() {
 
     // Обработка вопросов про гарантии
     if (normalizedMessage.includes('гарантия') || normalizedMessage.includes('гарантии') || normalizedMessage.includes('поддержка после')) {
-      return 'После запуска проекта Сергей всегда помогает с поддержкой и доработками. Обычно первые месяцы после запуска - бесплатная поддержка по критическим вопросам. Детали можно обсудить в Telegram @kosmosega.'
+      return 'Поддержка после запуска — платная. Доработки и правки — по договорённости. Детали можно обсудить в Telegram @kosmosega.'
     }
 
     // Обработка вопросов про скорость работы
@@ -705,7 +710,7 @@ export default function ChatWidget() {
 
     // Обработка вопросов про сроки доработок
     if (normalizedMessage.includes('доработки') || normalizedMessage.includes('изменения') && normalizedMessage.includes('после')) {
-      return 'После запуска проекта Сергей всегда помогает с доработками. Обычно первые месяцы - бесплатная поддержка по критическим вопросам, дальше - по договоренности. Детали в Telegram @kosmosega.'
+      return 'Поддержка после запуска — платная. Доработки и правки — по договорённости. Детали в Telegram @kosmosega.'
     }
 
     // Обработка вопросов про версии технологий
@@ -844,7 +849,7 @@ export default function ChatWidget() {
     // Уточнения по стоимости
     if (lastCategory === 'pricing') {
       if (lowerQuestion.includes('примерно') || lowerQuestion.includes('ориентировочно')) {
-        return 'Примерно: лендинг от 10-15к, корпоративный сайт от 30-50к, веб-приложение от 100к. Но точная цена зависит от деталей. Можем обсудить в Telegram @kosmosega.'
+        return 'Примерно: лендинг от 10к, корпоративный сайт от 30-50к, веб-приложение от 100к. Но точная цена зависит от деталей. Можем обсудить в Telegram @kosmosega.'
       }
       if (lowerQuestion.includes('дешевле') || lowerQuestion.includes('скидка')) {
         return 'Стоимость зависит от объема работы. Если проект большой, можно обсудить поэтапную оплату. Давай обсудим детали в Telegram @kosmosega.'
@@ -1026,19 +1031,20 @@ export default function ChatWidget() {
     return getDefaultResponse()
   }
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim()) return
+  const handleSendMessage = async (textOverride?: string) => {
+    const text = (textOverride ?? inputValue).trim()
+    if (!text) return
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputValue.trim(),
+      text,
       sender: 'user',
       timestamp: new Date(),
     }
 
     setMessages((prev) => [...prev, userMessage])
-    const messageText = inputValue.trim()
-    setInputValue('')
+    const messageText = text
+    if (!textOverride) setInputValue('')
     setIsTyping(true)
 
     // Опционально: отправка важных сообщений на сервер
@@ -1094,22 +1100,16 @@ export default function ChatWidget() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-accent-purple hover:bg-accent-purple-light text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center w-16 h-16 group"
+          className="chat-widget-trigger fixed bottom-6 right-6 z-50 bg-white dark:bg-[#2A2A2A] rounded-full p-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center w-14 h-14 border-2 border-[var(--accent-purple)] hover:border-[var(--accent-purple-light)]"
           aria-label="Открыть помощника"
         >
-          <svg
-            className="w-6 h-6 transition-transform group-hover:scale-110"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-            />
-          </svg>
+          <img
+            src="/assets/favicon.svg"
+            alt=""
+            className="w-9 h-9"
+            width={36}
+            height={36}
+          />
         </button>
       )}
 
@@ -1117,14 +1117,24 @@ export default function ChatWidget() {
       {isOpen && (
         <div className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2A2A2A] rounded-2xl shadow-2xl flex flex-col h-[600px] max-h-[calc(100vh-8rem)] border border-gray-200 dark:border-[#404040]">
           {/* Заголовок */}
-          <div className="bg-gradient-to-r from-accent-purple to-accent-purple-light text-white p-4 rounded-t-2xl flex items-center justify-between">
-              <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <span className="text-xl">🤖</span>
+          <div className="bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-purple-light)] text-white p-4 rounded-t-2xl flex items-center justify-between gap-2">
+            <div className="flex items-center gap-3 min-w-0 flex-1">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden shrink-0">
+                <img src="/assets/favicon.svg" alt="" className="w-7 h-7" width={28} height={28} />
               </div>
-              <div>
-                <h3 className="font-semibold text-lg">Помощник</h3>
-                <p className="text-xs opacity-90">Онлайн</p>
+              <div className="min-w-0">
+                <h3 className="font-semibold text-lg truncate">Помощник Сергея</h3>
+                <a
+                  href="https://t.me/kosmosega"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs opacity-90 hover:opacity-100 flex items-center gap-1 w-fit"
+                >
+                  <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                  </svg>
+                  Написать в Telegram
+                </a>
               </div>
             </div>
             <button
@@ -1184,21 +1194,30 @@ export default function ChatWidget() {
 
           {/* Быстрые ответы */}
           {messages.length === 1 && (
-            <div className="px-4 py-2 bg-white dark:bg-[#2A2A2A] border-t border-gray-200 dark:border-[#404040]">
+            <div className="px-4 py-3 bg-white dark:bg-[#2A2A2A] border-t border-gray-200 dark:border-[#404040] space-y-2">
               <div className="flex flex-wrap gap-2">
-                {['Портфолио', 'Услуги', 'Навыки', 'Стоимость', 'Контакты'].map((quickReply) => (
+                {['Портфолио', 'Услуги', 'Стоимость', 'Контакты'].map((quickReply) => (
                   <button
                     key={quickReply}
-                    onClick={() => {
-                      setInputValue(quickReply.toLowerCase())
-                      setTimeout(() => handleSendMessage(), 100)
-                    }}
-                    className="text-xs px-3 py-1 bg-gray-100 dark:bg-[#333333] hover:bg-gray-200 dark:hover:bg-[#404040] text-gray-700 dark:text-[#F5F5F5] rounded-full transition-colors"
+                    onClick={() => handleSendMessage(quickReply)}
+                    type="button"
+                    className="text-xs px-3 py-1.5 bg-gray-100 dark:bg-[#333333] hover:bg-[var(--accent-purple)] hover:text-white dark:hover:bg-[var(--accent-purple)] text-gray-700 dark:text-[#F5F5F5] rounded-full transition-colors"
                   >
                     {quickReply}
                   </button>
                 ))}
               </div>
+              <a
+                href="https://t.me/kosmosega"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-[var(--accent-purple)] hover:underline"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                Написать в Telegram
+              </a>
             </div>
           )}
 
