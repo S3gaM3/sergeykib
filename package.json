@@ -10,7 +10,8 @@
     "lint:fix": "eslint app --ext .ts,.tsx --fix",
     "deploy": "npm run build",
     "export:gh": "node scripts/export-to-gh.js",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "convert:webp": "node scripts/convert-to-webp.js"
   },
   "dependencies": {
     "next": "^15.1.0",
@@ -26,6 +27,7 @@
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.1.0",
     "postcss": "^8.4.49",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.0"
   }

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: 'Готовые шаблоны сайтов на современном стеке: React, Node.js, TypeScript, Next.js. Разработка под ключ.',
     images: [
       {
-        url: 'https://segak.ru/assets/img/portfolio/1.jpg',
+        url: 'https://segak.ru/assets/img/portfolio/1.webp',
         width: 1200,
         height: 630,
         alt: 'Шаблоны сайтов от Сергея Кибальника',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Шаблоны сайтов под ключ — React, Node.js',
     description: 'Готовые шаблоны сайтов на React, Node.js, TypeScript. Разработка под ключ.',
-    images: ['https://segak.ru/assets/img/portfolio/1.jpg'],
+    images: ['https://segak.ru/assets/img/portfolio/1.webp'],
   },
   alternates: {
     canonical: 'https://segak.ru/templates/',

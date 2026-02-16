@@ -15,7 +15,9 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="project-image">
         <div
           style={{
-            background: project.image,
+            background: project.image.startsWith('linear-gradient') ? project.image : `url(${encodeURI(project.image)})`,
+            backgroundSize: project.image.startsWith('linear-gradient') ? undefined : 'cover',
+            backgroundPosition: project.image.startsWith('linear-gradient') ? undefined : 'center',
             width: '100%',
             height: '100%'
           }}
