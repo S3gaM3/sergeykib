@@ -203,9 +203,7 @@ export default function ProjectsCarousel() {
           gap: '1.5rem',
           padding: '1.5rem 0',
           margin: '0',
-          WebkitOverflowScrolling: 'touch',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none'
+          scrollbarWidth: 'none'
         }}
       >
         

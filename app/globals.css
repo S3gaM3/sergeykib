@@ -16,7 +16,7 @@
 
   --color-skills-bg: #f9fafb;
 
-  --font-sans: Helvetica Neue, Helvetica, Segoe UI, Arial, sans-serif;
+  --font-sans: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
 }
 
 /*
@@ -246,7 +246,7 @@
 [data-theme="dark"] .projects-carousel button:hover,
 [data-theme="dark"] .carousel-button:hover {
   background: var(--accent-purple) !important;
-  border-color: var(--accent-purple) !important;
+  border-color: transparent !important;
   color: #fff !important;
 }
 
@@ -761,7 +761,7 @@ body {
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
-  border-color: var(--accent-purple);
+  border-color: transparent;
 }
 .header-contacts {
   display: flex;
@@ -1488,7 +1488,7 @@ hr {
 .tech-tag:hover {
   background: var(--accent-purple);
   color: white;
-  border-color: var(--accent-purple);
+  border-color: transparent;
 }
 
 .project-links {
@@ -1530,7 +1530,7 @@ hr {
 
 .repo-link:hover {
   background: #28a745;
-  border-color: #28a745;
+  border-color: transparent;
   color: white;
   transform: scale(1.05);
 }
