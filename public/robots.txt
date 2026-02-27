@@ -22,6 +22,3 @@ Allow: /assets/img/
 Allow: /*.jpg$
 Allow: /*.png$
 Allow: /*.svg$
-
-# Crawl-delay (опционально, для снижения нагрузки)
-Crawl-delay: 1

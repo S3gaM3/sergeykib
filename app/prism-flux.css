@@ -1,0 +1,1245 @@
+/* Prism Flux — адаптировано под проект (TemplateMo 600) */
+.prism-flux {
+  --primary-black: #0a0a0a;
+  --carbon-dark: #121212;
+  --carbon-medium: #1a1a1a;
+  --carbon-light: #2a2a2a;
+  --metal-dark: #3a3a3a;
+  --metal-light: #4a4a4a;
+  --accent-red: #ff3333;
+  --accent-blue: #00a8ff;
+  --accent-green: #00ff88;
+  --accent-purple: #9945ff;
+  --accent-cyan: #00ffff;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-dim: #808080;
+}
+
+body.prism-flux {
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  background: var(--primary-black);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+body.prism-flux::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+    linear-gradient(135deg, var(--primary-black) 0%, var(--carbon-dark) 25%, var(--carbon-medium) 50%, var(--carbon-dark) 75%, var(--primary-black) 100%);
+  z-index: -2;
+}
+
+body.prism-flux::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255,51,51,0.05) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255,51,51,0.05) 2px, transparent 2px);
+  background-size: 150px 150px;
+  animation: prismGridMove 20s linear infinite;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+@keyframes prismGridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(150px, 150px); }
+}
+
+.prism-flux .loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--primary-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.prism-flux .loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.prism-flux .loader-content {
+  text-align: center;
+}
+
+.prism-flux .loader-prism {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto 30px;
+}
+
+.prism-flux .prism-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  transform-origin: center;
+  animation: prismRotate 3s linear infinite;
+}
+
+.prism-flux .prism-face:nth-child(1) {
+  border-image: linear-gradient(45deg, var(--accent-red), var(--accent-blue)) 1;
+}
+
+.prism-flux .prism-face:nth-child(2) {
+  border-image: linear-gradient(45deg, var(--accent-blue), var(--accent-green)) 1;
+  transform: rotate(60deg);
+  animation-delay: 0.2s;
+}
+
+.prism-flux .prism-face:nth-child(3) {
+  border-image: linear-gradient(45deg, var(--accent-green), var(--accent-purple)) 1;
+  transform: rotate(120deg);
+  animation-delay: 0.4s;
+}
+
+@keyframes prismRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.prism-flux .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(18,18,18,0.98) 0%, rgba(18,18,18,0.9) 50%, rgba(18,18,18,0) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.prism-flux .header.scrolled {
+  background: rgba(18,18,18,0.98);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.prism-flux .nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.prism-flux .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.prism-flux .logo-icon {
+  width: 45px;
+  height: 45px;
+  margin-right: 15px;
+  position: relative;
+}
+
+.prism-flux .logo-prism {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prism-flux .prism-shape {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-blue) 33%, var(--accent-green) 66%, var(--accent-purple) 100%);
+  animation: prismShine 3s ease-in-out infinite;
+}
+
+@keyframes prismShine {
+  0%, 100% { filter: brightness(1) hue-rotate(0deg); transform: rotate(45deg) scale(1); }
+  50% { filter: brightness(1.5) hue-rotate(10deg); transform: rotate(45deg) scale(1.1); }
+}
+
+.prism-flux .logo-text .prism {
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prism-flux .logo-text .flux {
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-left: 5px;
+}
+
+.prism-flux .logo-text {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.prism-flux .nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.prism-flux .nav-menu a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 12px 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.prism-flux .nav-menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  transition: width 0.3s ease;
+}
+
+.prism-flux .nav-menu a:hover { color: var(--text-primary); }
+
+.prism-flux .nav-menu a:hover::before,
+.prism-flux .nav-menu a.active::before { width: 80%; }
+
+.prism-flux .nav-menu a.active { color: var(--accent-cyan); }
+
+.prism-flux .menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+.prism-flux .menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.prism-flux .menu-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+.prism-flux .menu-toggle.active span:nth-child(2) { opacity: 0; }
+.prism-flux .menu-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+.prism-flux .hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 120px 20px 80px;
+  background: radial-gradient(ellipse at center, rgba(153,69,255,0.1) 0%, transparent 50%);
+}
+
+.prism-flux .carousel-container {
+  width: 100%;
+  max-width: 1600px;
+  height: 520px;
+  perspective: 1200px;
+  position: relative;
+}
+
+.prism-flux .carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.prism-flux .carousel-item {
+  position: absolute;
+  width: 340px;
+  height: 460px;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.prism-flux .carousel-item .card {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+  border: 2px solid var(--metal-dark);
+  border-radius: 18px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.prism-flux .carousel-item .card-number {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(153,69,255,0.1);
+  font-family: 'Orbitron', monospace;
+}
+
+.prism-flux .card-image {
+  width: 100%;
+  height: 100px;
+  background: var(--carbon-dark);
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--metal-dark);
+}
+
+.prism-flux .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(50%) contrast(1.2);
+  transition: all 0.5s ease;
+}
+
+.prism-flux .carousel-item:hover .card-image img {
+  filter: grayscale(0%) contrast(1.3);
+  transform: scale(1.1);
+}
+
+.prism-flux .card-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.3;
+}
+
+.prism-flux .card-description {
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-size: 11px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.prism-flux .card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.prism-flux .tech-badge {
+  padding: 2px 8px;
+  background: rgba(153,69,255,0.1);
+  border: 1px solid var(--accent-purple);
+  border-radius: 12px;
+  font-size: 9px;
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.prism-flux .card-cta {
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  border: none;
+  border-radius: 30px;
+  color: var(--text-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(153,69,255,0.3);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.prism-flux .card-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(153,69,255,0.5);
+  color: var(--text-primary);
+}
+
+.prism-flux .carousel-controls {
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 100;
+}
+
+.prism-flux .carousel-btn {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+  border: 2px solid var(--metal-dark);
+  border-radius: 50%;
+  color: var(--accent-purple);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.prism-flux .carousel-btn:hover {
+  border-color: var(--accent-purple);
+  box-shadow: 0 8px 25px rgba(153,69,255,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: scale(1.1);
+}
+
+.prism-flux .carousel-indicators {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 100;
+}
+
+.prism-flux .indicator {
+  width: 12px;
+  height: 12px;
+  background: var(--metal-dark);
+  border: 1px solid var(--metal-light);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prism-flux .indicator.active {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  box-shadow: 0 0 10px rgba(153,69,255,0.5);
+  transform: scale(1.3);
+}
+
+.prism-flux .philosophy-section {
+  padding: 120px 30px;
+  background: linear-gradient(180deg, var(--primary-black) 0%, rgba(153,69,255,0.02) 50%, var(--primary-black) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.prism-flux .philosophy-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.prism-flux .prism-line {
+  width: 100%;
+  height: 2px;
+  margin: 0 auto 60px;
+  position: relative;
+  overflow: hidden;
+  background: var(--carbon-medium);
+}
+
+.prism-flux .prism-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-red) 20%, var(--accent-blue) 40%, var(--accent-green) 60%, var(--accent-purple) 80%, transparent);
+  animation: prismSweep 4s ease-in-out infinite;
+}
+
+@keyframes prismSweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.prism-flux .philosophy-headline {
+  font-size: 56px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 25%, var(--accent-blue) 50%, var(--accent-green) 75%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: prismGradientFlow 5s ease infinite;
+}
+
+@keyframes prismGradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.prism-flux .philosophy-subheading {
+  font-size: 20px;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 80px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.prism-flux .philosophy-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+  margin-bottom: 60px;
+}
+
+.prism-flux .pillar {
+  position: relative;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, rgba(42,42,42,0.2), rgba(26,26,26,0.3));
+  border: 1px solid var(--metal-dark);
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.prism-flux .pillar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue), var(--accent-green));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.prism-flux .pillar:hover::before { transform: scaleX(1); }
+
+.prism-flux .pillar:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-purple);
+  box-shadow: 0 20px 40px rgba(153,69,255,0.2);
+  background: linear-gradient(135deg, rgba(153,69,255,0.05), rgba(26,26,26,0.3));
+}
+
+.prism-flux .pillar-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.prism-flux .pillar-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.prism-flux .pillar-description {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.prism-flux .philosophy-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.prism-flux .particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 50%;
+  opacity: 0;
+  animation: prismFloatParticle 20s infinite linear;
+}
+
+@keyframes prismFloatParticle {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+.prism-flux .stats-section {
+  padding: 120px 30px;
+  background: linear-gradient(180deg, var(--primary-black) 0%, var(--carbon-dark) 50%, var(--primary-black) 100%);
+  position: relative;
+}
+
+.prism-flux .section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.prism-flux .section-title {
+  font-size: 48px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prism-flux .section-subtitle {
+  color: var(--text-secondary);
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.prism-flux .stats-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.prism-flux .stat-card {
+  background: linear-gradient(135deg, rgba(42,42,42,0.5), rgba(26,26,26,0.8));
+  border: 1px solid var(--metal-dark);
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.prism-flux .stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-purple);
+  box-shadow: 0 15px 35px rgba(153,69,255,0.2);
+}
+
+.prism-flux .stat-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 36px;
+  color: var(--text-primary);
+  box-shadow: 0 10px 25px rgba(153,69,255,0.3);
+}
+
+.prism-flux .stat-number {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-family: 'Orbitron', monospace;
+}
+
+.prism-flux .stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.prism-flux .stat-description {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  padding: 0 10px;
+}
+
+.prism-flux .skills-section {
+  padding: 120px 30px;
+  background: var(--carbon-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.prism-flux .skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.prism-flux .skill-categories {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.prism-flux .category-tab {
+  padding: 12px 30px;
+  margin: 0;
+  background: var(--carbon-medium);
+  border: 1px solid var(--metal-dark);
+  border-radius: 30px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: inherit;
+  letter-spacing: 1px;
+}
+
+.prism-flux .category-tab:hover {
+  background: rgba(153,69,255,0.1);
+  border-color: var(--accent-purple);
+  color: var(--text-primary);
+}
+
+.prism-flux .category-tab.active {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  border-color: var(--accent-purple);
+  color: var(--text-primary);
+  box-shadow: 0 5px 20px rgba(153,69,255,0.3);
+}
+
+.prism-flux .skills-hexagon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.prism-flux .skill-hexagon {
+  width: 200px;
+  height: 230px;
+  position: relative;
+  margin: 30px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prism-flux .skill-hexagon:hover {
+  transform: translateY(-10px);
+}
+
+.prism-flux .hexagon-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: rotate(30deg);
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-light));
+  border: 2px solid var(--metal-dark);
+}
+
+.prism-flux .skill-hexagon:hover .hexagon-inner {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 30px rgba(153,69,255,0.5);
+}
+
+.prism-flux .hexagon-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: rotate(-30deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.prism-flux .skill-icon-hex {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: var(--accent-purple);
+  animation: prismFloat 3s ease-in-out infinite;
+}
+
+@keyframes prismFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.prism-flux .skill-name-hex {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.prism-flux .skill-level {
+  width: 100%;
+  height: 4px;
+  background: var(--carbon-dark);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.prism-flux .skill-level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 2px;
+  position: relative;
+  animation: prismFillLevel 2s ease-out;
+}
+
+@keyframes prismFillLevel {
+  0% { width: 0; }
+}
+
+.prism-flux .skill-percentage-hex {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.prism-flux .contact-section {
+  padding: 120px 30px;
+  background: linear-gradient(180deg, var(--carbon-dark) 0%, var(--primary-black) 100%);
+  position: relative;
+}
+
+.prism-flux .contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.prism-flux .contact-info {
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(42,42,42,0.3), rgba(26,26,26,0.5));
+  border: 1px solid var(--metal-dark);
+  border-radius: 20px;
+}
+
+.prism-flux .info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--carbon-dark);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  color: inherit;
+}
+
+.prism-flux .info-item:hover {
+  transform: translateX(10px);
+  background: rgba(153,69,255,0.1);
+  box-shadow: 0 5px 20px rgba(153,69,255,0.2);
+}
+
+.prism-flux .info-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  color: var(--text-primary);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.prism-flux .info-text h4 {
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.prism-flux .info-item:hover .info-text h4 { color: var(--accent-cyan); }
+
+.prism-flux .info-text p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.prism-flux .contact-form {
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(42,42,42,0.3), rgba(26,26,26,0.5));
+  border: 1px solid var(--metal-dark);
+  border-radius: 20px;
+}
+
+.prism-flux .form-group {
+  margin-bottom: 25px;
+}
+
+.prism-flux .form-group label {
+  display: block;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.prism-flux .form-group input,
+.prism-flux .form-group textarea {
+  width: 100%;
+  padding: 15px;
+  background: var(--carbon-dark);
+  border: 1px solid var(--metal-dark);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.prism-flux .form-group input:focus,
+.prism-flux .form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 10px rgba(153,69,255,0.2);
+}
+
+.prism-flux .form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.prism-flux .submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  border: none;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(153,69,255,0.3);
+}
+
+.prism-flux .submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(153,69,255,0.5);
+}
+
+.prism-flux .footer {
+  padding: 60px 30px 30px;
+  background: var(--primary-black);
+  border-top: 1px solid var(--metal-dark);
+  position: relative;
+}
+
+.prism-flux .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.prism-flux .footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.prism-flux .footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.prism-flux .footer-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.prism-flux .footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.prism-flux .social-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--carbon-medium);
+  border: 1px solid var(--metal-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.prism-flux .social-icon:hover {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  border-color: var(--accent-purple);
+  color: var(--text-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(153,69,255,0.3);
+}
+
+.prism-flux .footer-section h4 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.prism-flux .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prism-flux .footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.prism-flux .footer-links a:hover {
+  color: var(--accent-purple);
+  padding-left: 10px;
+}
+
+.prism-flux .footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid var(--metal-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.prism-flux .copyright {
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.prism-flux .footer-credits a {
+  color: var(--accent-purple);
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .prism-flux .carousel-item { width: 300px; height: 420px; }
+  .prism-flux .contact-container { grid-template-columns: 1fr; }
+  .prism-flux .footer-content { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Секция проектов в стиле Prism */
+.prism-flux #projects .section-title {
+  font-size: 48px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+.prism-flux .project-card {
+  background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+  border: 1px solid var(--metal-dark);
+  color: var(--text-primary);
+}
+.prism-flux .project-card:hover {
+  border-color: var(--accent-purple);
+  box-shadow: 0 15px 35px rgba(153,69,255,0.2);
+}
+.prism-flux .project-title { color: var(--text-primary); }
+.prism-flux .project-description { color: var(--text-secondary); }
+.prism-flux .tech-tag {
+  background: rgba(153,69,255,0.1);
+  border: 1px solid var(--accent-purple);
+  color: var(--accent-purple);
+}
+.prism-flux .project-link.live-link { background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); color: var(--text-primary); }
+.prism-flux .project-link.repo-link { background: var(--carbon-medium); border-color: var(--metal-dark); color: var(--text-primary); }
+
+.prism-flux .section {
+  padding: 80px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Блоки с fade-in-up без ScrollAnimations — показываем сразу */
+.prism-flux .fade-in-up,
+.prism-flux .fade-in-left,
+.prism-flux .fade-in-right,
+.prism-flux .scale-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Отзывы и FAQ в тёмной теме: читаемый текст и карточки */
+.prism-flux #testimonials .section-title,
+.prism-flux #faq .section-title {
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.prism-flux #testimonials .testimonial-card {
+  background: var(--carbon-medium) !important;
+  border-color: var(--metal-dark) !important;
+  color: var(--text-primary);
+}
+.prism-flux #testimonials .testimonial-card p,
+.prism-flux #testimonials .testimonial-card strong,
+.prism-flux #testimonials .testimonial-card span {
+  color: var(--text-primary) !important;
+}
+.prism-flux #testimonials .testimonial-card span {
+  color: var(--text-secondary) !important;
+}
+.prism-flux #faq button {
+  color: var(--text-primary) !important;
+}
+.prism-flux #faq [role="region"] p,
+.prism-flux #faq p {
+  color: var(--text-secondary) !important;
+}
+.prism-flux #faq [style*="border-bottom"] {
+  border-bottom-color: var(--metal-dark) !important;
+}
+.prism-flux .job-card {
+  background: linear-gradient(135deg, rgba(42,42,42,0.5), rgba(26,26,26,0.8));
+  border: 1px solid var(--metal-dark);
+  color: var(--text-primary);
+  border-left-color: var(--accent-purple);
+}
+.prism-flux .job-card:hover {
+  border-color: var(--accent-purple);
+  box-shadow: 0 15px 35px rgba(153,69,255,0.2);
+}
+.prism-flux .job-card h3,
+.prism-flux .job-card p,
+.prism-flux .job-card b { color: var(--text-primary); }
+.prism-flux .job-card p { color: var(--text-secondary); }
+
+@media (max-width: 768px) {
+  .prism-flux .menu-toggle { display: flex; }
+  .prism-flux .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 44px;
+    flex-direction: column;
+    background: rgba(18,18,18,0.98);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--metal-dark);
+    gap: 0;
+  }
+  .prism-flux .nav-menu.active { left: 0; }
+  .prism-flux .carousel-item { width: 260px; height: 380px; }
+  .prism-flux .card-image { height: 100px; margin-bottom: 10px; }
+  .prism-flux .carousel-item .card { padding: 14px; }
+  .prism-flux .carousel-item .card-number { font-size: 36px; top: 10px; right: 14px; }
+  .prism-flux .philosophy-headline { font-size: 36px; }
+  .prism-flux .section-title { font-size: 32px; }
+  .prism-flux .stats-grid { grid-template-columns: 1fr; }
+  .prism-flux .skill-hexagon { width: 150px; height: 170px; margin: 20px 5px; }
+  .prism-flux .footer-content { grid-template-columns: 1fr; text-align: center; }
+  .prism-flux .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+}

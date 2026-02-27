@@ -1101,7 +1101,7 @@ function ChatWidgetInner() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="chat-widget-trigger fixed bottom-6 right-6 z-50 bg-white dark:bg-[#2A2A2A] rounded-full p-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center w-14 h-14 border-2 border-[var(--accent-purple)] hover:border-[var(--accent-purple-light)]"
+          className="chat-widget-trigger fixed bottom-6 right-6 z-50 bg-white dark:bg-[#2A2A2A] rounded-full p-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center w-14 h-14 border-2 border-(--accent-purple) hover:border-(--accent-purple-light)"
           aria-label="Открыть помощника"
         >
           <Image
@@ -1118,7 +1118,7 @@ function ChatWidgetInner() {
       {isOpen && (
         <div className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] bg-white dark:bg-[#2A2A2A] rounded-2xl shadow-2xl flex flex-col h-[600px] max-h-[calc(100vh-8rem)] border border-gray-200 dark:border-[#404040]">
           {/* Заголовок */}
-          <div className="bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-purple-light)] text-white p-4 rounded-t-2xl flex items-center justify-between gap-2">
+          <div className="bg-linear-to-r from-(--accent-purple) to-(--accent-purple-light) text-white p-4 rounded-t-2xl flex items-center justify-between gap-2">
             <div className="flex items-center gap-3 min-w-0 flex-1">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden shrink-0">
                 <Image src="/assets/favicon.svg" alt="" className="w-7 h-7" width={28} height={28} />
@@ -1160,10 +1160,10 @@ function ChatWidgetInner() {
                   className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                     message.sender === 'user'
                       ? 'bg-accent-purple text-white rounded-br-sm'
-                      : 'bg-white dark:bg-[#2A2A2A] text-gray-800 dark:text-[#F5F5F5] rounded-bl-sm shadow-sm border border-gray-200 dark:border-[#404040]'
+                      : 'bg-white dark:bg-[#2A2A2A] text-gray-800 dark:text-[#F5F5F5] rounded-bl-sm shadow-xs border border-gray-200 dark:border-[#404040]'
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap break-words">{message.text}</p>
+                  <p className="text-sm whitespace-pre-wrap wrap-break-word">{message.text}</p>
                   <p
                     className={`text-xs mt-1 ${
                       message.sender === 'user' ? 'text-white/70' : 'text-gray-500 dark:text-[#B0B0B0]'
@@ -1180,7 +1180,7 @@ function ChatWidgetInner() {
 
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-white dark:bg-[#2A2A2A] text-gray-800 dark:text-[#F5F5F5] rounded-2xl rounded-bl-sm shadow-sm border border-gray-200 dark:border-[#404040] px-4 py-2">
+                <div className="bg-white dark:bg-[#2A2A2A] text-gray-800 dark:text-[#F5F5F5] rounded-2xl rounded-bl-sm shadow-xs border border-gray-200 dark:border-[#404040] px-4 py-2">
                   <div className="flex gap-1">
                     <span className="w-2 h-2 bg-gray-400 dark:bg-[#666666] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
                     <span className="w-2 h-2 bg-gray-400 dark:bg-[#666666] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
@@ -1202,7 +1202,7 @@ function ChatWidgetInner() {
                     key={quickReply}
                     onClick={() => handleSendMessage(quickReply)}
                     type="button"
-                    className="text-xs px-3 py-1.5 bg-gray-100 dark:bg-[#333333] hover:bg-[var(--accent-purple)] hover:text-white dark:hover:bg-[var(--accent-purple)] text-gray-700 dark:text-[#F5F5F5] rounded-full transition-colors"
+                    className="text-xs px-3 py-1.5 bg-gray-100 dark:bg-text-main hover:bg-(--accent-purple) hover:text-white dark:hover:bg-(--accent-purple) text-gray-700 dark:text-[#F5F5F5] rounded-full transition-colors"
                   >
                     {quickReply}
                   </button>
@@ -1212,7 +1212,7 @@ function ChatWidgetInner() {
                 href="https://t.me/kosmosega"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-[var(--accent-purple)] hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs text-(--accent-purple) hover:underline"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
@@ -1232,7 +1232,7 @@ function ChatWidgetInner() {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Напишите сообщение..."
-                className="flex-1 px-4 py-2 border border-gray-300 dark:border-[#404040] dark:bg-[#1A1A1A] dark:text-[#F5F5F5] rounded-full focus:outline-none focus:ring-2 focus:ring-accent-purple focus:border-transparent"
+                className="flex-1 px-4 py-2 border border-gray-300 dark:border-[#404040] dark:bg-[#1A1A1A] dark:text-[#F5F5F5] rounded-full focus:outline-hidden focus:ring-2 focus:ring-accent-purple focus:border-transparent"
               />
               <button
                 onClick={() => handleSendMessage()}

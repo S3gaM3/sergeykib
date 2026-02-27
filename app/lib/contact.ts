@@ -1,28 +1,28 @@
 /**
- * Contact info — декодируется только в браузере для защиты от скрапинга.
- * base64, не хранит данные в открытом виде в HTML.
+ * Contact info — base64, не хранит данные в открытом виде в bundle.
+ * Декодируется на сервере и клиенте одинаково, чтобы избежать hydration mismatch.
  */
 const B64 = {
   e: 'a2liYWxuaWtzZXJnQHlhbmRleC5ydQ==', // mail
   p: 'Nzk4NTI2ODk3ODc=',                   // tel (79852689787)
 }
 
-export function getEmail(): string {
-  if (typeof window === 'undefined') return ''
+function decode(str: string): string {
   try {
-    return atob(B64.e)
+    if (typeof atob !== 'undefined') return atob(str)
+    return Buffer.from(str, 'base64').toString('utf-8')
   } catch {
     return ''
   }
 }
 
+export function getEmail(): string {
+  return decode(B64.e)
+}
+
 export function getTel(): string {
-  if (typeof window === 'undefined') return ''
-  try {
-    return '+' + atob(B64.p)
-  } catch {
-    return ''
-  }
+  const t = decode(B64.p)
+  return t ? '+' + t : ''
 }
 
 export function getMailto(): string {

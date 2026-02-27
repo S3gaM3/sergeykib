@@ -69,14 +69,13 @@ export default function Navigation() {
         <Link href="/" className="nav-logo" aria-label="На главную">
           Сергей Кибальник
         </Link>
-        <ul className="nav-menu" role="menubar">
+        <ul className="nav-menu">
           {navItems.map((item) => (
-            <li key={item.id} role="none">
+            <li key={item.id}>
               <a
                 href={`#${item.id}`}
                 onClick={(e) => scrollToSection(e, item.id)}
                 className={activeSection === item.id ? 'active' : ''}
-                role="menuitem"
                 aria-label={`Перейти к разделу ${item.label}`}
               >
                 {item.label}

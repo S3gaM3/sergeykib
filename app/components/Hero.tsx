@@ -90,6 +90,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn"
+              aria-label="Скачать резюме (PDF)"
               style={{
                 background: '#fff',
                 color: '#000',

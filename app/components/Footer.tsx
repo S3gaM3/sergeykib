@@ -7,22 +7,17 @@ export default function Footer() {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
 
   useEffect(() => {
-    // Обновляем год при монтировании компонента
-    setCurrentYear(new Date().getFullYear())
-    
-    // Обновляем год каждый раз при изменении (на случай, если страница открыта в новогоднюю ночь)
+    let lastYear = new Date().getFullYear()
     const updateYear = () => {
       const newYear = new Date().getFullYear()
-      if (newYear !== currentYear) {
+      if (newYear !== lastYear) {
+        lastYear = newYear
         setCurrentYear(newYear)
       }
     }
-    
-    // Проверяем год каждую минуту
     const interval = setInterval(updateYear, 60000)
-    
     return () => clearInterval(interval)
-  }, [currentYear])
+  }, [])
 
   return (
     <footer className="site-footer" role="contentinfo">

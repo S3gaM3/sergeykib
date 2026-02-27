@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import SmoothScroll from './components/SmoothScroll'
 import ChatWidget from './components/ChatWidget'
 import './globals.css'
@@ -88,7 +88,16 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   verification: {
     google: 'google-site-verification-code', // Замените на ваш код при настройке Google Search Console
+    yandex: '6c3da113c5f70d25',
   },
+}
+
+export const viewport: Viewport = {
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FFFFFF' },
+    { media: '(prefers-color-scheme: dark)', color: '#1A1A1A' },
+  ],
 }
 
 export default function RootLayout({

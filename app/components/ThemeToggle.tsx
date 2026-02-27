@@ -6,17 +6,6 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-    // Проверяем сохранённую тему или системные настройки
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
-    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light')
-    setTheme(initialTheme)
-    applyTheme(initialTheme)
-  }, [])
-
   const applyTheme = (newTheme: 'light' | 'dark') => {
     document.documentElement.setAttribute('data-theme', newTheme)
     if (newTheme === 'dark') {
@@ -26,6 +15,17 @@ export default function ThemeToggle() {
     }
     localStorage.setItem('theme', newTheme)
   }
+
+  useEffect(() => {
+    queueMicrotask(() => {
+      setMounted(true)
+      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light')
+      setTheme(initialTheme)
+      applyTheme(initialTheme)
+    })
+  }, [])
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'

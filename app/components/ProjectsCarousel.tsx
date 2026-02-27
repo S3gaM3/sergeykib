@@ -37,6 +37,7 @@ function ProjectCard({ project }: { project: Project }) {
             rel="noopener noreferrer"
             className="project-link live-link"
             title="Live Demo"
+            aria-label="Открыть демо проекта"
           >
             🌐
           </a>
@@ -46,6 +47,7 @@ function ProjectCard({ project }: { project: Project }) {
             rel="noopener noreferrer"
             className="project-link repo-link"
             title="GitHub Repository"
+            aria-label="Репозиторий на GitHub"
           >
             &lt;/&gt;
           </a>
