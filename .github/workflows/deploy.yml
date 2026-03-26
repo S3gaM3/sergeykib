@@ -43,6 +43,7 @@ jobs:
 
       - name: Copy CNAME and create .nojekyll
         run: |
+          mkdir -p out
           if [ -f CNAME ]; then
             cp CNAME out/CNAME
             echo "✅ CNAME файл скопирован в out/"
