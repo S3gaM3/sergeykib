@@ -1,34 +1,91 @@
-## Портфолио Сергея Кибальника — коммерческий личный сайт
+# Magic Portfolio
 
-Этот репозиторий содержит исходный код **личного коммерческого сайта‑портфолио** веб‑разработчика Сергея Кибальника на домене `https://segak.ru/`.
+Magic Portfolio is a simple, clean, beginner-friendly portfolio template. It supports an MDX-based content system for projects and blog posts, an about / CV page and a gallery.
 
-Сайт используется для:
-- презентации навыков и технологического стека;
-- демонстрации реальных коммерческих и учебных проектов;
-- получения коммерческих предложений и заявок на разработку;
-- прямой коммуникации с потенциальными заказчиками и работодателями.
+View the demo [here](https://demo.magic-portfolio.com).
 
-## Технологии
+![Magic Portfolio](public/images/og/home.jpg)
 
-- Next.js (App Router)
-- TypeScript
-- React
-- Tailwind CSS / кастомные стили
-- PWA (манифест, Service Worker)
-- Интеграция систем веб‑аналитики
+## Getting started
 
-## Основные разделы сайта
+**1. Clone the repository**
+```
+git clone https://github.com/once-ui-system/magic-portfolio.git
+```
 
-- `/` — главная страница портфолио (о себе, навыки, проекты, сертификаты, CTA для связи)
+**2. Install dependencies**
+```
+npm install
+```
 
-## SEO и аналитика
+**3. Run dev server**
+```
+npm run dev
+```
 
-- Настроены метаданные (`title`, `description`, `keywords`)
-- Open Graph и Twitter Card для корректного отображения в соцсетях
-- JSON‑LD разметка (`Person`, `WebSite`, `BreadcrumbList`)
-- `sitemap.xml` и `robots.txt` для домена `segak.ru`
-- Цели в Яндекс.Метрике (клики по контактам, переходы на портфолио, GitHub и т.д.)
+**4. Edit config**
+```
+src/resources/once-ui.config.js
+```
 
-## Контакты
+**5. Edit content**
+```
+src/resources/content.js
+```
 
-Контактная информация и ссылки на внешние профили намеренно не размещаются в этом репозитории.
+**6. Create blog posts / projects**
+```
+Add a new .mdx file to src/app/blog/posts or src/app/work/projects
+```
+
+Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+
+## Documentation
+
+Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfolio/quick-start)
+
+## Features
+
+### Once UI
+- All tokens, components & features of [Once UI](https://once-ui.com)
+
+### SEO
+- Automatic open-graph and X image generation with next/og
+- Automatic schema and metadata generation based on the content file
+
+### Design
+- Responsive layout optimized for all screen sizes
+- Timeless design without heavy animations and motion
+- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+
+### Content
+- Render sections conditionally based on the content file
+- Enable or disable pages for blog, work, gallery and about / CV
+- Generate and display social links automatically
+- Set up password protection for URLs
+
+### Localization
+- A localized, earlier version of Magic Portfolio is available with the next-intl library
+- To use localization, switch to the 'i18n' branch
+
+## Creators
+
+Lorant One: [Threads](https://www.threads.net/@lorant.one) / [LinkedIn](https://www.linkedin.com/in/lorant-one/)
+
+## Get involved
+
+- Join the Design Engineers Club on [Discord](https://discord.com/invite/5EyAQ4eNdS) and share your project with us!
+- Deployed your docs? Share it on the [Once UI Hub](https://once-ui.com/hub) too! We feature our favorite apps on our landing page.
+
+## License
+
+Distributed under the CC BY-NC 4.0 License.
+- Attribution is required.
+- Commercial usage is not allowed.
+- You can extend the license to [Dopler CC](https://dopler.app/license) by purchasing a [Once UI Pro](https://once-ui.com/pricing) license.
+
+See `LICENSE.txt` for more information.
+
+## Deploy with Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&project-name=portfolio&repository-name=portfolio&redirect-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&demo-title=Magic%20Portfolio&demo-description=Showcase%20your%20designers%20or%20developer%20portfolio&demo-url=https%3A%2F%2Fdemo.magic-portfolio.com&demo-image=%2F%2Fraw.githubusercontent.com%2Fonce-ui-system%2Fmagic-portfolio%2Fmain%2Fpublic%2Fimages%2Fog%2Fhome.jpg)
