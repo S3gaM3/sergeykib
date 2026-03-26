@@ -20,23 +20,30 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [authApiUnavailable, setAuthApiUnavailable] = useState(false);
 
+  const normalizePathname = (value: string | null): string => {
+    if (!value) return "/";
+    if (value === "/") return "/";
+    return value.endsWith("/") ? value.slice(0, -1) : value;
+  };
+
   useEffect(() => {
     const performChecks = async () => {
       setLoading(true);
       setIsRouteEnabled(false);
       setIsPasswordRequired(false);
       setIsAuthenticated(false);
+      const normalizedPathname = normalizePathname(pathname);
 
       const checkRouteEnabled = () => {
-        if (!pathname) return false;
+        if (!normalizedPathname) return false;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        if (normalizedPathname in routes) {
+          return routes[normalizedPathname as keyof typeof routes];
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (normalizedPathname.startsWith(route) && routes[route]) {
             return true;
           }
         }
@@ -47,7 +54,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const routeEnabled = checkRouteEnabled();
       setIsRouteEnabled(routeEnabled);
 
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
+      if (protectedRoutes[normalizedPathname as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
 
         try {
