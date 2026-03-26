@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { routes, protectedRoutes } from "@/resources";
 import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
@@ -17,7 +17,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [authApiUnavailable, setAuthApiUnavailable] = useState(false);
 
   const normalizePathname = (value: string | null): string => {
@@ -26,58 +26,63 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     return value.endsWith("/") ? value.slice(0, -1) : value;
   };
 
+  const normalizedPathname = useMemo(() => normalizePathname(pathname), [pathname]);
+
   useEffect(() => {
-    const performChecks = async () => {
-      setLoading(true);
-      setIsRouteEnabled(false);
-      setIsPasswordRequired(false);
-      setIsAuthenticated(false);
-      const normalizedPathname = normalizePathname(pathname);
+    const checkRouteEnabled = () => {
+      if (!normalizedPathname) return false;
 
-      const checkRouteEnabled = () => {
-        if (!normalizedPathname) return false;
+      if (normalizedPathname in routes) {
+        return routes[normalizedPathname as keyof typeof routes];
+      }
 
-        if (normalizedPathname in routes) {
-          return routes[normalizedPathname as keyof typeof routes];
-        }
-
-        const dynamicRoutes = ["/blog", "/work"] as const;
-        for (const route of dynamicRoutes) {
-          if (normalizedPathname.startsWith(route) && routes[route]) {
-            return true;
-          }
-        }
-
-        return false;
-      };
-
-      const routeEnabled = checkRouteEnabled();
-      setIsRouteEnabled(routeEnabled);
-
-      if (protectedRoutes[normalizedPathname as keyof typeof protectedRoutes]) {
-        setIsPasswordRequired(true);
-
-        try {
-          const response = await fetch("/api/check-auth");
-
-          if (response.ok) {
-            setIsAuthenticated(true);
-          } else if (response.status === 404) {
-            // Static export deployments do not support app/api routes.
-            setAuthApiUnavailable(true);
-            setIsPasswordRequired(false);
-          }
-        } catch {
-          setAuthApiUnavailable(true);
-          setIsPasswordRequired(false);
+      const dynamicRoutes = ["/blog", "/work"] as const;
+      for (const route of dynamicRoutes) {
+        if (normalizedPathname.startsWith(route) && routes[route]) {
+          return true;
         }
       }
 
-      setLoading(false);
+      return false;
     };
 
-    performChecks();
-  }, [pathname]);
+    setIsRouteEnabled(checkRouteEnabled());
+    setIsPasswordRequired(
+      Boolean(protectedRoutes[normalizedPathname as keyof typeof protectedRoutes]),
+    );
+    setAuthApiUnavailable(false);
+    setError(undefined);
+  }, [normalizedPathname]);
+
+  useEffect(() => {
+    if (!isPasswordRequired) {
+      return;
+    }
+
+    const checkAuth = async () => {
+      setLoading(true);
+      setIsAuthenticated(false);
+
+      try {
+        const response = await fetch("/api/check-auth");
+
+        if (response.ok) {
+          setIsAuthenticated(true);
+        } else if (response.status === 404) {
+          // Static export deployments do not support app/api routes.
+          setAuthApiUnavailable(true);
+          setIsPasswordRequired(false);
+        }
+      } catch {
+        setAuthApiUnavailable(true);
+        setIsPasswordRequired(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, [isPasswordRequired]);
 
   const handlePasswordSubmit = async () => {
     if (authApiUnavailable) {
