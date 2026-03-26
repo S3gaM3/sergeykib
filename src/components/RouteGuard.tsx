@@ -18,6 +18,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+  const [authApiUnavailable, setAuthApiUnavailable] = useState(false);
 
   useEffect(() => {
     const performChecks = async () => {
@@ -49,9 +50,19 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
 
-        const response = await fetch("/api/check-auth");
-        if (response.ok) {
-          setIsAuthenticated(true);
+        try {
+          const response = await fetch("/api/check-auth");
+
+          if (response.ok) {
+            setIsAuthenticated(true);
+          } else if (response.status === 404) {
+            // Static export deployments do not support app/api routes.
+            setAuthApiUnavailable(true);
+            setIsPasswordRequired(false);
+          }
+        } catch {
+          setAuthApiUnavailable(true);
+          setIsPasswordRequired(false);
         }
       }
 
@@ -62,6 +73,11 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   }, [pathname]);
 
   const handlePasswordSubmit = async () => {
+    if (authApiUnavailable) {
+      setError("Password protection is unavailable in static deployment");
+      return;
+    }
+
     const response = await fetch("/api/authenticate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
