@@ -1,0 +1,44 @@
+.card {
+  width: 100%;
+}
+
+.contentRow {
+  align-items: stretch;
+}
+
+.titleWrap {
+  align-items: flex-start;
+  min-height: 5.75rem;
+}
+
+.details {
+  min-height: 5.75rem;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.description {
+  min-height: 2.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.actions {
+  margin-top: auto;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .titleWrap,
+  .details,
+  .description {
+    min-height: 0;
+  }
+}

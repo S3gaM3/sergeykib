@@ -103,9 +103,8 @@ export default function Home() {
         </Column>
       </Column>
       <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+        <Projects range={[1, 3]} />
       </RevealFx>
-      <Projects range={[2, 3]} />
       <Row fillWidth horizontal="center" marginBottom="24">
         <Button href="/work" variant="secondary" size="m" arrowIcon>
           Все проекты
