@@ -1,15 +1,15 @@
 ---
-title: "Using custom components in markdown"
+title: "Компоненты в MDX"
 publishedAt: "2025-04-20"
-summary: "Every career is a journey, filled with challenges, growth, and those significant moments that mark a shift in our path."
-tag: "Magic Portfolio"
+summary: "Примеры Once UI в теле поста: Feedback, Table, Code и прочее."
+tag: "Документация"
 ---
 
-Magic Portfolio will replace some default HTML elements to Once UI components to integrate better in the design and add additional functionality. Furthermore, many common Once UI components are already imported and available for use.
+HTML-теги из MDX частично маппятся на&nbsp;компоненты Once UI (см. `src/components/mdx.tsx`). Ниже — живые примеры; подписи к&nbsp;коду на&nbsp;английском сохранены там, где идут внутри демо.
 
-## Feedback
+## Обратная связь (Feedback)
 
-The feedback component is used to display critical information to visitors.
+Блок заметки / предупреждения / успеха.
 
 <Column fillWidth gap="-1" marginBottom="16" marginTop="8">
 <CodeBlock
@@ -32,11 +32,11 @@ The feedback component is used to display critical information to visitors.
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/feedback" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/feedback" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Table
+## Таблица
 
 Tables are used to display data in a structured format.
 
@@ -84,17 +84,17 @@ Tables are used to display data in a structured format.
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/table" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/table" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Code
+## Код
 
-Use the CodeBlock component to display code snippets with code highlighting, preview, and copy to clipboard functionality. Use the InlineCode component for inline code snippets.
+`CodeBlock` — подсветка, превью, копирование. `InlineCode` — внутри строки.
 
 ### CodeBlock
 
-The code block component works based on Once UI's CodeBlock. You can access it with the complete syntax for full customization, or by using the standard markdown syntax (triple backticks) with pre-configured props.
+Полный синтаксис Once UI или обычные тройные backticks в MDX (см. `mdx.tsx`).
 
 <Column fillWidth gap="-1" marginBottom="16" marginTop="8">
 <CodeBlock
@@ -128,7 +128,7 @@ console.log(greeting('World'));
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/codeBlock" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/codeBlock" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
@@ -161,11 +161,11 @@ The `InlineCode` is another Once UI component that you can access either through
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/inlineCode" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/inlineCode" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Accordion
+## Аккордеон
 
 Accordions are used to toggle between hiding and showing content.
 
@@ -216,11 +216,11 @@ Accordions are used to toggle between hiding and showing content.
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/accordion" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/accordion" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Button
+## Кнопка
 
 Buttons are used to trigger actions or navigate to other pages.
 
@@ -249,11 +249,11 @@ Buttons are used to trigger actions or navigate to other pages.
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/button" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/button" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Card
+## Карточка
 
 Cards are used to group related content and actions.
 
@@ -309,11 +309,11 @@ Cards are used to group related content and actions.
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/card" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/card" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Icon
+## Иконка
 
 Icons are used to visually represent actions, objects, or concepts. For instructions on importing new icons, head over to [the Once UI documentation](https://once-ui.com/docs/icons).
 
@@ -347,11 +347,11 @@ Icons are used to visually represent actions, objects, or concepts. For instruct
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/icon" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/icon" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Layout
+## Сетка (Row, Column)
 
 Layout components help structure content on the page.
 
@@ -418,7 +418,7 @@ The Flex component is accessible as `Column` and `Row` and can handle a wide ran
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/flex" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/flex" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
@@ -491,11 +491,11 @@ Use the grid to construct responsive grid layouts. It can be styled similarly to
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/grid" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/grid" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Media
+## Медиа
 
 Media provides an optimized way to display images. Access it with the `Media` component for full customization or use the markdown syntax.
 
@@ -521,7 +521,7 @@ Media provides an optimized way to display images. Access it with the `Media` co
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/Media" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/Media" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
@@ -548,11 +548,11 @@ You can also use it to embed YouTube videos.
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/Media" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/Media" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Link
+## Ссылка
 
 SmartLink provides an enhanced way to link to internal and external resources. You can access it with the `SmartLink` component for full customization or with the standard markdown syntax.
 
@@ -575,11 +575,11 @@ SmartLink provides an enhanced way to link to internal and external resources. Y
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/smart-link" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/smart-link" weight="default" label="Документация Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
-## Custom components
+## Свои компоненты
 
 Since Magic Portfolio is based on Once UI, you can use all the components provided by Once UI in the `.mdx` files, but you need to import them first in the `src/product/mdx.tsx` file and pass it to the `components` object.
 

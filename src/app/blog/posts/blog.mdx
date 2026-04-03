@@ -1,17 +1,17 @@
 ---
-title: "Create, edit and delete blog posts"
-summary: "Create, edit and delete posts in the blog section of your Magic Portfolio."
+title: "Блог: создание и правка постов"
+summary: "Файлы *.mdx в src/app/blog/posts; метаданные в frontmatter."
 publishedAt: "2025-03-17"
-tag: "Magic Portfolio"
+tag: "Документация"
 ---
 
-## Manage posts
+## Файлы постов
 
-You can create, edit and delete posts by adding, modifying or removing `*.mdx` files in the `src/app/blog/posts` directory.
+Создание, правка и удаление: добавляйте или убирайте `*.mdx` в `src/app/blog/posts`.
 
 ## Frontmatter
 
-The frontmatter is used to set the post's metadata: title, description, image, and tags. It's used in the post's page and in meta- and open graph tags.
+Блок `---` в начале файла задаёт title, summary, image, дату и теги для страницы поста и для meta/OG.
 
 <CodeBlock
     marginBottom="16"
@@ -19,11 +19,11 @@ The frontmatter is used to set the post's metadata: title, description, image, a
       {
         code:
 `---
-title: "Arriving to a new milestone in my career"
+title: "Заголовок поста"
 publishedAt: "2024-04-08"
 image: "/images/gallery/img-02.jpg"
-summary: "Every career is a journey, filled with challenges, growth, and those significant moments that mark a shift in our path."
-tag: "Journal"
+summary: "Краткое описание для списка и соцсетей."
+tag: "Тег"
 ---`,
         language: "tsx",
         label: "src/app/blog/posts/post-1.mdx"
@@ -31,13 +31,13 @@ tag: "Journal"
     ]}
 />
 
-## MDX syntax
+## Синтаксис MDX
 
-You can use MDX to write the content of your posts. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
+Контент поста — MDX. Часть элементов подменяется компонентами Once UI через `src/components/mdx.tsx`.
 
-## Custom components
+## Свои компоненты
 
-You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.
+Новые теги MDX: импорт в `src/components/mdx.tsx` и запись в объект `components`.
 
 <CodeBlock
     marginBottom="16"
@@ -64,8 +64,8 @@ You can use custom components in MDX files, but you need to import them first in
     ]}
 />
 
-As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+`Table` и `CodeBlock` уже подключены; остальное — по тому же принципу.
 
-## Hot reload
+## Перезагрузка
 
-Hot reload of MDX files is currently not supported, but we're working on it.
+Горячая перезагрузка MDX в dev может отсутствовать; при правках — обновление страницы вручную.

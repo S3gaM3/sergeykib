@@ -7,7 +7,8 @@
     "build": "next build",
     "biome-write": "npx @biomejs/biome format --write .",
     "start": "next start",
-    "lint": "node -e \"console.log('Lint skipped in CI: use npm run build for strict validation on this stack')\""
+    "lint": "biome check src",
+    "lint:fix": "biome check --write src"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

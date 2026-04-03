@@ -5,17 +5,17 @@ import "@/resources/custom.css";
 import classNames from "classnames";
 import Script from "next/script";
 
+import { Footer, Header, Providers } from "@/components";
+import { baseURL, dataStyle, effects, fonts, home, style } from "@/resources";
 import {
   Background,
   Column,
   Flex,
   Meta,
-  opacity,
   RevealFx,
-  SpacingToken,
+  type SpacingToken,
+  type opacity,
 } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -31,6 +31,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+  const manifestHref = `${basePath}/manifest.json` || "/manifest.json";
+
   return (
     <Flex
       suppressHydrationWarning
@@ -46,7 +49,7 @@ export default async function RootLayout({
     >
       <head>
         <meta name="yandex-verification" content="6c3da113c5f70d25" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href={manifestHref} />
         <Script
           id="theme-init"
           strategy="beforeInteractive"
@@ -162,7 +165,7 @@ export default async function RootLayout({
           <Header />
           <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
-              <RouteGuard>{children}</RouteGuard>
+              {children}
             </Flex>
           </Flex>
           <Footer />

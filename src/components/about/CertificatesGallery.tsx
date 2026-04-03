@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 type CertificateImage = {
   src: string;
@@ -42,7 +42,7 @@ export default function CertificatesGallery({ images }: CertificatesGalleryProps
             key={`${image.src}-${index}`}
             type="button"
             onClick={() => setActiveIndex(index)}
-            aria-label={`Открыть сертификат: ${image.alt}`}
+            aria-label={`Открыть\u00a0сертификат: ${image.alt}`}
             style={{
               width: "180px",
               height: "135px",
@@ -98,7 +98,13 @@ export default function CertificatesGallery({ images }: CertificatesGalleryProps
               width={1600}
               height={1200}
               priority
-              style={{ maxWidth: "92vw", maxHeight: "88vh", width: "auto", height: "auto", objectFit: "contain" }}
+              style={{
+                maxWidth: "92vw",
+                maxHeight: "88vh",
+                width: "auto",
+                height: "auto",
+                objectFit: "contain",
+              }}
             />
           </div>
         </div>

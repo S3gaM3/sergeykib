@@ -36,13 +36,13 @@ jobs:
 
       - name: Run linter
         run: npm run lint
-        continue-on-error: true
 
       - name: Build project
         run: npm run build
         env:
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
+          NEXT_PUBLIC_BASE_PATH: ""
 
       - name: Copy CNAME and create .nojekyll
         run: |

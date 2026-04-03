@@ -1,18 +1,20 @@
+import LeadCta from "@/components/LeadCta";
+import { Projects } from "@/components/work/Projects";
+import { about, baseURL, home, person, routes } from "@/resources";
+import { toAbsoluteUrl } from "@/utils/absoluteUrl";
 import {
-  Heading,
-  Text,
-  Button,
   Avatar,
-  RevealFx,
-  Column,
   Badge,
+  Button,
+  Column,
+  Heading,
+  Meta,
+  RevealFx,
   Row,
   Schema,
-  Meta,
+  Text,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL } from "@/resources";
-import { Projects } from "@/components/work/Projects";
-import LeadCta from "@/components/LeadCta";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -24,6 +26,10 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
+  if (!routes["/"]) {
+    notFound();
+  }
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
@@ -32,7 +38,7 @@ export default function Home() {
         path={home.path}
         title={home.title}
         description={home.description}
-        image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
+        image={toAbsoluteUrl(baseURL, home.image)}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -107,7 +113,7 @@ export default function Home() {
       </RevealFx>
       <Row fillWidth horizontal="center" marginBottom="24">
         <Button href="/work" variant="secondary" size="m" arrowIcon>
-          Все проекты
+          Все&nbsp;проекты
         </Button>
       </Row>
       <LeadCta />

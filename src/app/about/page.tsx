@@ -1,3 +1,8 @@
+import CertificatesGallery from "@/components/about/CertificatesGallery";
+import TableOfContents from "@/components/about/TableOfContents";
+import styles from "@/components/about/about.module.scss";
+import { about, baseURL, home, person, routes, social } from "@/resources";
+import { toAbsoluteUrl } from "@/utils/absoluteUrl";
 import {
   Button,
   Column,
@@ -5,17 +10,14 @@ import {
   Icon,
   IconButton,
   Media,
+  Meta,
+  Row,
+  Schema,
   Tag,
   Text,
-  Meta,
-  Schema,
-  Row,
 } from "@once-ui-system/core";
 import Image from "next/image";
-import { baseURL, about, person, social } from "@/resources";
-import TableOfContents from "@/components/about/TableOfContents";
-import CertificatesGallery from "@/components/about/CertificatesGallery";
-import styles from "@/components/about/about.module.scss";
+import { notFound } from "next/navigation";
 import React from "react";
 
 export async function generateMetadata() {
@@ -28,6 +30,10 @@ export async function generateMetadata() {
 }
 
 export default function About() {
+  if (!routes["/about"]) {
+    notFound();
+  }
+
   const structure = [
     {
       title: about.intro.title,
@@ -58,7 +64,7 @@ export default function About() {
         title={about.title}
         description={about.description}
         path={about.path}
-        image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
+        image={toAbsoluteUrl(baseURL, about.image ?? home.image)}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -77,7 +83,7 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Row fillWidth s={{ direction: "column"}} horizontal="center">
+      <Row fillWidth s={{ direction: "column" }} horizontal="center">
         {about.avatar.display && (
           <Column
             className={styles.avatar}
@@ -182,34 +188,34 @@ export default function About() {
                 data-border="rounded"
               >
                 {social
-                      .filter((item) => item.essential)
-                      .map(
-                  (item) =>
-                    item.link && (
-                      <React.Fragment key={item.name}>
-                        <Row s={{ hide: true }}>
-                          <Button
-                            key={item.name}
-                            href={item.link}
-                            prefixIcon={item.icon}
-                            label={item.name}
-                            size="s"
-                            weight="default"
-                            variant="secondary"
-                          />
-                        </Row>
-                        <Row hide s={{ hide: false }}>
-                          <IconButton
-                            size="l"
-                            key={`${item.name}-icon`}
-                            href={item.link}
-                            icon={item.icon}
-                            variant="secondary"
-                          />
-                        </Row>
-                      </React.Fragment>
-                    ),
-                )}
+                  .filter((item) => item.essential)
+                  .map(
+                    (item) =>
+                      item.link && (
+                        <React.Fragment key={item.name}>
+                          <Row s={{ hide: true }}>
+                            <Button
+                              key={item.name}
+                              href={item.link}
+                              prefixIcon={item.icon}
+                              label={item.name}
+                              size="s"
+                              weight="default"
+                              variant="secondary"
+                            />
+                          </Row>
+                          <Row hide s={{ hide: false }}>
+                            <IconButton
+                              size="l"
+                              key={`${item.name}-icon`}
+                              href={item.link}
+                              icon={item.icon}
+                              variant="secondary"
+                            />
+                          </Row>
+                        </React.Fragment>
+                      ),
+                  )}
               </Row>
             )}
           </Column>

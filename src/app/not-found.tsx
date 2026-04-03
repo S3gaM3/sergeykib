@@ -7,9 +7,9 @@ export default function NotFound() {
         404
       </Text>
       <Heading marginBottom="l" variant="display-default-xs">
-        Page Not Found
+        Страница не&nbsp;найдена
       </Heading>
-      <Text onBackground="neutral-weak">The page you are looking for does not exist.</Text>
+      <Text onBackground="neutral-weak">Такого адреса на&nbsp;сайте нет или раздел отключён.</Text>
     </Column>
   );
 }

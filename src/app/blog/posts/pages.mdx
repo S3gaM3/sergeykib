@@ -1,38 +1,14 @@
 ---
-title: "Enable or disable pages for your portfolio"
-summary: "Magic Portfolio's RouteGuard component takes care of conditionally rendering pages based on your settings."
+title: "Включение и отключение разделов"
+summary: "Объект routes в once-ui.config.ts и клиентский RouteGuard."
 image: "/images/gallery/horizontal-2.jpg"
 publishedAt: "2025-04-22"
-tag: "Magic Portfolio"
+tag: "Документация"
 ---
 
-## Enable or disable pages
+## Маршруты
 
-Magic Portfolio's `RouteGuard` component takes care of conditionally rendering pages based on the `routes` object in the `resources/config.js` file.
-
-<CodeBlock
-    marginBottom="16"
-    highlight="6"
-    codes={[
-  {
-    code:
-`const routes = {
-    '/':        true,
-    '/about':   true,
-    '/work':    true,
-    '/blog':    true,
-    '/gallery': false,
-};`,
-    language: "tsx",
-    label: "src/app/resources/config.js"
-  }
-]} />
-
-The code above will ensure that the `/gallery` page is not accessible and is not displayed in the navigation.
-
-## Add new pages
-
-When creating a new page, it needs to be added to the `routes` object in the `resources/config.js` file.
+Доступ к страницам и пунктам меню завязан на `routes` в [`src/resources/once-ui.config.ts`](src/resources/once-ui.config.ts). Компонент [`RouteGuard`](src/components/RouteGuard.tsx) не пускает на выключенные пути.
 
 <CodeBlock
     marginBottom="16"
@@ -40,17 +16,41 @@ When creating a new page, it needs to be added to the `routes` object in the `re
     codes={[
   {
     code:
-`const routes = {
-    '/':        true,
-    '/about':   true,
-    '/work':    true,
-    '/blog':    true,
-    '/gallery': false,
-    '/music': true,
+`const routes: RoutesConfig = {
+    "/": true,
+    "/about": true,
+    "/work": true,
+    "/blog": false,
+    "/gallery": false,
 };`,
     language: "tsx",
-    label: "src/app/resources/config.js"
+    label: "src/resources/once-ui.config.ts"
   }
 ]} />
 
-The code above will ensure that the `/music` page is accessible. Users will be able to navigate to it after adding it to the navigation menu in the `components/Header.tsx` file.
+`false` — 404 в оболочке сайта и скрытие кнопки в шапке (если она завязана на `routes`).
+
+## Новый раздел
+
+1. Страница в `src/app/...`.
+2. Ключ в `routes` со значением `true`.
+3. При необходимости — ссылка в [`src/components/Header.tsx`](src/components/Header.tsx).
+
+<CodeBlock
+    marginBottom="16"
+    highlight="6"
+    codes={[
+  {
+    code:
+`const routes: RoutesConfig = {
+    "/": true,
+    "/about": true,
+    "/work": true,
+    "/blog": true,
+    "/gallery": false,
+    "/music": true,
+};`,
+    language: "tsx",
+    label: "src/resources/once-ui.config.ts"
+  }
+]} />

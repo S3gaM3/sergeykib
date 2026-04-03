@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { ellipsis, nbsp } from "@/utils/typographyRu";
 import { Button, Column, Heading, Input, Row, Text, Textarea } from "@once-ui-system/core";
+import { useState } from "react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -30,7 +31,7 @@ export default function LeadCta() {
 
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data?.error || "Не удалось отправить форму");
+        throw new Error(data?.error || `Не${nbsp}удалось отправить форму`);
       }
 
       setState("success");
@@ -40,7 +41,7 @@ export default function LeadCta() {
       setTimeout(() => setState("idle"), 2500);
     } catch (err) {
       setState("error");
-      setError(err instanceof Error ? err.message : "Неизвестная ошибка");
+      setError(err instanceof Error ? err.message : `Неизвестная${nbsp}ошибка`);
       setTimeout(() => {
         setState("idle");
         setError("");
@@ -62,10 +63,11 @@ export default function LeadCta() {
       marginBottom="l"
     >
       <Heading as="h2" variant="display-strong-s">
-        Готовы начать проект?
+        Связь
       </Heading>
       <Text onBackground="neutral-weak">
-        Напишите задачу в форме ниже. Отвечу в ближайшее время и предложу оптимальный план.
+        Сообщение уходит в&nbsp;Telegram через внешний endpoint. Ответ по&nbsp;возможности;
+        не&nbsp;коммерческий контур и&nbsp;не&nbsp;договор.
       </Text>
 
       <form onSubmit={onSubmit}>
@@ -74,7 +76,7 @@ export default function LeadCta() {
             id="lead-name"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="Имя"
+            placeholder={`Как к${nbsp}вам обращаться`}
             required
           />
           <Input
@@ -88,17 +90,15 @@ export default function LeadCta() {
             id="lead-message"
             value={message}
             onChange={(event) => setMessage(event.target.value)}
-            placeholder="Коротко о задаче"
+            placeholder="Текст сообщения"
             rows={5}
             required
           />
           <Row gap="12" vertical="center">
             <Button type="submit" disabled={state === "loading"}>
-              {state === "loading" ? "Отправка..." : "Отправить"}
+              {state === "loading" ? `Отправка${ellipsis}` : "Отправить"}
             </Button>
-            {state === "success" && (
-              <Text onBackground="success-medium">Сообщение отправлено</Text>
-            )}
+            {state === "success" && <Text onBackground="success-medium">Сообщение отправлено</Text>}
             {state === "error" && <Text onBackground="danger-medium">{error}</Text>}
           </Row>
         </Column>

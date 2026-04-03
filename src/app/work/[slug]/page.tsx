@@ -1,25 +1,24 @@
-import { notFound } from "next/navigation";
+import { CustomMDX, ScrollToHash } from "@/components";
+import { about, baseURL, home, person, routes, work } from "@/resources";
+import { ogImagePathFromPostFrontmatter, toAbsoluteUrl } from "@/utils/absoluteUrl";
+import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import {
-  Meta,
-  Schema,
+  Avatar,
   AvatarGroup,
   Button,
   Column,
   Flex,
   Heading,
   Media,
-  Text,
-  SmartLink,
+  Meta,
   Row,
-  Avatar,
-  Line,
+  Schema,
+  SmartLink,
+  Text,
 } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
-import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
-import { Metadata } from "next";
-import { Projects } from "@/components/work/Projects";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -39,7 +38,7 @@ export async function generateMetadata({
     : routeParams.slug || "";
 
   const posts = getPosts(["src", "app", "work", "projects"]);
-  let post = posts.find((post) => post.slug === slugPath);
+  const post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
 
@@ -56,12 +55,16 @@ export default async function Project({
 }: {
   params: Promise<{ slug: string | string[] }>;
 }) {
+  if (!routes["/work"]) {
+    notFound();
+  }
+
   const routeParams = await params;
   const slugPath = Array.isArray(routeParams.slug)
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
+  const post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
 
   if (!post) {
     notFound();
@@ -82,9 +85,7 @@ export default async function Project({
         description={post.metadata.summary}
         datePublished={post.metadata.publishedAt}
         dateModified={post.metadata.publishedAt}
-        image={
-          post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
-        }
+        image={toAbsoluteUrl(baseURL, ogImagePathFromPostFrontmatter(post.metadata, home.image))}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -93,7 +94,7 @@ export default async function Project({
       />
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
         <SmartLink href="/work">
-          <Text variant="label-strong-m">Projects</Text>
+          <Text variant="label-strong-m">{work.label}</Text>
         </SmartLink>
         <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
           {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
@@ -118,18 +119,34 @@ export default async function Project({
         </Row>
       </Row>
       {post.metadata.images.length > 0 && (
-        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
+        <Media
+          priority
+          aspectRatio="original"
+          objectFit="contain"
+          fillWidth
+          radius="m"
+          border="neutral-alpha-weak"
+          overflow="hidden"
+          alt={post.metadata.title}
+          src={post.metadata.images[0]}
+          sizes="(max-width: 768px) 100vw, 720px"
+        />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
       </Column>
-      <Column fillWidth gap="40" horizontal="center" marginTop="40">
-        <Line maxWidth="40" />
-        <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
-          Related projects
-        </Heading>
-        <Projects exclude={[post.slug]} range={[2]} />
-      </Column>
+      {post.metadata.link && (
+        <Row fillWidth horizontal="center" marginTop="24">
+          <Button
+            href={post.metadata.link}
+            variant="secondary"
+            size="m"
+            suffixIcon="arrowUpRightFromSquare"
+          >
+            Перейти на сайт
+          </Button>
+        </Row>
+      )}
       <ScrollToHash />
     </Column>
   );

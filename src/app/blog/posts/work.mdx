@@ -1,17 +1,17 @@
 ---
-title: "Create,edit and delete projects"
-summary: "Create, edit and delete projects in the work section of your Magic Portfolio."
+title: "Проекты: файлы MDX"
+summary: "Каталог src/app/work/projects, поля frontmatter для карточек и страниц."
 publishedAt: "2025-04-19"
-tag: "Magic Portfolio"
+tag: "Документация"
 ---
 
-## Manage projects
+## Файлы проектов
 
-You can create, edit and delete projects by adding, modifying or removing `*.mdx` files in the `src/app/work/projects` directory.
+Добавление и удаление: `*.mdx` в `src/app/work/projects`.
 
 ## Frontmatter
 
-The frontmatter is used to set the project's metadata: title, description, image, and tags. It's used in the project's page and in meta- and open graph tags.
+Метаданные для страницы проекта, карточек и OG: title, summary, images, team, link, publishedAt.
 
 <CodeBlock
     marginBottom="16"
@@ -19,18 +19,17 @@ The frontmatter is used to set the project's metadata: title, description, image
       {
         code:
 `---
-title: "Developing a design system for indie creators"
+title: "Название проекта"
 publishedAt: "2025-03-17"
-summary: "Once UI is a design system that empowers indie creators, small teams, and startups to build web applications."
+summary: "Одна строка описания."
 images:
-  - "/images/projects/project-01/cover-02.jpg"
-  - "/images/projects/project-01/image-03.jpg"
+  - "/images/projects/cover.jpg"
 team:
-  - name: "Lorant One"
-    role: "Software Engineer"
+  - name: "Имя"
+    role: "Роль"
     avatar: "/images/avatar.jpg"
-    linkedIn: "https://www.linkedin.com/company/once-ui/"
-link: "https://once-ui.com/"
+    linkedIn: "https://example.com"
+link: "https://example.com"
 ---`,
         language: "tsx",
         label: "src/app/work/projects/project-1.mdx"
@@ -38,13 +37,13 @@ link: "https://once-ui.com/"
     ]}
 />
 
-## MDX syntax
+## Синтаксис MDX
 
-You can use MDX to write the content of your projects. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
+Тело страницы — MDX; отображение через маппинг в `src/components/mdx.tsx`.
 
-## Custom components
+## Свои компоненты
 
-You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.
+Регистрация в `src/components/mdx.tsx`, объект `components`.
 
 <CodeBlock
     marginBottom="16"
@@ -71,8 +70,8 @@ You can use custom components in MDX files, but you need to import them first in
     ]}
 />
 
-As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+`Table` и `CodeBlock` уже в объекте.
 
-## Hot reload
+## Перезагрузка
 
-Hot reload of MDX files is currently not supported, but we're working on it.
+При отсутствии HMR для MDX — ручное обновление страницы.

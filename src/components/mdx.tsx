@@ -1,30 +1,30 @@
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import React, { ReactNode } from "react";
+import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
+import type React from "react";
+import type { ReactNode } from "react";
 import { slugify as transliterate } from "transliteration";
 
 import {
-  Heading,
-  HeadingLink,
-  Text,
-  InlineCode,
-  CodeBlock,
-  TextProps,
-  MediaProps,
   Accordion,
   AccordionGroup,
-  Table,
-  Feedback,
   Button,
   Card,
-  Grid,
-  Row,
+  CodeBlock,
   Column,
+  Feedback,
+  Grid,
+  Heading,
   Icon,
-  Media,
-  SmartLink,
+  InlineCode,
+  Line,
   List,
   ListItem,
-  Line,
+  Media,
+  type MediaProps,
+  Row,
+  SmartLink,
+  Table,
+  Text,
+  type TextProps,
 } from "@once-ui-system/core";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -89,12 +89,14 @@ function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   const CustomHeading = ({
     children,
     ...props
-  }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
+  }: Omit<React.ComponentProps<typeof Heading>, "as">) => {
     const slug = slugify(children as string);
     return (
-      <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
-        {children}
-      </HeadingLink>
+      <Heading marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
+        <a href={`#${slug}`} style={{ color: "inherit", textDecoration: "none" }}>
+          {children}
+        </a>
+      </Heading>
     );
   };
 
@@ -209,5 +211,11 @@ type CustomMDXProps = MDXRemoteProps & {
 };
 
 export function CustomMDX(props: CustomMDXProps) {
-  return <MDXRemote options={{ blockJS: false }} {...props} components={{ ...components, ...(props.components || {}) }} />;
+  return (
+    <MDXRemote
+      options={{ blockJS: false }}
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+    />
+  );
 }

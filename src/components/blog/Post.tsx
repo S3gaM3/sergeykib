@@ -1,16 +1,15 @@
-"use client";
-
-import { Card, Column, Media, Row, Avatar, Text } from "@once-ui-system/core";
-import { formatDate } from "@/utils/formatDate";
 import { person } from "@/resources";
+import { formatDate } from "@/utils/formatDate";
+import { Avatar, Card, Column, Media, Row, Text } from "@once-ui-system/core";
 
 interface PostProps {
   post: any;
   thumbnail: boolean;
   direction?: "row" | "column";
+  priority?: boolean;
 }
 
-export default function Post({ post, thumbnail, direction }: PostProps) {
+export default function Post({ post, thumbnail, direction, priority = false }: PostProps) {
   return (
     <Card
       fillWidth
@@ -27,8 +26,8 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
     >
       {post.metadata.image && thumbnail && (
         <Media
-          priority
-          sizes="(max-width: 768px) 100vw, 640px"
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 520px"
           border="neutral-alpha-weak"
           cursor="interactive"
           radius="l"
@@ -44,20 +43,24 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
               <Avatar
                 src={person.avatar}
                 size="s"
-                style={{ objectFit: "contain", objectPosition: "center", backgroundColor: "var(--neutral-alpha-weak)" }}
+                style={{
+                  objectFit: "contain",
+                  objectPosition: "center",
+                  backgroundColor: "var(--neutral-alpha-weak)",
+                }}
               />
               <Text variant="label-default-s">{person.name}</Text>
             </Row>
             <Text variant="body-default-xs" onBackground="neutral-weak">
-              {formatDate(post.metadata.publishedAt, false)}
+              {post.metadata.publishedAt ? formatDate(post.metadata.publishedAt, false) : ""}
             </Text>
           </Row>
           <Text variant="heading-strong-l" wrap="balance">
             {post.metadata.title}
           </Text>
-          {post.metadata.tag && (
+          {post.metadata.tags?.length > 0 && (
             <Text variant="label-strong-s" onBackground="neutral-weak">
-              {post.metadata.tag}
+              {post.metadata.tags.join(", ")}
             </Text>
           )}
         </Column>

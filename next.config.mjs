@@ -6,8 +6,17 @@ const withMDX = mdx({
 });
 
 /** @type {import('next').NextConfig} */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const assetPrefix = basePath ? `${basePath}/` : undefined;
+
+const normalizedBasePath = basePath === "/" ? "" : basePath.replace(/\/$/, "");
+
 const nextConfig = {
   output: "export",
+  /** Разрешить HMR/dev-ресурсы при открытии с другого хоста в LAN (например http://192.168.1.130:3000) */
+  allowedDevOrigins: ["192.168.1.130"],
+  basePath: normalizedBasePath,
+  assetPrefix,
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   pageExtensions: ["ts", "tsx", "md", "mdx"],

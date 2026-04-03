@@ -1,21 +1,21 @@
 ---
-title: "Updating the content of Magic Portfolio"
-summary: "Personalize the portfolio template with your own content."
+title: "Контент сайта"
+summary: "Файл src/resources/content.tsx: person, страницы, соцсети."
 publishedAt: "2025-04-18"
-tag: "Magic Portfolio"
+tag: "Документация"
 ---
 
-## Avatar
+## Аватар
 
-Replace the `public/images/avatar.jpg` file with your own avatar image. It is used on the `/about` page as well as on the dynamically generated `open-graph` images.
+Файл из `person.avatar` в `content.tsx` (путь в `public`, например `/assets/img/portfolio/avatar.webp`).
 
 ## Favicon
 
-Replace the `src/app/favicon.ico` file with your own favicon.
+Иконка в `public` / настройки Next — см. актуальную структуру репозитория.
 
-## Content
+## Файл content.tsx
 
-Replace the content in the `resources/content.js` file with your own content. You can use custom components in most cases, since the props are usually declared as `ReactNode` instead of `string`, but it's important that you need to import them in the file.
+Основной текст и данные — в [`src/resources/content.tsx`](src/resources/content.tsx). Поля часто типа `ReactNode`: можно вставлять JSX, компоненты импортировать в том же файле.
 
 <CodeBlock
     marginBottom="16"
@@ -30,15 +30,13 @@ const person = {
   ...
 };`,
     language: "tsx",
-    label: "src/app/resources/content.js"
+    label: "src/resources/content.tsx"
   }
 ]} />
 
-The imports above would let us use `InlineCode` and `Link` components in the content file.
+### Персоналия
 
-### Personal details
-
-Your personal details are used across the whole app to render personalized headings, labels and images. Languages are displayed on the `/about` page, and location and time in the header.
+Имя, роль, аватар, `location` (IANA), `languages` — для страницы «Обо мне» и шапки (если включено).
 
 <CodeBlock
     marginBottom="16"
@@ -47,71 +45,54 @@ Your personal details are used across the whole app to render personalized headi
   {
     code:
 `const person = {
-    firstName: "Selene",
-    lastName: "Yu",
-    get name() {
-      return "...";
-    },
-    role: "Design Engineer",
-    avatar: "/images/avatar.jpg",
-    location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+    firstName: "Имя",
+    lastName: "Фамилия",
+    name: "Имя Фамилия",
+    role: "Должность",
+    avatar: "/assets/img/portfolio/avatar.webp",
+    location: "Europe/Moscow",
+    languages: ["Русский", "English"],
 };`,
     language: "tsx",
-    label: "src/app/resources/content.js"
+    label: "src/resources/content.tsx"
   }
 ]} />
 
-### Social links
+### Соцсети
 
-Social links are rendered on the `/about` page and in the footer based on the array configured in the `social` object. You can set custom icons to each, but don't forget to import them in `src/once-ui/icons.ts`. Read the Once UI documentation](https://once-ui.com/docs/icons) for more information.
+Массив `social`: `name`, `icon`, `link`. Иконки — в [`src/resources/icons.ts`](src/resources/icons.ts), см. [документацию Once UI](https://once-ui.com/docs/icons).
 
 <CodeBlock
     marginBottom="16"
     codes={[
   {
     code:
-`const social = [
-    {
-      name: "GitHub",
-      icon: "github",
-      link: "https://github.com/once-ui-system/nextjs-starter",
-    },
-    {
-      name: "Email",
-      icon: "email",
-      link: "mailto:lorant@once-ui.com",
-    },
+`const social: Social = [
+    { name: "GitHub", icon: "github", link: "https://github.com/..." },
 ];`,
     language: "tsx",
-    label: "src/app/resources/content.js"
+    label: "src/resources/content.tsx"
   }
 ]} />
 
-### Pages
+### Страницы
 
-Each page have it's own object that manages the personalized content, such as headings, subheadings, images and dynamic data.
+Объекты `home`, `about`, `blog`, `work`, `gallery`: `label` (навигация), `title`, `description` (meta/OG), плюс поля страницы.
 
 <CodeBlock
     marginBottom="16"
     codes={[
   {
     code:
-`const home = {
-    label: "Home",
-    title: "Selene Yu's Portfolio",
-    description: "Portfolio website showcasing my work as a Design Engineer",
-    headline: <>Design engineer and builder</>,
-    subline: (
-      <>
-        I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-        <br /> user experiences. After hours, I build my own projects.
-      </>
-    ),
+`const home: Home = {
+    label: "Главная",
+    title: "Заголовок для SEO",
+    description: "Описание для SEO",
+    headline: <>Подзаголовок на главной</>,
 };`,
     language: "tsx",
-    label: "src/app/resources/content.js"
+    label: "src/resources/content.tsx"
   }
 ]} />
 
-The `label` property is used in the header navigation. The `title` property is used for the page title and the `description` property is used for the page description. They are also used in meta- and open graph tags.
+`title` и `description` уходят в метаданные и превью ссылок.

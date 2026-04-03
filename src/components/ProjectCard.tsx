@@ -6,9 +6,11 @@ import {
   Column,
   Flex,
   Heading,
+  Media,
   SmartLink,
   Text,
 } from "@once-ui-system/core";
+import Link from "next/link";
 import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
@@ -16,7 +18,6 @@ interface ProjectCardProps {
   priority?: boolean;
   images: string[];
   title: string;
-  content: string;
   description: string;
   avatars: { src: string }[];
   link: string;
@@ -24,22 +25,43 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
+  priority,
   images = [],
   title,
-  content,
   description,
   avatars,
   link,
 }) => {
-  return (
-    <Column fillWidth gap="m" className={styles.card}>
+  const gallery =
+    images.length === 1 ? (
+      <Link href={href} className={styles.cardImageLink} aria-label={`Открыть проект: ${title}`}>
+        <Media
+          priority={priority}
+          src={images[0]}
+          alt={title}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 960px"
+          aspectRatio="original"
+          objectFit="contain"
+          radius="l"
+          border="neutral-alpha-weak"
+          overflow="hidden"
+          fillWidth
+        />
+      </Link>
+    ) : (
       <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
+        priority={priority}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 960px"
         items={images.map((image) => ({
           slide: image,
           alt: title,
         }))}
       />
+    );
+
+  return (
+    <Column fillWidth gap="m" className={styles.card}>
+      {gallery}
       <Flex
         s={{ direction: "column" }}
         fillWidth
@@ -51,12 +73,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       >
         {title && (
           <Flex flex={5} className={styles.titleWrap}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl" className={styles.title}>
-              {title}
-            </Heading>
+            <SmartLink href={href} style={{ width: "fit-content", maxWidth: "100%" }}>
+              <Heading as="h2" wrap="balance" variant="heading-strong-xl" className={styles.title}>
+                {title}
+              </Heading>
+            </SmartLink>
           </Flex>
         )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
+        {(avatars?.length > 0 || description?.trim() || link) && (
           <Column flex={7} gap="16" className={styles.details}>
             {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
             {description?.trim() && (
@@ -69,26 +93,17 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 {description}
               </Text>
             )}
-            <Flex gap="24" wrap className={styles.actions}>
-              {content?.trim() && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">Подробнее</Text>
-                </SmartLink>
-              )}
-              {link && (
+            {link && (
+              <Flex gap="24" wrap className={styles.actions}>
                 <SmartLink
                   suffixIcon="arrowUpRightFromSquare"
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="body-default-s">Открыть проект</Text>
+                  <Text variant="body-default-s">Перейти на сайт</Text>
                 </SmartLink>
-              )}
-            </Flex>
+              </Flex>
+            )}
           </Column>
         )}
       </Flex>

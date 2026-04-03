@@ -1,5 +1,5 @@
-import { getPosts } from "@/utils/utils";
 import { baseURL, routes as routesConfig } from "@/resources";
+import { getPosts } from "@/utils/utils";
 
 export const dynamic = "force-static";
 
@@ -14,13 +14,20 @@ export default async function sitemap() {
     lastModified: post.metadata.publishedAt,
   }));
 
+  const allPostDates = [...blogs, ...works]
+    .map((entry) => entry.lastModified)
+    .filter((value): value is string => typeof value === "string" && value.length > 0)
+    .sort();
+
+  const stableLastModified = allPostDates.at(-1) ?? "2026-01-01";
+
   const activeRoutes = Object.keys(routesConfig).filter(
     (route) => routesConfig[route as keyof typeof routesConfig],
   );
 
   const routes = activeRoutes.map((route) => ({
     url: `${baseURL}${route !== "/" ? route : ""}`,
-    lastModified: new Date().toISOString().split("T")[0],
+    lastModified: stableLastModified,
   }));
 
   return [...routes, ...blogs, ...works];

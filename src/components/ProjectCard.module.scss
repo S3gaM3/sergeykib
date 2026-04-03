@@ -2,6 +2,18 @@
   width: 100%;
 }
 
+.cardImageLink {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardImageLink:focus-visible {
+  outline: 2px solid var(--brand-solid-strong);
+  outline-offset: 2px;
+}
+
 .contentRow {
   align-items: stretch;
 }

@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { usePathname } from "next/navigation";
-import { routes, protectedRoutes } from "@/resources";
-import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
 import NotFound from "@/app/not-found";
+import { protectedRoutes, routes } from "@/resources";
+import { nbsp } from "@/utils/typographyRu";
+import { Button, Column, Flex, Heading, PasswordInput, Spinner } from "@once-ui-system/core";
+import { usePathname } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
 interface RouteGuardProps {
   children: React.ReactNode;
@@ -12,8 +13,6 @@ interface RouteGuardProps {
 
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
-  const [isRouteEnabled, setIsRouteEnabled] = useState(false);
-  const [isPasswordRequired, setIsPasswordRequired] = useState(false);
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -28,31 +27,34 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
   const normalizedPathname = useMemo(() => normalizePathname(pathname), [pathname]);
 
+  const isRouteEnabled = useMemo(() => {
+    if (!normalizedPathname) return false;
+
+    if (normalizedPathname in routes) {
+      return routes[normalizedPathname as keyof typeof routes];
+    }
+
+    const dynamicRoutes = ["/blog", "/work"] as const;
+    for (const route of dynamicRoutes) {
+      if (normalizedPathname.startsWith(route) && routes[route]) {
+        return true;
+      }
+    }
+
+    return false;
+  }, [normalizedPathname]);
+
+  const isProtectedByConfig = useMemo(
+    () => Boolean(protectedRoutes[normalizedPathname as keyof typeof protectedRoutes]),
+    [normalizedPathname],
+  );
+  const [isPasswordRequired, setIsPasswordRequired] = useState(isProtectedByConfig);
+
   useEffect(() => {
-    const checkRouteEnabled = () => {
-      if (!normalizedPathname) return false;
-
-      if (normalizedPathname in routes) {
-        return routes[normalizedPathname as keyof typeof routes];
-      }
-
-      const dynamicRoutes = ["/blog", "/work"] as const;
-      for (const route of dynamicRoutes) {
-        if (normalizedPathname.startsWith(route) && routes[route]) {
-          return true;
-        }
-      }
-
-      return false;
-    };
-
-    setIsRouteEnabled(checkRouteEnabled());
-    setIsPasswordRequired(
-      Boolean(protectedRoutes[normalizedPathname as keyof typeof protectedRoutes]),
-    );
+    setIsPasswordRequired(isProtectedByConfig);
     setAuthApiUnavailable(false);
     setError(undefined);
-  }, [normalizedPathname]);
+  }, [isProtectedByConfig]);
 
   useEffect(() => {
     if (!isPasswordRequired) {
@@ -86,7 +88,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
   const handlePasswordSubmit = async () => {
     if (authApiUnavailable) {
-      setError("Password protection is unavailable in static deployment");
+      setError(`Защита паролем недоступна при${nbsp}статическом развёртывании`);
       return;
     }
 
@@ -100,7 +102,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       setIsAuthenticated(true);
       setError(undefined);
     } else {
-      setError("Incorrect password");
+      setError(`Неверный${nbsp}пароль`);
     }
   };
 
@@ -120,17 +122,17 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     return (
       <Column paddingY="128" maxWidth={24} gap="24" center>
         <Heading align="center" wrap="balance">
-          This page is password protected
+          Страница защищена{nbsp}паролем
         </Heading>
         <Column fillWidth gap="8" horizontal="center">
           <PasswordInput
             id="password"
-            label="Password"
+            label="Пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             errorMessage={error}
           />
-          <Button onClick={handlePasswordSubmit}>Submit</Button>
+          <Button onClick={handlePasswordSubmit}>Войти</Button>
         </Column>
       </Column>
     );

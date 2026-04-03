@@ -1,27 +1,27 @@
 ---
-title: "SEO settings for Magic Portfolio"
-summary: "Manage your Magic Portfolio's SEO settings."
+title: "SEO и разметка"
+summary: "Meta, Schema, OG-картинка; данные из resources и&nbsp;статические файлы."
 publishedAt: "2025-04-14"
-tag: "Magic Portfolio"
+tag: "Документация"
 ---
 
-## Meta tags
+## Meta-теги
 
-Magic Portfolio automatically generates meta- and open graph tags for your pages based on the `content.js` file.
+`Meta.generate` и&nbsp;страницы подставляют title и&nbsp;description из [`src/resources/content.tsx`](src/resources/content.tsx) и [`once-ui.config.ts`](src/resources/once-ui.config.ts) (аналог старых `content.js` / `config.js`).
 
 ## Schema
 
-Magic Portfolio automatically generates schema tags for your pages based on the `content.js` file.
+JSON-LD собирается компонентом `Schema` из Once UI на&nbsp;основе тех&nbsp;же конфигов.
 
-## Open Graph image
+## Open Graph
 
-Social sharing images (open-graph and twitter) are automatically generated with `next/og`.
+При **static export** (`output: "export"`) маршрута `/api/og` нет. Берите файл из `public` и абсолютный URL через `toAbsoluteUrl(baseURL, path)` ([`src/utils/absoluteUrl.ts`](src/utils/absoluteUrl.ts)).
 
 <Feedback
     icon
     marginBottom="16"
     description={<>
-        Make sure you have updated the <InlineCode>content.js</InlineCode> file with your own information and the <InlineCode>baseURL</InlineCode> variable in the <InlineCode>config.js</InlineCode> file.
+        Проверьте <InlineCode>content.tsx</InlineCode>, <InlineCode>once-ui.config.ts</InlineCode> и поле <InlineCode>baseURL</InlineCode>.
     </>}
 />
 
@@ -31,10 +31,13 @@ Social sharing images (open-graph and twitter) are automatically generated with 
     codes={[
       {
         code:
-`export async function generateMetadata() {
+`import { baseURL, home } from "@/resources";
+import { toAbsoluteUrl } from "@/utils/absoluteUrl";
+
+export async function generateMetadata() {
   const title = home.title;
   const description = home.description;
-  const ogImage = \`https://\/api/og/generate?title=\${encodeURIComponent(title)}\`;
+  const ogImage = toAbsoluteUrl(baseURL, home.image);
    ...
 };`,
         language: "tsx",
@@ -43,4 +46,4 @@ Social sharing images (open-graph and twitter) are automatically generated with 
     ]}
 />
 
-The above declaration generates the social image with the title of the page. You can use a static image by replacing the `ogImage` value with a path to an image in the `public` directory.
+Для превью в соцсетях нужен абсолютный URL к файлу в `public`; динамический `/api/og` при `output: "export"` недоступен.

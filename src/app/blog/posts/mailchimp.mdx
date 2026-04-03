@@ -1,108 +1,51 @@
 ---
-title: "Set up Mailchimp and collect emails"
-summary: "Set up the Mailchimp newsletter block for your Magic Portfolio."
+title: "Блок Mailchimp"
+summary: "Поле action формы и newsletter в content.tsx."
 publishedAt: "2025-04-16"
-tag: "Magic Portfolio"
+tag: "Документация"
 ---
 
-## Mailchimp account
+## Аккаунт
 
-Sign up for a [Mailchimp account](https://mailchimp.com) and create a new list if you don't have one.
+Нужен список рассылки в [Mailchimp](https://mailchimp.com) и [встроенная форма](https://mailchimp.com/help/add-a-signup-form-to-your-website/) — URL действия формы.
 
-## Embed form
+## Конфиг
 
-Create a new [embed form](https://mailchimp.com/help/add-a-signup-form-to-your-website/) and copy the form URL to your Magic Portfolio config.
-
-<CodeBlock
-    highlight="2"
-    codes={[
-  {
-    code:
-`const mailchimp = {
-    action: 'https://url/subscribe/post?parameters',
-    effects: {
-      ...
-    }
-};`, 
-    language: "tsx",
-    label: "src/app/resources/config.js"
-  }
-]} />
-
-## Newsletter content
-
-You can modify the headline and description in the `content.js` file.
+В [`src/resources/once-ui.config.ts`](src/resources/once-ui.config.ts) объект `mailchimp`: `action` — URL post из встраивания.
 
 <CodeBlock
     highlight="2"
     codes={[
   {
     code:
-`const newsletter = {
-    display: true,
-    title: <>Subscribe to {person.firstName}'s Newsletter</>,
-    description: (
-      <>
-        I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.
-      </>
-    ),
-};`, 
+`const mailchimp: MailchimpConfig = {
+    action: "https://.../subscribe/post?...",
+    effects: { /* фон блока */ },
+};`,
     language: "tsx",
-    label: "src/app/resources/content.js"
+    label: "src/resources/once-ui.config.ts"
   }
 ]} />
 
-## Background effect
+## Тексты блока
 
-There's a pre-configured background in `Mailchimp.tsx` that you can modify in the `mailchimp` object. Set graphic elements such as gradient, dots, lines, and grid and configure their appearance for the newsletter block.
+В [`src/resources/content.tsx`](src/resources/content.tsx) объект `newsletter`: `display`, `title`, `description`. При `display: false` компонент [`Mailchimp`](src/components/Mailchimp.tsx) не рендерится.
 
 <CodeBlock
-    codeHeight={24}
-    marginBottom="16"
+    highlight="2"
     codes={[
   {
     code:
-`const mailchimp = {
-    action: 'https://url/subscribe/post?parameters',
-    effects: {
-      mask: {
-        cursor: false,
-        x: 50,
-        y: 0,
-        radius: 100
-      },
-      gradient: {
-        display: true,
-        x: 50,
-        y: -25,
-        width: 100,
-        height: 100,
-        tilt: 0,
-        colorStart: 'accent-background-strong',
-        colorEnd: 'static-transparent',
-        opacity: 50
-      },
-      dots: {
-        display: true,
-        size: 2,
-        color: 'brand-on-background-weak',
-        opacity: 20
-      },
-      lines: {
-        display: false,
-        color: 'neutral-alpha-weak',
-        opacity: 100
-      },
-      grid: {
-        display: false,
-        color: 'neutral-alpha-weak',
-        opacity: 100,
-        width: 'var(--static-space-32)',
-        height: 'var(--static-space-32)'
-      }
-  }
-}`, 
+`const newsletter: Newsletter = {
+    display: false,
+    title: <>Заголовок</>,
+    description: <>Текст под заголовком</>,
+};`,
     language: "tsx",
-    label: "src/app/resources/config.js"
+    label: "src/resources/content.tsx"
   }
 ]} />
+
+## Оформление блока
+
+Поле `mailchimp.effects` задаёт маску/градиент/точки для фона секции рассылки (аналогично общему `effects`).

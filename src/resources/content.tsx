@@ -1,4 +1,5 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { nbsp } from "@/utils/typographyRu";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -14,14 +15,11 @@ const person: Person = {
 
 const newsletter: Newsletter = {
   display: false,
-  title: <>Подписка на обновления</>,
-  description: <>Новые проекты и материалы</>,
+  title: <>Рассылка</>,
+  description: <>Не&nbsp;используется (блок отключён).</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
@@ -52,18 +50,17 @@ const home: Home = {
   path: "/",
   image: "/assets/img/portfolio/pasport_competi_2.webp",
   label: "Главная",
-  title: "Сергей Кибальник - React, Node.js, JavaScript, HTML5, CSS3",
-  description:
-    "Помогаю бизнесу запускать и развивать сайты на React и Node.js: от лендингов до веб-приложений.",
-  headline: <>Создаю понятные и надежные сайты для бизнеса</>,
+  title: "Сергей Кибальник — веб-разработка, React, Node.js",
+  description: `Портфолио веб-разработчика: React, Node.js, JavaScript. Учебные и${nbsp}личные проекты, без${nbsp}коммерческого опыта.`,
+  headline: <>Веб-разработка: React, JavaScript, Node.js</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">10+ проектов</strong>{" "}
+        <strong className="ml-4">Проекты в&nbsp;портфолио</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Актуальный кейс
+          Пример{nbsp}работы
         </Text>
       </Row>
     ),
@@ -71,10 +68,14 @@ const home: Home = {
   },
   subline: (
     <>
-      Специализируюсь на{" "}
-      <Text as="span" size="xl" weight="strong">React, JavaScript, Node.js, HTML5, CSS3 и UX/UI</Text>.
+      Стек:{" "}
+      <Text as="span" size="xl" weight="strong">
+        React, JavaScript, TypeScript, Node.js, HTML5, CSS3
+      </Text>
+      .
       <br />
-      Помогаю бизнесу расти в интернете. Работаю удаленно и в Москве.
+      Москва, удалённый формат. Коммерческих заказов не&nbsp;было: учебные работы и&nbsp;небольшие
+      задачи для&nbsp;знакомых за&nbsp;символическую оплату.
     </>
   ),
 };
@@ -83,7 +84,7 @@ const about: About = {
   path: "/about",
   label: "Обо мне",
   title: `Обо мне — ${person.name}`,
-  description: `Портфолио и опыт ${person.name}, ${person.role}`,
+  description: `Кратко о${nbsp}${person.name}: образование, стек, проекты без${nbsp}коммерческого опыта`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -100,54 +101,56 @@ const about: About = {
     title: "Введение",
     description: (
       <>
-            Веб-разработчик с глубоким знанием JavaScript-экосистемы. Специализируюсь на создании
-            адаптивных интерфейсов на React и серверных решений на Node.js. Мои проекты сочетают
-        техническую надежность и визуальную привлекательность.
+        Веб-разработка: клиент на&nbsp;React, сервер на&nbsp;Node.js, языки JavaScript
+        и&nbsp;TypeScript. Коммерческого опыта нет. В&nbsp;портфолио&nbsp;— учебные работы
+        и&nbsp;пет-проекты; отдельно&nbsp;— несколько сайтов для&nbsp;знакомых за символическую
+        оплату (не&nbsp;рыночные заказы).
       </>
     ),
   },
   work: {
     display: true,
-    title: "Опыт и экспертиза",
+    title: "Практика",
     experiences: [
       {
-        company: "Коммерческие проекты",
-        timeframe: "2023 - настоящее время",
-        role: "Фриланс веб-разработчик",
+        company: `Учебные и${nbsp}личные проекты`,
+        timeframe: "2023—настоящее время",
+        role: "Веб-разработка",
         achievements: [
           <>
-            Разрабатываю лендинги, корпоративные сайты и веб-приложения с упором на скорость,
-            адаптивность и SEO.
+            Учебные задания, дипломные и&nbsp;тренировочные проекты; выкладка в&nbsp;открытое
+            портфолио.
           </>,
           <>
-            Внедряю интеграции с Telegram API и автоматизацию для уведомлений и обратной связи.
+            Сайты для&nbsp;знакомых: символическая оплата, без&nbsp;договоров и&nbsp;коммерческой
+            модели. Лендинги, простые витрины, формы, базовый SEO.
           </>,
+          <>Интеграции по&nbsp;мере задачи (в&nbsp;т.&nbsp;ч. уведомления, Telegram API).</>,
         ],
         images: [
           {
             src: "/assets/img/portfolio/traktir.webp",
-            alt: "Трактир Старая Школа",
+            alt: "Трактир «Старая школа»",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Инженерные web-системы",
-        timeframe: "2024 - 2025",
-        role: "Разработка интерфейсов и кабинетов",
+        company: `Интерфейсы для${nbsp}учебных задач`,
+        timeframe: "2024—2025",
+        role: "Frontend",
         achievements: [
           <>
-            Реализовал проекты по автоматизированной диспетчеризации и системам управления доступом.
+            Учебно-практические работы: интерфейсы к&nbsp;темам диспетчеризации и&nbsp;управления
+            доступом.
           </>,
-          <>
-            Создавал сложные формы, табличные представления данных и административные интерфейсы.
-          </>,
+          <>Формы, таблицы, административные экраны, работа с&nbsp;состоянием и&nbsp;валидацией.</>,
         ],
         images: [
           {
             src: "/assets/img/portfolio/linpass.webp",
-            alt: "Автоматизированная диспетчеризация",
+            alt: "Интерфейс учебного проекта",
             width: 16,
             height: 9,
           },
@@ -160,28 +163,34 @@ const about: About = {
     title: "Образование и сертификаты",
     institutions: [
       {
-        name: "Технологический колледж № 21",
-        description: <>09.02.07 Информационные системы и программирование, выпуск 2025.</>,
+        name: `Технологический колледж${nbsp}№${nbsp}21`,
+        description: (
+          <>09.02.07 «Информационные системы и&nbsp;программирование», выпуск&nbsp;2025.</>
+        ),
       },
       {
         name: "Яндекс Практикум и цифровой паспорт компетенций",
-        description: <>JavaScript от Яндекса (144 часа), цифровой паспорт компетенций — 86%.</>,
+        description: (
+          <>
+            JavaScript от&nbsp;Яндекса (144&nbsp;ч), цифровой паспорт компетенций&nbsp;— 86&nbsp;%.
+          </>
+        ),
         images: [
           {
             src: "/assets/img/portfolio/pasport_competi_1.webp",
-            alt: "Цифровой паспорт компетенций — страница 1",
+            alt: "Цифровой паспорт компетенций, страница 1",
             width: 4,
             height: 3,
           },
           {
             src: "/assets/img/portfolio/pasport_competi_2.webp",
-            alt: "Цифровой паспорт компетенций — страница 2",
+            alt: "Цифровой паспорт компетенций, страница 2",
             width: 4,
             height: 3,
           },
           {
             src: "/assets/img/portfolio/yandex_cert.webp",
-            alt: "Сертификат JavaScript от Яндекса",
+            alt: "Сертификат курса JavaScript, Яндекс",
             width: 4,
             height: 3,
           },
@@ -195,9 +204,7 @@ const about: About = {
     skills: [
       {
         title: "Frontend",
-        description: (
-          <>React, JavaScript, TypeScript, HTML5, CSS3, адаптивная верстка и UI-анимации.</>
-        ),
+        description: <>React, JavaScript, TypeScript, HTML5, CSS3, адаптивная вёрстка.</>,
         tags: [
           {
             name: "JavaScript",
@@ -213,10 +220,8 @@ const about: About = {
         images: [],
       },
       {
-        title: "Backend и инфраструктура",
-        description: (
-          <>Node.js, Express, REST API, MongoDB и интеграции с внешними сервисами.</>
-        ),
+        title: "Backend",
+        description: <>Node.js, Express, REST API, MongoDB.</>,
         tags: [
           {
             name: "Node.js",
@@ -235,40 +240,36 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Блог",
-  title: "Блог о разработке и практике",
-  description: `Заметки и наблюдения ${person.name}`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Заметки",
+  description: `MDX-страницы о${nbsp}настройке этого сайта и${nbsp}стеке.`,
 };
 
 const work: Work = {
   path: "/work",
   label: "Проекты",
-  title: `Проекты - ${person.name}`,
-  description: `Коммерческие и учебные проекты ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  title: `Проекты — ${person.name}`,
+  description: `Учебные и${nbsp}личные проекты ${person.name}${nbsp}(без${nbsp}коммерческого опыта)`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Галерея",
-  title: `Галерея - ${person.name}`,
-  description: `Подборка материалов и сертификатов`,
+  title: `Галерея — ${person.name}`,
+  description: `Сертификат курса и${nbsp}страницы цифрового паспорта компетенций.`,
   images: [
     {
       src: "/assets/img/portfolio/yandex_cert.webp",
-      alt: "Сертификат JavaScript",
+      alt: "Сертификат курса JavaScript",
       orientation: "horizontal",
     },
     {
       src: "/assets/img/portfolio/pasport_competi_1.webp",
-      alt: "Цифровой паспорт 1",
+      alt: "Цифровой паспорт компетенций, страница 1",
       orientation: "vertical",
     },
     {
       src: "/assets/img/portfolio/pasport_competi_2.webp",
-      alt: "Цифровой паспорт 2",
+      alt: "Цифровой паспорт компетенций, страница 2",
       orientation: "horizontal",
     },
   ],
